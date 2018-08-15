@@ -1,6 +1,7 @@
 import numpy as np
 import pdb
 
+# Converts labels to one_hot encoding
 def to_one_hot(arr, n):
 	one_hot = []
 	for item in arr:
@@ -9,6 +10,7 @@ def to_one_hot(arr, n):
 		one_hot.append(one_hot_item)
 	return np.array(one_hot)
 
+# Converts one_hot encoding to labels
 def from_one_hot(arr):
 	categ = []
 	for item in arr:
