@@ -13,6 +13,11 @@ color_to_index['red'] = 0
 color_to_index['green'] = 1
 color_to_index['blue'] = 2
 
+# Import data - 4 options: 
+# - shape
+# - color
+# - multi_label: shape + color
+# - combo: shape x color
 def read_images(input_directory, batch_size, img_height, img_width, mode = 'multi_label'):
 
 	file_names = [file_name for file_name in os.listdir(input_directory) if file_name.endswith('.png')]

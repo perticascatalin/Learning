@@ -7,12 +7,15 @@ IMG_SZ = 28
 OUT_DIR = './figures/'
 UP_LIM = 8
 
+# Sample principle color component
 def principle_component():
 	return round(uniform(0.6, 1.0),3)
 
+# Sample secondary color component
 def secondary_component():
 	return round(uniform(0.0, 0.4),3)
 
+# Converts index to color name
 def strong_component_to_colorname(strong_component):
 	if strong_component == 0:
 		return 'red'
@@ -21,6 +24,7 @@ def strong_component_to_colorname(strong_component):
 	elif strong_component == 2:
 		return 'blue'
 
+# Samples a random nuance of red, green or blue
 def get_random_color():
 	red_component = secondary_component()
 	green_component = secondary_component()
@@ -63,8 +67,10 @@ def square_image():
 	min_length = 4
 	max_length = IMG_SZ
 
+	# Sample length of square
 	length = randint(min_length, max_length - UP_LIM)
 
+	# Sample top-left point location (row + column)
 	max_start = IMG_SZ - length
 	top = randint(0, max_start)
 	left = randint(0, max_start)
@@ -86,17 +92,21 @@ def square_image():
 def triangle_image():
 	image = np.zeros((IMG_SZ, IMG_SZ, 3), dtype = np.float32)
 
+	# Sample length of base edge
 	min_edge = 6
 	max_edge = IMG_SZ
 	base_edge = randint(min_edge, max_edge - UP_LIM)
 
+	# Sample length of height
 	min_height = 6
 	max_height = IMG_SZ/2
 	height = randint(min_height, max_height - UP_LIM/2)
 
+	# Sample starting point row
 	min_start_r = height
 	point1_r = randint(min_start_r, IMG_SZ - 1)
 
+	# Sample starting point column
 	max_start_c = IMG_SZ - base_edge
 	point1_c = randint(0, max_start_c)
 
@@ -117,26 +127,35 @@ def triangle_image():
 	image = filters.gaussian(image, sigma = np.random.uniform(0.4,1.0))
 	return strong_component, color, image
 
+# Generate data
+# Shape options: Circle, Square, Triangle
+# Color options: Red, Green, Blue
+
 index = 0
+
 for i in range(1024):
+	# Generate a circle
 	strong_component, color, image = circle_image()
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'circle', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_circle_' + colorname + '.png', image)
 	index += 1
 
+	# Generate a square
 	strong_component, color, image = square_image()
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'square', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_square_' + colorname + '.png', image)
 	index += 1
 
+	# Generate a triangle
 	strong_component, color, image = triangle_image()
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'triangle', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_triangle_' + colorname + '.png', image)
 	index += 1
 
+	# Option to visualize generated figure
 	#plt.figure(1, figsize = (10,8))
 	#plt.imshow(image)
 	#plt.show()
