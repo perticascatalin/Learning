@@ -4,12 +4,12 @@ from random import randint, uniform
 import matplotlib.pyplot as plt
 
 IMG_SZ = 28
-OUT_DIR = './figures/'
+OUT_DIR = '../figures/'
 UP_LIM = 8
 
 # Sample principle color component
 def principle_component():
-	return round(uniform(0.6, 1.0),3)
+	return round(uniform(0.6, 0.998),3)
 
 # Sample secondary color component
 def secondary_component():
@@ -23,6 +23,14 @@ def strong_component_to_colorname(strong_component):
 		return 'green'
 	elif strong_component == 2:
 		return 'blue'
+
+def noisy_image(image):
+	for row in range(IMG_SZ):
+		for col in range(IMG_SZ):
+			make_noise = randint(0,9)
+			if make_noise == 0:
+				image[row, col] = [secondary_component(), secondary_component(), secondary_component()]
+	return image
 
 # Samples a random nuance of red, green or blue
 def get_random_color():
@@ -133,9 +141,10 @@ def triangle_image():
 
 index = 0
 
-for i in range(1024):
+for i in range(2048):
 	# Generate a circle
 	strong_component, color, image = circle_image()
+	image = noisy_image(image)
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'circle', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_circle_' + colorname + '.png', image)
@@ -143,6 +152,7 @@ for i in range(1024):
 
 	# Generate a square
 	strong_component, color, image = square_image()
+	image = noisy_image(image)
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'square', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_square_' + colorname + '.png', image)
@@ -150,6 +160,7 @@ for i in range(1024):
 
 	# Generate a triangle
 	strong_component, color, image = triangle_image()
+	image = noisy_image(image)
 	colorname = strong_component_to_colorname(strong_component)
 	print index, colorname, 'triangle', 'exact color', color
 	io.imsave(OUT_DIR + str(index) + '_triangle_' + colorname + '.png', image)

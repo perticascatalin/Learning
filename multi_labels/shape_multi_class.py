@@ -8,7 +8,7 @@ IMG_SZ = 28
 L_SZ = 2 # Labels size: Shape and Color
 C_SZ = 3 # Classes size: (Circle, Square, Triangle) and (Red, Green, Blue)
 
-INPUT_DIR = './figures/'
+INPUT_DIR = '../figures/'
 BATCH_SZ = 32
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
@@ -18,7 +18,7 @@ N_CLASSES = 3 # total number of classes
 # Parameters
 learning_rate = 0.001
 batch_size = 128
-num_steps = 1000
+num_steps = 2000
 display_step = 100
 
 # Network Parameters
@@ -35,13 +35,13 @@ def conv_net(x, n_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
     with tf.variable_scope('ConvNet', reuse=reuse):
 
-        # Convolution Layer with 8 filters and a kernel size of 5
-        conv1 = tf.layers.conv2d(x, 8, 5, activation=tf.nn.relu)
+        # Convolution Layer with 16 filters and a kernel size of 5
+        conv1 = tf.layers.conv2d(x, 16, 5, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
-        # Convolution Layer with 16 filters and a kernel size of 3
-        conv2 = tf.layers.conv2d(conv1, 16, 3, activation=tf.nn.relu)
+        # Convolution Layer with 32 filters and a kernel size of 3
+        conv2 = tf.layers.conv2d(conv1, 32, 3, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
