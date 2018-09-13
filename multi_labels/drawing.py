@@ -138,35 +138,37 @@ def triangle_image():
 # Generate data
 # Shape options: Circle, Square, Triangle
 # Color options: Red, Green, Blue
+def run():
+	index = 0
 
-index = 0
+	for i in range(4096):
+		# Generate a circle
+		strong_component, color, image = circle_image()
+		image = noisy_image(image)
+		colorname = strong_component_to_colorname(strong_component)
+		print index, colorname, 'circle', 'exact color', color
+		io.imsave(OUT_DIR + str(index) + '_circle_' + colorname + '.png', image)
+		index += 1
 
-for i in range(2048):
-	# Generate a circle
-	strong_component, color, image = circle_image()
-	image = noisy_image(image)
-	colorname = strong_component_to_colorname(strong_component)
-	print index, colorname, 'circle', 'exact color', color
-	io.imsave(OUT_DIR + str(index) + '_circle_' + colorname + '.png', image)
-	index += 1
+		# Generate a square
+		strong_component, color, image = square_image()
+		image = noisy_image(image)
+		colorname = strong_component_to_colorname(strong_component)
+		print index, colorname, 'square', 'exact color', color
+		io.imsave(OUT_DIR + str(index) + '_square_' + colorname + '.png', image)
+		index += 1
 
-	# Generate a square
-	strong_component, color, image = square_image()
-	image = noisy_image(image)
-	colorname = strong_component_to_colorname(strong_component)
-	print index, colorname, 'square', 'exact color', color
-	io.imsave(OUT_DIR + str(index) + '_square_' + colorname + '.png', image)
-	index += 1
+		# Generate a triangle
+		strong_component, color, image = triangle_image()
+		image = noisy_image(image)
+		colorname = strong_component_to_colorname(strong_component)
+		print index, colorname, 'triangle', 'exact color', color
+		io.imsave(OUT_DIR + str(index) + '_triangle_' + colorname + '.png', image)
+		index += 1
 
-	# Generate a triangle
-	strong_component, color, image = triangle_image()
-	image = noisy_image(image)
-	colorname = strong_component_to_colorname(strong_component)
-	print index, colorname, 'triangle', 'exact color', color
-	io.imsave(OUT_DIR + str(index) + '_triangle_' + colorname + '.png', image)
-	index += 1
+		# Option to visualize generated figure
+		#plt.figure(1, figsize = (10,8))
+		#plt.imshow(image)
+		#plt.show()
 
-	# Option to visualize generated figure
-	#plt.figure(1, figsize = (10,8))
-	#plt.imshow(image)
-	#plt.show()
+#run()
