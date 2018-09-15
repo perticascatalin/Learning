@@ -9,6 +9,7 @@ L_SZ = 2 # Labels size: Shape and Color
 C_SZ = 3 # Classes size: (Circle, Square, Triangle) and (Red, Green, Blue)
 
 INPUT_DIR = '../figures/'
+VAL_DIR = '../val_figures/'
 BATCH_SZ = 32
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
@@ -27,6 +28,9 @@ dropout = 0.75 # Dropout, probability to keep units
 # color as label
 X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ, 
 	img_height = IMG_HEIGHT, img_width = IMG_WIDTH, mode = 'color')
+
+X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ, 
+    img_height = IMG_HEIGHT, img_width = IMG_WIDTH, mode = 'color')
 
 #print X, Y
 
@@ -49,7 +53,7 @@ def conv_net(x, n_classes, dropout, reuse, is_training):
         fc1 = tf.contrib.layers.flatten(conv2)
 
         # Fully connected layer (in contrib folder for now)
-        fc1 = tf.layers.dense(fc1, 256)
+        fc1 = tf.layers.dense(fc1, 512)
         # Apply Dropout (if is_training is False, dropout is not applied)
         fc1 = tf.layers.dropout(fc1, rate=dropout, training=is_training)
 

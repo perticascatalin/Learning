@@ -45,7 +45,7 @@ for filename in filenames:
 	#img = img_as_float(io.imread(fig_filename))
 	#print img
 
-for i in range(100):
+for i in range(100,200):
 	relation = randint(0,1)
 	if relation == 0:
 		# vertical
@@ -69,9 +69,11 @@ for i in range(100):
 	figure_type = first_figure + ' ' + conn_word + ' ' + second_figure
 	print figure_type
 
+	# How many figures available for a type
 	first_count = len(files_by_color_shape[first_figure])
 	second_count = len(files_by_color_shape[second_figure])
 
+	# Sample a figure from the available ones
 	first_id = randint(0, first_count-1)
 	second_id = randint(0, second_count-1)
 	first_img = img_as_float(io.imread(files_by_color_shape[first_figure][first_id]))
@@ -84,34 +86,34 @@ for i in range(100):
 			1#
 			2#
 			'''
-			up_img = np.concatenate((first_img, blank_image()), axis = 0)
-			down_img = np.concatenate((second_img, blank_image()), axis = 0)
-			whole_img = np.concatenate((up_img, down_img), axis = 1)
+			up_img = np.concatenate((first_img, blank_image()), axis = 1)
+			down_img = np.concatenate((second_img, blank_image()), axis = 1)
+			whole_img = np.concatenate((up_img, down_img), axis = 0)
 		elif conn_word == 'next_to':
 			'''
 			12
 			##
 			'''
-			up_img = np.concatenate((first_img, second_img), axis = 0)
-			down_img = np.concatenate((blank_image(), blank_image()), axis = 0)
-			whole_img = np.concatenate((up_img, down_img), axis = 1)
+			up_img = np.concatenate((first_img, second_img), axis = 1)
+			down_img = np.concatenate((blank_image(), blank_image()), axis = 1)
+			whole_img = np.concatenate((up_img, down_img), axis = 0)
 	else:
 		if conn_word == 'above':
 			'''
 			#1
 			#2
 			'''
-			up_img = np.concatenate((blank_image(), first_img), axis = 0)
-			down_img = np.concatenate((blank_image(), second_img), axis = 0)
-			whole_img = np.concatenate((up_img, down_img), axis = 1)
+			up_img = np.concatenate((blank_image(), first_img), axis = 1)
+			down_img = np.concatenate((blank_image(), second_img), axis = 1)
+			whole_img = np.concatenate((up_img, down_img), axis = 0)
 		elif conn_word == 'next_to':
 			'''
 			##
 			12
 			'''
-			up_img = np.concatenate((blank_image(), blank_image()), axis = 0)
-			down_img = np.concatenate((first_img, second_img), axis = 0)
-			whole_img = np.concatenate((up_img, down_img), axis = 1)
+			up_img = np.concatenate((blank_image(), blank_image()), axis = 1)
+			down_img = np.concatenate((first_img, second_img), axis = 1)
+			whole_img = np.concatenate((up_img, down_img), axis = 0)
 	# Option to visualize generated figure
 	# plt.figure(1, figsize = (10,8))
 	# plt.imshow(whole_img)
