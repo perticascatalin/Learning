@@ -166,34 +166,3 @@ with tf.Session() as sess:
     coord.request_stop()
     coord.join(threads)
 
-'''
-x = tf.placeholder(shape = [None, IMG_SZ, IMG_SZ, 3], dtype = tf.float32)
-y = tf.placeholder(shape = [None, N_SZ, C_SZ])
-
-W1 = tf.Variable(tf.truncated_normal(shape = shape, stddev = 0.1))
-b1 = tf.Variable(tf.constant(0.1, shape = shape))
-
-conv1 = tf.nn.conv2d(x, W1, strides = [1, 1, 1, 1], padding = 'SAME')
-layer1 = tf.nn.relu(conv1 + b1)
-pool1 = tf.nn.max_pool(layer1, ksize = [1, 28, 28, 1], strides=[1, 1, 1, 1], padding = 'VALID')
-
-W2 = tf.Variable(tf.truncated_normal(shape = shape, stddev = 0.1))
-b2 = tf.Variable(tf.constant(0.1, shape = shape))
-
-conv2 = tf.nn.conv2d(pool1, W2, strides = [1, 1, 1, 1], padding = 'SAME')
-layer2 = tf.nn.relu(conv2 + b2)
-pool2 = tf.nn.max_pool(layer2, ksize = [1, 28, 28, 1], strides = [1, 1, 1, 1], padding = 'VALID')
-
-flattened = tf.reshape(pool2, [-1, 7 * 7 * 64])
-
-# maybe add another dense here
-
-# do this for number of labels
-
-wd1 = tf.Variable(tf.truncated_normal([7 * 7 * 64, 1000], stddev = 0.03), name = 'wd1')
-bd1 = tf.Variable(tf.truncated_normal([1000], stddev = 0.01), name = 'bd1')
-
-dense_layer1 = tf.matmul(flattened, wd1) + bd1
-dense_layer1 = tf.nn.relu(dense_layer1)
-'''
-
