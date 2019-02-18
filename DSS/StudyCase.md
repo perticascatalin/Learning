@@ -13,3 +13,9 @@ A similar logic can be applied to decision trees with more branches. Such is the
 Development
 
 Each additional layer adds details which help inform to make a better overall decision. The overall probability of a leaf node (outcome) is computed by multiplying all the probabilities from the root. Probability with priors can be computed by multiplying up to a certain level. Expected value from a given state is obtained by weighted average of its leaf nodes.This is called decision tree analysis.
+
+We develop on more complex concepts: decision tree and attribute split impurity (gini index)
+
+First example
+
+Symptom to cause mapping.
