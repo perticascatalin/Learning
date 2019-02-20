@@ -44,6 +44,35 @@ The warehouse we deal with in this study case is an automobile parts importer an
 
 This model will help us analyze the incentives of the company owning the warehouse, its clients and mixed orders which should be aggregated such that the company makes a trade-off between increasing the velocity of legacy items (the concept of sales) and keeping a satisfactory profit overall.
 
+**SPV Model** (KPIs & levels)
+
+- Seed (investment)
+- Profit
+- Velocity
+- Product level
+- Aggregate level (mixed orders)
+- Sub-business level
+- Business level
+
+**Velocity**
+
+- Identify slow items
+- Design measures for slow items
+- Analyze slow items/time frame
+- Identify product periodicity
+
+**Company incentives**
+
+- Max Profit, Max Velocity
+
+**Client incentives**
+
+- Max Profit, Min Investment
+
+**Objectives**
+
+Use computational tools to monitor KPIs, analyze different levels of the model and predict through decision tree analysis and economic principles which sub-businesses should be followed-through such that the overall business velocity increases at a minimal loss of profit.
+
 ### References
 
 [1] Decision Tree Tutorial, mbabullshit.com
