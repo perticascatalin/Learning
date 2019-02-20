@@ -22,6 +22,10 @@ Each additional layer adds details which help inform to make a better overall de
 
 Decision tree analysis is a model for making a rational decision in a given context. However, overall human decision making differs [5] and economists have had great challenges in explaining why economics does not work according to theories based on rational behavior. For instance, in [4] we can find examples and a summary of a theory which states that humans do not make decisions based on things like expected value, but instead weigh a lot more losses than gains. That is, the loss L (-5 dollars) vs. the gain (+5 dollars) G has a higher negative impact |L| > |G| than it has a positive impact, under the same probability (0.5). So in this case, an average decision maker would not see it as a neutral decision, but a bad one instead.
 
+|Example from [1] | Example from [2] |
+|:-:|:-:|
+| ![Decision Tree Analysis](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DSS/decision_tree_1.png)|![Decision ML](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DSS/decision_tree_2.png)|
+
 ### Decision Tree in Machine Learning
 
 We develop on more complex concepts: decision tree and attribute split impurity (gini impurity).
