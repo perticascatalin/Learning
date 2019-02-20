@@ -38,6 +38,12 @@ Decision trees are also great models for machine learning - automated classifica
 
 The notion of how informative an attribute is can be formulated via the gini impurity which is a measure of how impure a set of observations is. That is, if we were to predict a heart disease, how well is it to make the decision solely on whether the patient has chest pains (yes Y or no N). G = 1 - Y^2 - N^2.
 
+### Warehouse KPIs
+
+The warehouse we deal with in this study case is an automobile parts importer and distributer which would like to start getting rid of some legacy stocks. These stocks have accumulated for a number of reasons such as market competition changes and bad prediction of demand. We will identify these items through the KPI called velocity (V). The other two KPIs of interest are seed/investment (S) and profit (P). We unify theses KPIs under a model called SPV. 
+
+This model will help us analyze the incentives of the company owning the warehouse, its clients and mixed orders which should be aggregated such that the company makes a trade-off between increasing the velocity of legacy items (the concept of sales) and keeping a satisfactory profit overall.
+
 ### References
 
 [1] Decision Tree Tutorial, mbabullshit.com
@@ -46,6 +52,6 @@ The notion of how informative an attribute is can be formulated via the gini imp
 
 [3] Example from slides
 
-[4] Thinking: Fast and Slow, Choices
+[4] *Thinking: Fast and Slow, Choices*, Daniel Kahneman
 
-[5] System 1 and System 2 cognition in the decision to adopt and use a new technology
+[5] *System 1 and System 2 cognition in the decision to adopt and use a new technology*, Vijay Khatri et al
