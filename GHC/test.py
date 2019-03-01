@@ -25,8 +25,8 @@ def save_rectangle():
 	sub_image = real_image[low_y:high_y, low_x:high_x]
 	highlighted_region = real_image.copy()
 	cv2.rectangle(highlighted_region, (low_x, low_y), (high_x, high_y), (0,255,0), 2)
-	cv2.imwrite('last_rectangle.jpg', sub_image)
-	cv2.imwrite('highlighted.jpg', highlighted_region)
+	cv2.imwrite('./slide/last_rectangle.jpg', sub_image)
+	cv2.imwrite('./slide/highlighted.jpg', highlighted_region)
 
 # Cleans up image for further rectangular extraction
 def wash_image():
