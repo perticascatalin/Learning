@@ -8,6 +8,9 @@
 
 using namespace std;
 
+#define NUM_SLIDES 100000
+#define NUM_TAGS 505
+
 //ifstream fin ("./input/a_example.txt");
 ifstream fin ("./input/e_shiny_selfies.txt");
 ofstream fout ("test.out");
@@ -15,14 +18,14 @@ ofstream fout ("test.out");
 int N;
 string s;
 map <string, int> tag_id;
-vector <int> tags[100000];
+vector <int> tags[NUM_SLIDES];
 vector <int> htype;
 int num_tags_total;
-int matrix[505][505];
-vector <int> photos[505][505];
-vector <int> tag_photo[505];
+int matrix[NUM_TAGS][NUM_TAGS];
+vector <int> photos[NUM_TAGS][NUM_TAGS];
+vector <int> tag_photo[NUM_TAGS];
 vector <int> all_photos;
-bool used[100000];
+bool used[NUM_SLIDES];
 
 
 
