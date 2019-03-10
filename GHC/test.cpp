@@ -33,8 +33,8 @@ int main()
 {
 	cout << "test\n";
 
-	//fin >> s;
-	//cout << s << "\n";
+	// 1. READ INPUT
+	// ==============
 	fin >> N;
 	cout << N << "\n";
 	num_tags_total = 0;
@@ -79,6 +79,8 @@ int main()
 	// 	cout << "\n";
 	// }
 
+	// 2. CREATE BUCKETS
+	// ==============
 	for (int i = 1; i <= N; ++i)
 	{
 		for (int j = 0; j < tags[i].size(); ++j)
@@ -106,6 +108,8 @@ int main()
 	// 	cout << "\n";
 	// }
 
+	// 3. SHUFFLE BUCKETS CONTENT
+	// ==============
 	for (int i = 1; i <= NT; ++i)
 		for (int j = 1; j <= NT; ++j)
 			random_shuffle(photos[i][j].begin(), photos[i][j].end());	
@@ -117,6 +121,8 @@ int main()
 		all_photos.push_back(i);
 	random_shuffle(all_photos.begin(), all_photos.end());
 
+	// 4. GENERATE SLIDES
+	// ==============
 	vector <int> ordered_photos;
 	bool is_continued = false;
 	int T = 0;
