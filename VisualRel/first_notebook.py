@@ -35,13 +35,17 @@ df_rel.sample(5)
 #df_rel['LabelName1'].head()
 
 df_classes = pd.read_csv('./input/challenge-2019-classes-vrd.csv')
-
 print (df_classes)
 
+df_attr = pd.read_csv('./input/challenge-2019-attributes-description.csv')
+
 class_name_dict = dict(zip(df_classes.Label,df_classes.LabelName))
+attr_name_dict = dict(zip(df_attr.Label,df_attr.LabelName))
 
 print (class_name_dict)
 print (len(class_name_dict))
+print (attr_name_dict)
+print (len(attr_name_dict))
 
 def map_to_name(label):
 	#return isinstance(label, str)
@@ -53,8 +57,11 @@ def map_to_name(label):
 	if label in class_name_dict.keys():
 		return class_name_dict[label]
 
+	if label in attr_name_dict.keys():
+		return attr_name_dict[label]
+
 	return 'milk'
-    #class_name = class_name_dict[label_name]
+    #class_name = class_name_dict[label]
 
     # class_name = 'beer'
     # choice = random.choice('ab')
@@ -67,21 +74,24 @@ def map_to_name(label):
 # print (map_to_name('beta'))
 # print (map_to_name('gamma'))
 
-# Should be, but is not
-#print (map_to_name('/m/083vt'))
-#same_thing_repeated = df_rel[['LabelName2']][df_rel.LabelName2 == '/m/083vt']
-#print(same_thing_repeated.head())
+# complement style (label name 2)
+TARGET_LABEL = '/m/04dr76w' # Bottle
+TARGET_LABEL = '/m/02hj4' # Hamster
+TARGET_LABEL = '/m/09tvcd' # Wine Glass
+TARGET_LABEL = '/m/083vt' # Wooden
 
-print (map_to_name('/m/04dr76w'))
+print (map_to_name(TARGET_LABEL))
 
-same_thing_repeated = df_rel[['LabelName1', 'LabelName2', 'RelationshipLabel']][df_rel.LabelName2 == '/m/04dr76w']
+same_thing_repeated = df_rel[['LabelName1', 'LabelName2', 'RelationshipLabel']][df_rel.LabelName2 == TARGET_LABEL]
 print(same_thing_repeated.head())
 
-# not working start here
 translated = same_thing_repeated
 translated['LabelName1'] = translated[['LabelName1']].apply(lambda x : map_to_name(x.all()), axis = 1)
 translated['LabelName2'] = translated[['LabelName2']].apply(lambda x : map_to_name(x.all()), axis = 1)
-print(translated.sample(50))
+#print(translated.sample(50))
+
+print (translated['RelationshipLabel'].value_counts())
+print (translated['LabelName1'].value_counts())
 
 #numerical = ['XMin1', 'XMax1', 'YMin1', 'YMax1', 'XMin2', 'XMax2', 'YMin2', 'YMax2']
 #df_rel[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4));
