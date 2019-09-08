@@ -28,9 +28,15 @@ for dirname, _, filenames in os.walk('./train'):
         rel_in_image = df_rel[df_rel.ImageID == image_id]
         total_relations += len(rel_in_image)
         if len(rel_in_image) > 0:
-            print (image_id, ':', len(rel_in_image))
+            print (image_id, len(rel_in_image))
             num_images_w_rel += 1
 
 print ('Total relations:', total_relations)
 print ('Images with relations:', num_images_w_rel)
 print ('Total images:', num_images)
+
+# test map to tag
+LABEL = 'Car'
+TARGET_LABEL = help.map_to_tag(LABEL)
+print (LABEL, TARGET_LABEL)
+
