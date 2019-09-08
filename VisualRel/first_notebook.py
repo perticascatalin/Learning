@@ -160,3 +160,35 @@ print (df_rel['ImageID'].value_counts())
 # Distribution of relationships around image
 #numerical = ['XMin1', 'XMax1', 'YMin1', 'YMax1', 'XMin2', 'XMax2', 'YMin2', 'YMax2']
 #df_rel[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4));
+
+
+IMAGE_ID = '0000c33c6f4b8518'
+IMAGE_ID = '0000bee39176697a'
+IMAGE_ID = '0001b181d51bfa19'
+
+rel_in_image = df_rel[df_rel.ImageID == IMAGE_ID]
+print (rel_in_image)
+
+for index, row in rel_in_image.iterrows():
+    subject = map_to_name(row['LabelName1'])
+    complement = map_to_name(row['LabelName2'])
+    relation = map_to_name(row['RelationshipLabel'])
+    print(subject, relation, complement)
+
+num_images = 0
+num_images_w_rel = 0
+total_relations = 0
+for dirname, _, filenames in os.walk('./train'):
+    for filename in filenames:
+        # print(filename)
+        image_id = filename.split('.')[0]
+        num_images += 1
+        rel_in_image = df_rel[df_rel.ImageID == image_id]
+        total_relations += len(rel_in_image)
+        if len(rel_in_image) > 0:
+            print (image_id, ':', len(rel_in_image))
+            num_images_w_rel += 1
+
+print ('Total relations:', total_relations)
+print ('Images with relations:', num_images_w_rel)
+print ('Total images:', num_images)
