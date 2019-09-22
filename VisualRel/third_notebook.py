@@ -3,6 +3,7 @@ from skimage import io
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 df_rel = pd.read_csv('./input/challenge-2019-train-vrd.csv')
 df_bbox = pd.read_csv('./input/challenge-2019-train-vrd-bbox.csv')
@@ -51,6 +52,7 @@ for object_name in objects:
 	fig_name = './loc_size/' + object_name + '_loc_size.png'
 	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
 	plt.savefig(fig_name)
+	plt.clf()
 	print object_name
 	# how many times it appears per image
 	#print objects['ImageID'].value_counts()
@@ -81,3 +83,14 @@ for object_name in objects:
 			img[r,c] = img[r,c] / num_objects
 
 	print img
+
+	# 7. Heat Map for object localization
+	sns.heatmap(img, cmap='RdYlGn_r', linewidths=0.5, annot=True)
+	plt.savefig('./' + object_name + '_heatmap.png')
+	plt.clf()
+
+# 7. Heat Map
+x = np.random.randn(5,4)
+sns.heatmap(x, cmap='RdYlGn_r', linewidths=0.5, annot=True)
+plt.savefig('./heatmap.png')
+plt.clf()
