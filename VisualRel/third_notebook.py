@@ -30,10 +30,11 @@ df_bbox['dY'] = df_bbox['YMax'] - df_bbox['YMin']
 
 # 4. Compute pseudo-ratio
 df_bbox['dYdX'] = df_bbox['dY'] / (df_bbox['dX'] + 0.1)
+df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 
 # 2. General object (eg. Chair)
 
-objects = ["Chair", "Car", "Man", "Woman"]
+objects = ["Chair", "Car", "Woman", "Man"]
 
 for object_name in objects:
 	label_name = help.map_to_tag(object_name)
@@ -44,8 +45,13 @@ for object_name in objects:
 
 	# Distribution of locations and size for objects of given type (eg. Chair)
 
-	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY', 'dYdX']
+	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY', 'dYdX', 'dXdY']
 	fig_name = './loc_size/' + object_name + '_loc_size.png'
 	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
 	plt.savefig(fig_name)
-	print objects['ImageID'].value_counts()
+	# how many times it appears per image
+	#print objects['ImageID'].value_counts()
+	# how many times it appears overall
+	print object_name
+	print len(objects)
+

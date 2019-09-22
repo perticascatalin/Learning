@@ -41,18 +41,20 @@ IMAGE_ID = '00031197fb7b015d'
 rel_in_image = df_rel[df_rel.ImageID == IMAGE_ID]
 print (rel_in_image)
 
+# iterate rows
 for index, row in rel_in_image.iterrows():
     subject = help.map_to_name(row['LabelName1'])
     complement = help.map_to_name(row['LabelName2'])
     relation = help.map_to_name(row['RelationshipLabel'])
     print(subject, relation, complement)
 
-show_image(IMAGE_ID)
+# test image selection
+# show_image(IMAGE_ID)
 
 # test map to tag
-LABEL = 'Car'
-TARGET_LABEL = help.map_to_tag(LABEL)
-print (LABEL, TARGET_LABEL)
+# LABEL = 'Car'
+# TARGET_LABEL = help.map_to_tag(LABEL)
+# print (LABEL, TARGET_LABEL)
 
-# stats_img_avail()
+stats_img_avail()
 
