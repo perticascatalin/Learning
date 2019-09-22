@@ -1,4 +1,5 @@
 import helpers as help
+from skimage import io
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -34,7 +35,8 @@ df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 
 # 2. General object (eg. Chair)
 
-objects = ["Chair", "Car", "Woman", "Man"]
+#objects = ["Chair", "Car", "Woman", "Man"]
+objects = ["Chair"]
 
 for object_name in objects:
 	label_name = help.map_to_tag(object_name)
@@ -49,9 +51,33 @@ for object_name in objects:
 	fig_name = './loc_size/' + object_name + '_loc_size.png'
 	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
 	plt.savefig(fig_name)
+	print object_name
 	# how many times it appears per image
 	#print objects['ImageID'].value_counts()
 	# how many times it appears overall
-	print object_name
-	print len(objects)
+	num_objects = len(objects)
+	print num_objects
 
+	# 5. Iterate rows:
+	num_rows = 0
+	step = num_objects / 10
+	s = 10
+	img = np.zeros((s,s), dtype = np.float64)
+	for index, row in objects.iterrows():
+		for r in range(s):
+			for c in range(s):
+				rc = (r + 1) / float(s)
+				cc = (c + 1) / float(s)
+				if row['XMin'] < cc and row['XMax'] >= cc and row['YMin'] < rc and row['YMax'] >= cc:
+					img[r,c] += 1.0
+		num_rows += 1
+		if num_rows % step == 0:
+			print 'step ', num_rows/step
+
+
+	# 6. Divide by total number:
+	for r in range(s):
+		for c in range(s):
+			img[r,c] = img[r,c] / num_objects
+
+	print img
