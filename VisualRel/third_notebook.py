@@ -24,20 +24,25 @@ print df_bbox.sample(5)
 bbox_in_image = df_bbox[df_bbox.ImageID == IMAGE_ID]
 print bbox_in_image
 
+# 3. Compute dX, dY
+df_bbox['dX'] = df_bbox['XMax'] - df_bbox['XMin']
+df_bbox['dY'] = df_bbox['YMax'] - df_bbox['YMin']
+
 # 2. General object (eg. Chair)
 
-label_name = help.map_to_tag("Chair")
-label_name = help.map_to_tag("Car")
-print label_name
-chairs = df_bbox[df_bbox.LabelName == label_name]
+objects = ["Chair", "Car", "Man", "Woman"]
 
-print chairs.sample(5)
+for object_name in objects:
+	label_name = help.map_to_tag(object_name)
+	print label_name
+	objects = df_bbox[df_bbox.LabelName == label_name]
 
-# Distribution of locations for objects of given type (eg. Chair)
+	print objects.sample(5)
 
-numerical = ['XMin', 'XMax', 'YMin', 'YMax']
-chairs[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
-plt.savefig('./car_locations.png')
-print chairs['ImageID'].value_counts()
+	# Distribution of locations and size for objects of given type (eg. Chair)
 
-# Distribution of size for objects of given type (eg. Chair)
+	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY']
+	fig_name = './loc_size/' + object_name + '_loc_size.png'
+	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
+	plt.savefig(fig_name)
+	print objects['ImageID'].value_counts()
