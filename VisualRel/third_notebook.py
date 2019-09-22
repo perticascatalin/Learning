@@ -28,6 +28,9 @@ print bbox_in_image
 df_bbox['dX'] = df_bbox['XMax'] - df_bbox['XMin']
 df_bbox['dY'] = df_bbox['YMax'] - df_bbox['YMin']
 
+# 4. Compute pseudo-ratio
+df_bbox['dYdX'] = df_bbox['dY'] / (df_bbox['dX'] + 0.1)
+
 # 2. General object (eg. Chair)
 
 objects = ["Chair", "Car", "Man", "Woman"]
@@ -41,7 +44,7 @@ for object_name in objects:
 
 	# Distribution of locations and size for objects of given type (eg. Chair)
 
-	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY']
+	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY', 'dYdX']
 	fig_name = './loc_size/' + object_name + '_loc_size.png'
 	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
 	plt.savefig(fig_name)
