@@ -37,7 +37,7 @@ df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 # 2. General object (eg. Chair)
 
 #objects = ["Chair", "Car", "Woman", "Man"]
-objects = ["Chair"]
+objects = ["Car", "Woman", "Man"]
 
 for object_name in objects:
 	label_name = help.map_to_tag(object_name)
@@ -61,6 +61,8 @@ for object_name in objects:
 	print num_objects
 
 	# 5. Iterate rows:
+	# 8. No not iterate more than 200.000 rows 
+	# (for more efficiency in heatmap generation)
 	num_rows = 0
 	step = num_objects / 10
 	s = 10
@@ -75,6 +77,8 @@ for object_name in objects:
 		num_rows += 1
 		if num_rows % step == 0:
 			print 'step ', num_rows/step
+		if num_rows > 200000:
+			break
 
 
 	# 6. Divide by total number:
