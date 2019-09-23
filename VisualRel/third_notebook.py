@@ -37,8 +37,10 @@ df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 # 2. General object (eg. Chair)
 
 #objects = ["Chair", "Car", "Woman", "Man"]
-objects = ["Car", "Woman", "Man"]
+#objects = ["Microwave oven", "Ski", "Racket", "Tennis ball"]
+objects = ["Piano", "Beer", "Chopsticks", "Cat"]
 
+LIMIT = 200000
 for object_name in objects:
 	label_name = help.map_to_tag(object_name)
 	print label_name
@@ -49,7 +51,7 @@ for object_name in objects:
 	# Distribution of locations and size for objects of given type (eg. Chair)
 
 	numerical = ['XMin', 'XMax', 'YMin', 'YMax', 'dX', 'dY', 'dYdX', 'dXdY']
-	fig_name = './loc_size/' + object_name + '_loc_size.png'
+	fig_name = './loc_size/' + object_name.replace(" ", "_") + '_loc_size.png'
 	objects[numerical].hist(bins=15, figsize=(20, 10), layout=(2, 4))
 	plt.savefig(fig_name)
 	plt.clf()
@@ -61,7 +63,7 @@ for object_name in objects:
 	print num_objects
 
 	# 5. Iterate rows:
-	# 8. No not iterate more than 200.000 rows 
+	# 8. No not iterate more than LIMIT (200.000 rows)
 	# (for more efficiency in heatmap generation)
 	num_rows = 0
 	step = num_objects / 10
@@ -77,7 +79,7 @@ for object_name in objects:
 		num_rows += 1
 		if num_rows % step == 0:
 			print 'step ', num_rows/step
-		if num_rows > 200000:
+		if num_rows > LIMIT:
 			break
 
 
@@ -90,11 +92,12 @@ for object_name in objects:
 
 	# 7. Heat Map for object localization
 	sns.heatmap(img, cmap='RdYlGn_r', linewidths=0.5, annot=True)
-	plt.savefig('./' + object_name + '_heatmap.png')
+	fig_name = './heatmaps/' + object_name.replace(" ", "_") + '_heatmap.png'
+	plt.savefig(fig_name)
 	plt.clf()
 
 # 7. Heat Map
-x = np.random.randn(5,4)
-sns.heatmap(x, cmap='RdYlGn_r', linewidths=0.5, annot=True)
-plt.savefig('./heatmap.png')
-plt.clf()
+# x = np.random.randn(5,4)
+# sns.heatmap(x, cmap='RdYlGn_r', linewidths=0.5, annot=True)
+# plt.savefig('./heatmap.png')
+# plt.clf()
