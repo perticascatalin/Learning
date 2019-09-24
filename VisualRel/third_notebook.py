@@ -38,7 +38,7 @@ df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 
 #objects = ["Chair", "Car", "Woman", "Man"]
 #objects = ["Microwave oven", "Ski", "Racket", "Tennis ball"]
-objects = ["Piano", "Beer", "Chopsticks", "Cat"]
+#objects = ["Piano", "Beer", "Chopsticks", "Cat"]
 
 LIMIT = 10000
 for object_name in objects:
@@ -67,6 +67,7 @@ for object_name in objects:
 	# (for more efficiency in heatmap generation)
 	num_rows = 0
 	step = min(num_objects, LIMIT) / 10
+	step = max(step, 100)
 	s = 10
 	img = np.zeros((s,s), dtype = np.float64)
 	for index, row in objects.iterrows():

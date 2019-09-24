@@ -28,7 +28,38 @@ image_ids = [
 	'001272829ec1711e', # car
 	'00182e06281874be', # chairs
 	'00185eed7ee580c2', # chairs
+	'0019c154d12174a6', # car
+	'0000048549557964', # car
+	'00005bf623ff1ac2', # car
+	'0000575f5a03db70', # car
+	'0000bcb094764718', # man
+	'00009cadede2ed69', # man
+	'000097e74a49f910', # woman
+	'0000c4f95a9d5a54', # woman
+	'0000ee1cc1f4c792', # woman
+	'0001522c263592c5', # woman
+	'000228608388803f', # car
+	'0002a5b67e5f0909', # car
+	'0007ad5c6245a41d', # man
+	'0007ab744e4ef390' # man
 	]
+
+test_image_ids = [
+	'000823904818a6c4', # car
+	'0007870724402b51', # car
+	'0008d9dc5c2aaf55', # man
+	'0008da619d1fb895', # man
+	'0008e1762a3da733', # man
+	'0009a4b277c5e5e8', # man
+	'0009d1afd95f318e', # man
+	'0009e0bf300ae719', # man
+	'0009e35b7b2ab89f', # woman
+	'0009e54760e08784', # woman
+	'0009324a410005fc', # man
+	'00096590a73be586', # man
+	'000a38e00b2005ab', # woman
+	'000a6f643b0e705f'  # woman
+]
 
 # 0. Objects in Image
 
