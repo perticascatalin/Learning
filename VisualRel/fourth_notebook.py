@@ -46,8 +46,6 @@ def analyze_image(IMAGE_ID):
 				max_r = (r + 1) / float(s)
 				min_c = c / float(s)
 				max_c = (c + 1) / float(s)
-				# hmin = 1.0 - row['YMax']
-				# hmax = 1.0 - row['YMin']
 				hmin = row['YMin']
 				hmax = row['YMax']
 				if row['XMin'] < max_c and row['XMax'] > min_c and hmin < max_r and hmax > min_r:
@@ -113,9 +111,52 @@ def grid_cells(IMAGE_ID):
 			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_cell.jpg'
 			io.imsave(res_filename, cell)
 
+# 4. Split into grid cells and assign classes
+def grid_cells_w_classes(IMAGE_ID):
+	filename = './train_resized/' + IMAGE_ID + '.jpg'
+	img = io.imread(filename)
+
+	objects = df_bbox[df_bbox.ImageID == IMAGE_ID]
+	no_rows = img.shape[0] / 32
+	no_cols = img.shape[1] / 32
+
+	img_labels = []
+	for i in range(no_rows):
+		img_cols = []
+		for j in range(no_cols):
+			img_cols.append([])
+		img_labels.append(img_cols)
+
+
+	for index, row in objects.iterrows():
+		for r in range(no_rows):
+			for c in range(no_cols):
+				min_r = r / float(no_rows)
+				max_r = (r + 1) / float(no_rows)
+				min_c = c / float(no_cols)
+				max_c = (c + 1) / float(no_cols)
+				hmin = row['YMin']
+				hmax = row['YMax']
+				if row['XMin'] < max_c and row['XMax'] > min_c and hmin < max_r and hmax > min_r:
+					object_name = help.map_to_name(row['LabelName']).replace(" ", "_")
+					img_labels[r][c].append(object_name)
+
+	for r in range(no_rows):
+		for c in range(no_cols):
+			r_min = 32 * r
+			r_max = 32 * (r + 1)
+			c_min = 32 * c
+			c_max = 32 * (c + 1)
+			cell = img[r_min:r_max, c_min:c_max,:]
+			labels = '_'.join(img_labels[r][c])
+			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + labels + '_cell.jpg'
+			io.imsave(res_filename, cell)
+
+
 
 for image_id in image_ids:
 	#analyze_image(image_id)
 	#show_image(image_id)
 	#resize_image(image_id)
-	grid_cells(image_id)
+	#grid_cells(image_id)
+	grid_cells_w_classes(image_id)
