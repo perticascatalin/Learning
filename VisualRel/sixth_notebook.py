@@ -2,7 +2,7 @@
 # Summary
 # 1. read data and conv net from multi_class multi_labels (open_nenos)
 # 2. outputs from neural_net (ME) (to check N_OUT_CLASSES vs. N_CLASSES)
-# 3. took out evaluation of inputs (out), custom prints (out) and saving data (commented)
+# 3. took out evaluation of inputs , custom prints and saving data
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -15,7 +15,7 @@ import pickle
 IMG_SZ = 32
 INPUT_DIR = './grid_cells/'
 VAL_DIR = './val_grid_cells/'
-BATCH_SZ = 64
+BATCH_SZ = 32
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
 
@@ -112,14 +112,10 @@ with tf.Session() as sess:
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess = sess, coord = coord)
 
-    losses = []
-    train_accs = []
-    val_accs = []
-    steps = []
-
     # Training cycle
     for step in range(1, num_steps+1):
         if step % display_step == 0:
+            print 'run evaluation step'
             # Run optimization
             sess.run([train_op])
             # Calculate average batch loss and accuracy
@@ -127,42 +123,26 @@ with tf.Session() as sess:
             training_accuracy = 0.0
             validation_accuracy = 0.0
 
-            for i in range(100):
-                loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val])
-                if i % 100 == 0:
-                    correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
-                
+            for i in range(10):
+                loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val]) 
                 total_loss += loss
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
-            total_loss /= 100.0
-            training_accuracy /= 100.0    
-            validation_accuracy /= 100.0
+            total_loss /= 10.0
+            training_accuracy /= 10.0    
+            validation_accuracy /= 10.0
 
             print("Step " + str(step) + ", Loss= " + \
                 "{:.4f}".format(total_loss) + ", Training Accuracy= " + \
                 "{:.3f}".format(training_accuracy) + ", Validation Accuracy= " + \
                 "{:.3f}".format(validation_accuracy))
-
-            losses.append(total_loss)
-            train_accs.append(100.0*training_accuracy/N_OUT_CLASSES)
-            val_accs.append(100.0*validation_accuracy/N_OUT_CLASSES)
-            steps.append(step/1000)
         else:
             # Only run the optimization op (backprop)
+            print 'run training step'
             sess.run(train_op)
 
     print("Optimization Finished!")
-    # Dump additional data for later investigation
-    # pickle.dump(losses, open('./data/stats/' + model_name + '_ml_losses.p', 'wb'))
-    # pickle.dump(train_accs, open('./data/stats/' + model_name + '_ml_t_accs.p', 'wb'))
-    # pickle.dump(val_accs, open('./data/stats/' + model_name + '_ml_v_accs.p', 'wb'))
-    # pickle.dump(steps, open('./data/stats/' + model_name + '_ml_steps.p', 'wb'))
-    # Or just plot it
-    # co.print_ltv(losses, train_accs, val_accs, steps, model_name + '_sample.png')
-    # Save your model
-    # saver.save(sess, './checkpts/')
     # Stop threads
     coord.request_stop()
     coord.join(threads)
