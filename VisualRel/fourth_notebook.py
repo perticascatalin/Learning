@@ -44,7 +44,7 @@ image_ids = [
 	'0007ab744e4ef390' # man
 	]
 
-test_image_ids = [
+val_image_ids = [
 	'000823904818a6c4', # car
 	'0007870724402b51', # car
 	'0008d9dc5c2aaf55', # man
@@ -166,7 +166,7 @@ def grid_cells(IMAGE_ID):
 			io.imsave(res_filename, cell)
 
 # 4. Split into grid cells and assign classes
-def grid_cells_w_classes(IMAGE_ID):
+def grid_cells_w_classes(IMAGE_ID, out_dir):
 	filename = './train_resized/' + IMAGE_ID + '.jpg'
 	img = io.imread(filename)
 
@@ -207,7 +207,7 @@ def grid_cells_w_classes(IMAGE_ID):
 			for label in labels:
 				nums.append(str(class_labels_dict[label]))
 			numeric_labels = '_'.join(nums)
-			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.jpg'
+			res_filename = out_dir + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.png'
 			io.imsave(res_filename, cell)
 
 # 5. Create dictionary with classes as numbers
@@ -223,4 +223,8 @@ for image_id in image_ids:
 	#show_image(image_id)
 	resize_image(image_id)
 	#grid_cells(image_id)
-	grid_cells_w_classes(image_id)
+	grid_cells_w_classes(image_id, './grid_cells/')
+
+for image_id in val_image_ids:
+	resize_image(image_id)
+	grid_cells_w_classes(image_id, './val_grid_cells/')
