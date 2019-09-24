@@ -4,14 +4,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import pdb
 
 df_rel = pd.read_csv('./input/challenge-2019-train-vrd.csv')
 df_bbox = pd.read_csv('./input/challenge-2019-train-vrd-bbox.csv')
 
+# a few sample images which contain mostly 
+# men, women, cars and chairs to test simple net
+
 image_ids = [
-	'00031197fb7b015d',
-	'001156eb13f37194',
-	'00114337b89792cc']
+	'00031197fb7b015d', # chairs
+	'001156eb13f37194', # car
+	'00114337b89792cc', # man
+	'0014a2731a00bcda', # woman
+
+	'001443f7838819e0', # man
+	'00143d27992ccf33', # man
+	'001445e14916969f', # woman
+	'001430c239d9bb77', # woman
+	'0013d97a44c586c0', # car
+	'0013b65ae5b1a2c9', # car
+	'001281474d7bba78', # car
+	'001272829ec1711e', # car
+	'00182e06281874be', # chairs
+	'00185eed7ee580c2', # chairs
+	]
 
 # 0. Objects in Image
 
@@ -83,13 +100,19 @@ def resize_image(IMAGE_ID):
 
 	no_rows = img.shape[0]/4
 	no_cols = img.shape[1]/4
+	
+	# 6. add grayscale check and conversion
+	dims = list(img.shape)
+	if len(dims) == 2:
+		img = np.stack((img,img,img), axis = 2)
+
 	if no_rows % 32 != 0:
 		no_rows = 32 * round(float(no_rows)/32)
 	if no_cols % 32 != 0:
 		no_cols = 32 * round(float(no_cols)/32)	
 
 	res_img = transform.resize(img, (no_rows,no_cols,3))
-	print res_img.shape
+	#print res_img.shape
 
 	res_filename = './train_resized/' + IMAGE_ID + '.jpg'
 	io.imsave(res_filename, res_img)
@@ -167,6 +190,6 @@ for index, row in df_classes.iterrows():
 for image_id in image_ids:
 	#analyze_image(image_id)
 	#show_image(image_id)
-	#resize_image(image_id)
+	resize_image(image_id)
 	#grid_cells(image_id)
 	grid_cells_w_classes(image_id)
