@@ -96,8 +96,26 @@ def resize_image(IMAGE_ID):
 	res_filename = './train_resized/' + IMAGE_ID + '.jpg'
 	io.imsave(res_filename, res_img)
 
+# 3. Split into grid
+def grid_cells(IMAGE_ID):
+	filename = './train_resized/' + IMAGE_ID + '.jpg'
+	img = io.imread(filename)
+
+	no_rows = img.shape[0] / 32
+	no_cols = img.shape[1] / 32
+	for r in range(no_rows):
+		for c in range(no_cols):
+			r_min = 32 * r
+			r_max = 32 * (r + 1)
+			c_min = 32 * c
+			c_max = 32 * (c + 1)
+			cell = img[r_min:r_max, c_min:c_max,:]
+			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_cell.jpg'
+			io.imsave(res_filename, cell)
+
 
 for image_id in image_ids:
 	#analyze_image(image_id)
 	#show_image(image_id)
-	resize_image(image_id)
+	#resize_image(image_id)
+	grid_cells(image_id)
