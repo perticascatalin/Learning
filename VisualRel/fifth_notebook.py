@@ -10,13 +10,19 @@ def process_grid_cell(filename):
 	image_id = splits[0]
 	row = splits[1]
 	col = splits[2]
+	Y = [0] * 58 # num classes
 	if splits[3] == '':
 		print 'nada'
+		Y[0] = 1
 		# cell class will be 0
 	else:
 		for i in range(3, len(splits)):
 			print '+', splits[i]
+			class_label = int(splits[i])
+			Y[class_label] = 1
 			# compute uniques of ints
+	print Y
+
 
 dirname = './grid_cells/'
 f1 = '001156eb13f37194_2_5_49_cell.jpg' # car
@@ -25,4 +31,4 @@ f3 = '00031197fb7b015d_2_0_11_11_cell.jpg' # 2 chairs
 f4 = '00031197fb7b015d_0_2__cell.jpg' # nothing
 f5 = '00031197fb7b015d_2_3_11_11_37_cell.jpg' # 2 chairs and a table
 
-process_grid_cell(f4)
+process_grid_cell(f5)
