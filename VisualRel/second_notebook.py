@@ -25,7 +25,7 @@ def stats_img_avail():
 	print ('Total images:', num_images)
 
 def show_image(image_id):
-	filename = './train/' + IMAGE_ID + '.jpg'
+	filename = './train/' + image_id + '.jpg'
 	img = io.imread(filename)
 	plt.imshow(img)
 	plt.show()

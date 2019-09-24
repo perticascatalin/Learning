@@ -40,7 +40,7 @@ df_bbox['dXdY'] = df_bbox['dX'] / (df_bbox['dY'] + 0.1)
 #objects = ["Microwave oven", "Ski", "Racket", "Tennis ball"]
 objects = ["Piano", "Beer", "Chopsticks", "Cat"]
 
-LIMIT = 200000
+LIMIT = 10000
 for object_name in objects:
 	label_name = help.map_to_tag(object_name)
 	print label_name
@@ -66,15 +66,21 @@ for object_name in objects:
 	# 8. No not iterate more than LIMIT (200.000 rows)
 	# (for more efficiency in heatmap generation)
 	num_rows = 0
-	step = num_objects / 10
+	step = min(num_objects, LIMIT) / 10
 	s = 10
 	img = np.zeros((s,s), dtype = np.float64)
 	for index, row in objects.iterrows():
 		for r in range(s):
 			for c in range(s):
-				rc = (r + 1) / float(s)
-				cc = (c + 1) / float(s)
-				if row['XMin'] < cc and row['XMax'] >= cc and row['YMin'] < rc and row['YMax'] >= cc:
+				min_r = r / float(s)
+				max_r = (r + 1) / float(s)
+				min_c = c / float(s)
+				max_c = (c + 1) / float(s)
+				# hmin = 1.0 - row['YMax']
+				# hmax = 1.0 - row['YMin']
+				hmin = row['YMin']
+				hmax = row['YMax']
+				if row['XMin'] < max_c and row['XMax'] > min_c and hmin < max_r and hmax > min_r:
 					img[r,c] += 1.0
 		num_rows += 1
 		if num_rows % step == 0:
