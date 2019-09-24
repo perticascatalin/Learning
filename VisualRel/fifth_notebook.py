@@ -36,6 +36,8 @@ def read_images(input_directory, batch_size):
 		print (file_name)
 		labels.append(process_grid_cell(file_name))
 
+	print ('finished processing labels')
+
 	image_paths = tf.convert_to_tensor(image_paths, dtype = tf.string)
 	labels = tf.convert_to_tensor(labels, dtype = tf.int32)
 	#print image_paths, labels
