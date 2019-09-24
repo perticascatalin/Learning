@@ -148,11 +148,21 @@ def grid_cells_w_classes(IMAGE_ID):
 			c_min = 32 * c
 			c_max = 32 * (c + 1)
 			cell = img[r_min:r_max, c_min:c_max,:]
-			labels = '_'.join(img_labels[r][c])
-			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + labels + '_cell.jpg'
+			labels = img_labels[r][c]
+			nums = []
+			for label in labels:
+				nums.append(str(class_labels_dict[label]))
+			numeric_labels = '_'.join(nums)
+			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.jpg'
 			io.imsave(res_filename, cell)
 
-
+# 5. Create dictionary with classes as numbers
+df_classes = pd.read_csv('./input/challenge-2019-classes-vrd.csv')
+class_labels_dict = {}
+class_labels_dict["Nothing"] = 0
+for index, row in df_classes.iterrows():
+	print (index + 1), row["LabelName"]
+	class_labels_dict[row["LabelName"]] = index + 1
 
 for image_id in image_ids:
 	#analyze_image(image_id)
