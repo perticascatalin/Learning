@@ -15,7 +15,7 @@ import pickle
 IMG_SZ = 32
 INPUT_DIR = './grid_cells/'
 VAL_DIR = './val_grid_cells/'
-BATCH_SZ = 32
+BATCH_SZ = 2
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
 
@@ -24,11 +24,11 @@ N_OUT_CLASSES = 58 # total number of classes
 
 # Parameters
 learning_rate = 0.001
-num_steps = 1000
+num_steps = 100
 display_step = 10
 
 # Network Parameters
-dropout = 0.75 # Dropout, probability to keep units
+dropout = 0.6 # Dropout, probability to keep units
 
 X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ)
 print ('finished reading train images')
@@ -40,13 +40,13 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
     # Define a scope for reusing the variables
     with tf.variable_scope('ConvNet', reuse=reuse):
 
-        # Convolution Layer with 16 filters and a kernel size of 5
-        conv1 = tf.layers.conv2d(x, 16, 5, activation=tf.nn.relu)
+        # Convolution Layer with 4 filters and a kernel size of 4
+        conv1 = tf.layers.conv2d(x, 4, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
-        # Convolution Layer with 32 filters and a kernel size of 3
-        conv2 = tf.layers.conv2d(conv1, 32, 3, activation=tf.nn.relu)
+        # Convolution Layer with 8 filters and a kernel size of 4
+        conv2 = tf.layers.conv2d(conv1, 8, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
@@ -54,7 +54,7 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
         fc1 = tf.contrib.layers.flatten(conv2)
 
         # Fully connected layer (in contrib folder for now)
-        fc1 = tf.layers.dense(fc1, 256)
+        fc1 = tf.layers.dense(fc1, 32)
         # Apply Dropout (if is_training is False, dropout is not applied)
         fc1 = tf.layers.dropout(fc1, rate=dropout, training=is_training)
 
