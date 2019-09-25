@@ -24,8 +24,10 @@ N_CLASSES = 2
 N_OUT_CLASSES = 58 # total number of classes
 
 # Parameters
-learning_rate = 0.001
-num_steps = 1000
+learning_rate_1 = 0.001
+learning_rate_2 = 0.0005
+learning_rate_3 = 0.0001
+num_steps = 9000
 display_step = 100
 
 # Network Parameters
@@ -80,8 +82,12 @@ for i in range(N_OUT_CLASSES):
     logits = logits_train[i], labels = Y[:,i]))
 
 # Define loss and optimizer (with train logits, for dropout to take effect)
-optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate)
-train_op = optimizer.minimize(loss_op)
+optimizer_1 = tf.train.AdamOptimizer(learning_rate = learning_rate_1)
+train_op_1 = optimizer_1.minimize(loss_op)
+optimizer_2 = tf.train.AdamOptimizer(learning_rate = learning_rate_2)
+train_op_2 = optimizer_2.minimize(loss_op)
+optimizer_3 = tf.train.AdamOptimizer(learning_rate = learning_rate_3)
+train_op_3 = optimizer_3.minimize(loss_op)
 
 # Define loss for prediction on training dataset
 correct_pred_train = tf.constant(0.0, dtype = tf.float32)
@@ -99,6 +105,8 @@ accuracy_val = tf.reduce_mean(correct_pred_val)
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
 
+THRESH_1 = 3000
+THRESH_2 = 6000
 with tf.Session() as sess:
     # Run the initializer
     sess.run(init)
@@ -110,13 +118,18 @@ with tf.Session() as sess:
     for step in range(1, num_steps+1):
         if step % display_step == 0:
             # Run optimization
-            sess.run([train_op])
+            if step <= THRESH_1:
+                sess.run([train_op_1])
+            elif step <= THRESH_2:
+                sess.run([train_op_2])
+            else:
+                sess.run([train_op_3])
             # Calculate average batch loss and accuracy
             total_loss = 0.0
             training_accuracy = 0.0
             validation_accuracy = 0.0
 
-            RUNS = 50
+            RUNS = 100
             for i in range(RUNS):
                 loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val]) 
                 if i == 0:
@@ -137,7 +150,12 @@ with tf.Session() as sess:
                 "{:.3f}".format(validation_accuracy))
         else:
             # Only run the optimization op (backprop)
-            sess.run(train_op)
+            if step <= THRESH_1:
+                sess.run([train_op_1])
+            elif step <= THRESH_2:
+                sess.run([train_op_2])
+            else:
+                sess.run([train_op_3])
 
     print("Optimization Finished!")
     # Stop threads
