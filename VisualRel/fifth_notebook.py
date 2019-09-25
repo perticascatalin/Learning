@@ -25,7 +25,8 @@ def process_grid_cell(filename):
 			class_label = int(splits[i])
 			Y[class_label] = 1
 			# compute uniques of ints
-	return Y
+	# to revert this change later
+	return Y[:10]
 
 # 6.B Process all grid cells
 def read_images(input_directory, batch_size):
@@ -59,5 +60,5 @@ def read_images(input_directory, batch_size):
 # f4 = '00031197fb7b015d_0_2__cell.png' # nothing
 # f5 = '00031197fb7b015d_2_3_11_11_37_cell.png' # 2 chairs and a table
 
-# process_grid_cell(f5)
+#process_grid_cell(f5)
 # read_images(dirname, 64)

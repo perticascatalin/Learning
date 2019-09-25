@@ -20,7 +20,9 @@ IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
 
 N_CLASSES = 2 
-N_OUT_CLASSES = 58 # total number of classes
+#N_OUT_CLASSES = 58 # total number of classes
+# to revert this change later
+N_OUT_CLASSES = 10
 
 # Parameters
 learning_rate = 0.001
