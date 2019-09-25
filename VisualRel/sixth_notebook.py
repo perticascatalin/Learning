@@ -116,7 +116,8 @@ with tf.Session() as sess:
             training_accuracy = 0.0
             validation_accuracy = 0.0
 
-            for i in range(50):
+            RUNS = 50
+            for i in range(RUNS):
                 loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val]) 
                 if i == 0:
                     correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
@@ -126,9 +127,9 @@ with tf.Session() as sess:
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
-            total_loss /= 100.0
-            training_accuracy /= (N_OUT_CLASSES * 100.0)
-            validation_accuracy /= (N_OUT_CLASSES * 100.0)
+            total_loss /= float(RUNS)
+            training_accuracy /= (N_OUT_CLASSES * float(RUNS))
+            validation_accuracy /= (N_OUT_CLASSES * float(RUNS))
 
             print("Step " + str(step) + ", Loss= " + \
                 "{:.4f}".format(total_loss) + ", Training Accuracy= " + \
