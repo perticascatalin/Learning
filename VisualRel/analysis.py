@@ -23,3 +23,17 @@ def print_pretty(correct_pred, logits, y_exp, x, epoch):
 		y_pred.append(np.argmax(logits[j][0]))
 	print_1by1(y_exp[0], 'expect:')
 	print_1by1(y_pred, 'pred:  ')
+
+def batch_accuracy(correct_pred, logits, y_exp, x, epoch):
+	N_OUT_CLASSES = 58
+	succ = 0
+	for i in range(64):
+		out = list()
+		y_pred = list()
+		for j in range(N_OUT_CLASSES):
+			y_pred.append(np.argmax(logits[j][i]))
+		correct_labels = int(correct_pred[i])
+		if correct_labels == N_OUT_CLASSES:
+			succ += 1
+
+	print "Correct ", succ, " out of 64 (", succ/float(64), ")"

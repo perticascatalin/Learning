@@ -136,6 +136,7 @@ with tf.Session() as sess:
                     correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
                     co.debugger(correct_pred, logits, y_exp, x)
                     co.print_pretty(correct_pred, logits, y_exp, x, step)
+                    co.batch_accuracy(correct_pred, logits, y_exp, x, step)
                 total_loss += loss
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
