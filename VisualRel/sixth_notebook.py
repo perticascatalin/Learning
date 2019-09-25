@@ -8,6 +8,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import fifth_notebook as data
 import tensorflow as tf
+import analysis as co
 import pickle
 
 # General architecture
@@ -115,15 +116,19 @@ with tf.Session() as sess:
             training_accuracy = 0.0
             validation_accuracy = 0.0
 
-            for i in range(10):
+            for i in range(50):
                 loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val]) 
+                if i == 0:
+                    correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
+                    co.debugger(correct_pred, logits, y_exp, x)
+                    co.print_pretty(correct_pred, logits, y_exp, x, step)
                 total_loss += loss
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
-            total_loss /= 10.0
-            training_accuracy /= 10.0    
-            validation_accuracy /= 10.0
+            total_loss /= 100.0
+            training_accuracy /= (N_OUT_CLASSES * 100.0)
+            validation_accuracy /= (N_OUT_CLASSES * 100.0)
 
             print("Step " + str(step) + ", Loss= " + \
                 "{:.4f}".format(total_loss) + ", Training Accuracy= " + \
