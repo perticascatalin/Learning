@@ -4,6 +4,10 @@
 # 2. outputs from neural_net (ME) (to check N_OUT_CLASSES vs. N_CLASSES)
 # 3. took out evaluation of inputs, custom prints and saving data
 
+# 4. scheduled training
+# 5. batch accuracy
+# 6.r loss defined as mean, maybe change penalization
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import fifth_notebook as data
