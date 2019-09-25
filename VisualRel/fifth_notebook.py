@@ -26,7 +26,7 @@ def process_grid_cell(filename):
 			Y[class_label] = 1
 			# compute uniques of ints
 	# to revert this change later
-	return Y[:10]
+	return Y[:2]
 
 # 6.B Process all grid cells
 def read_images(input_directory, batch_size):
@@ -36,6 +36,7 @@ def read_images(input_directory, batch_size):
 	for file_name in file_names:
 		print (file_name)
 		labels.append(process_grid_cell(file_name))
+		image_paths.append(input_directory + file_name)
 
 	print ('finished processing labels')
 
