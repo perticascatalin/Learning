@@ -2,7 +2,8 @@
 # Summary
 # 1. read data and conv net from multi_class multi_labels (open_nenos)
 # 2. outputs from neural_net (ME) (to check N_OUT_CLASSES vs. N_CLASSES)
-# 3. took out evaluation of inputs , custom prints and saving data
+# 3. took out evaluation of inputs, custom prints and saving data
+# 4. limit numberr of output classes
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -15,7 +16,7 @@ import pickle
 IMG_SZ = 32
 INPUT_DIR = './grid_cells/'
 VAL_DIR = './val_grid_cells/'
-BATCH_SZ = 2
+BATCH_SZ = 8
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
 
@@ -36,6 +37,8 @@ X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ)
 print ('finished reading train images')
 X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ)
 print ('finished reading validation images')
+print X_val[0]
+print Y_val[0]
 
 # Create model
 def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
@@ -76,12 +79,16 @@ logits_val = conv_net(X_val, N_OUT_CLASSES, N_CLASSES, dropout, reuse = True, is
 logits_eye = conv_net(X_val, N_OUT_CLASSES, N_CLASSES, dropout, reuse = True, is_training = False)
 
 print ('defined logits')
+print 'Logits train:', logits_train
 
 # Define the loss operation
 loss_op = tf.constant(0.0, dtype = tf.float32)
 for i in range(N_OUT_CLASSES):
+    print logits_train[i]
+    print Y[:,i]
     loss_op = loss_op + tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(\
     logits = logits_train[i], labels = Y[:,i]))
+
 
 print ('defined loss op')
 
