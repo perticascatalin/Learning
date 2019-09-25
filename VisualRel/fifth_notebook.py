@@ -25,8 +25,7 @@ def process_grid_cell(filename):
 			class_label = int(splits[i])
 			Y[class_label] = 1
 			# compute uniques of ints
-	# to revert this change later
-	return Y[:2]
+	return Y
 
 # 6.B Process all grid cells
 def read_images(input_directory, batch_size):
@@ -37,8 +36,6 @@ def read_images(input_directory, batch_size):
 		print (file_name)
 		labels.append(process_grid_cell(file_name))
 		image_paths.append(input_directory + file_name)
-
-	print ('finished processing labels')
 
 	image_paths = tf.convert_to_tensor(image_paths, dtype = tf.string)
 	labels = tf.convert_to_tensor(labels, dtype = tf.int32)

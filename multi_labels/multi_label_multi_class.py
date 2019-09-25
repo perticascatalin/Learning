@@ -35,9 +35,6 @@ X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ,
 X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ, 
     img_height = IMG_HEIGHT, img_width = IMG_WIDTH, mode = 'multi_label')
 
-#print (X, Y)
-
-
 # Create model
 def conv_net(x, n_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
