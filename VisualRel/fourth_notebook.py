@@ -205,7 +205,6 @@ def grid_cells_w_classes(IMAGE_ID, out_dir):
 			cell = img[r_min:r_max, c_min:c_max,:]
 			labels = img_labels[r][c]
 			nums = []
-			print 'Labels: ', labels
 			for label in labels:
 				nums.append(str(class_labels_dict[label.replace("_", " ")])) 
 			numeric_labels = '_'.join(nums)
@@ -233,16 +232,22 @@ for index, row in df_classes.iterrows():
 
 no_images = 0
 #limit_images = 280 # initial medium without 90% background skip
-limit_images = 680
+limit_images = 800
+val_limit_images = 1000
 for dirname, _, filenames in os.walk('./train'):
 	for filename in filenames:
-		if filename.endswith('.jpg') and no_images < limit_images:
+		if filename.endswith('.jpg'):
 			image_id = filename.split('.')[0]
-			if not image_id in val_image_ids:
-				resize_image(image_id)
-				grid_cells_w_classes(image_id, './medium_grid_cells/')
-				no_images += 1
-
+			if no_images < limit_images:
+				if not image_id in val_image_ids:
+					resize_image(image_id)
+					grid_cells_w_classes(image_id, './medium_grid_cells/')
+					no_images += 1
+			elif no_images < val_limit_images:
+				if not image_id in val_image_ids:
+					resize_image(image_id)
+					grid_cells_w_classes(image_id, './medium_val_grid_cells/')
+					no_images += 1
 
 
 
