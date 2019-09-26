@@ -10,6 +10,10 @@
 
 # 6.r loss defined as mean, maybe change penalization
 # the current loss can get stuck in local minima (eg. always choose background)
+
+# skip background at training does not solve this very well
+# because 1s are very rare, always best to predict 0s everywhere
+
 # 7.r the network capacity might be too low for medium ds
 # thus without being able to capture the data properties it always predicts background
 
