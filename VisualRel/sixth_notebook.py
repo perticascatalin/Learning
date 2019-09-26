@@ -32,8 +32,8 @@ N_OUT_CLASSES = 58 # total number of classes
 learning_rate_1 = 0.001
 learning_rate_2 = 0.0005
 learning_rate_3 = 0.0001
-num_steps = 9000
-display_step = 100
+num_steps = 18000
+display_step = 1000
 
 # Network Parameters
 dropout = 0.6 # Dropout, probability to keep units
