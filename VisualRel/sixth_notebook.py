@@ -1,4 +1,5 @@
 # 7. Test NN
+
 # Summary
 # 1. read data and conv net from multi_class multi_labels (open_nenos)
 # 2. outputs from neural_net (ME) (to check N_OUT_CLASSES vs. N_CLASSES)
@@ -6,8 +7,15 @@
 
 # 4. scheduled training
 # 5. batch accuracy
+
 # 6.r loss defined as mean, maybe change penalization
 # the current loss can get stuck in local minima (eg. always choose background)
+# 7.r the network capacity might be too low for medium ds
+# thus without being able to capture the data properties it always predicts background
+
+# 8. evaluation - more than one batch (todo)
+# 9. training time - more iterations (doing)
+
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -32,6 +40,7 @@ N_OUT_CLASSES = 58 # total number of classes
 learning_rate_1 = 0.001
 learning_rate_2 = 0.0005
 learning_rate_3 = 0.0001
+
 num_steps = 18000
 display_step = 1000
 
