@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import pdb
+import os
 
 df_rel = pd.read_csv('./input/challenge-2019-train-vrd.csv')
 df_bbox = pd.read_csv('./input/challenge-2019-train-vrd-bbox.csv')
@@ -204,8 +205,9 @@ def grid_cells_w_classes(IMAGE_ID, out_dir):
 			cell = img[r_min:r_max, c_min:c_max,:]
 			labels = img_labels[r][c]
 			nums = []
+			print 'Labels: ', labels
 			for label in labels:
-				nums.append(str(class_labels_dict[label]))
+				nums.append(str(class_labels_dict[label.replace("_", " ")])) 
 			numeric_labels = '_'.join(nums)
 			res_filename = out_dir + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.png'
 			io.imsave(res_filename, cell)
@@ -218,13 +220,28 @@ for index, row in df_classes.iterrows():
 	print (index + 1), row["LabelName"]
 	class_labels_dict[row["LabelName"]] = index + 1
 
-for image_id in image_ids:
-	#analyze_image(image_id)
-	#show_image(image_id)
-	resize_image(image_id)
-	#grid_cells(image_id)
-	grid_cells_w_classes(image_id, './grid_cells/')
+# for image_id in image_ids:
+# 	#analyze_image(image_id)
+# 	#show_image(image_id)
+# 	resize_image(image_id)
+# 	#grid_cells(image_id)
+# 	grid_cells_w_classes(image_id, './eye_grid_cells/')
 
-for image_id in val_image_ids:
-	resize_image(image_id)
-	grid_cells_w_classes(image_id, './val_grid_cells/')
+# for image_id in val_image_ids:
+# 	resize_image(image_id)
+# 	grid_cells_w_classes(image_id, './eye_val_grid_cells/')
+
+no_images = 0
+for dirname, _, filenames in os.walk('./train'):
+	for filename in filenames:
+		if filename.endswith('.jpg') and no_images < 280:
+			image_id = filename.split('.')[0]
+			if not image_id in val_image_ids:
+				resize_image(image_id)
+				grid_cells_w_classes(image_id, './medium_grid_cells/')
+				no_images += 1
+
+
+
+
+
