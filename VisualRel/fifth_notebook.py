@@ -51,7 +51,7 @@ def read_images(input_directory, batch_size):
 	return X, Y
 
 
-# dirname = './grid_cells/'
+# dirname = './eye_grid_cells/'
 # f1 = '001156eb13f37194_2_5_49_cell.png' # car
 # f2 = '0007ad5c6245a41d_1_6_27_cell.png' # man
 # f3 = '00031197fb7b015d_2_0_11_11_cell.png' # 2 chairs

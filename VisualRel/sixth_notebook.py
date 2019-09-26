@@ -18,8 +18,8 @@ import pickle
 # General architecture
 
 IMG_SZ = 32
-INPUT_DIR = './grid_cells/'
-VAL_DIR = './val_grid_cells/'
+INPUT_DIR = './eye_grid_cells/'
+VAL_DIR = './eye_val_grid_cells/'
 BATCH_SZ = 64
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
