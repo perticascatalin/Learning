@@ -18,7 +18,7 @@ import pickle
 # General architecture
 
 IMG_SZ = 32
-INPUT_DIR = './eye_grid_cells/'
+INPUT_DIR = './medium_grid_cells/'
 VAL_DIR = './eye_val_grid_cells/'
 BATCH_SZ = 64
 IMG_HEIGHT = IMG_SZ
@@ -37,9 +37,9 @@ display_step = 100
 # Network Parameters
 dropout = 0.6 # Dropout, probability to keep units
 
-X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ)
+X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ, limit_background = True)
 print ('finished reading train images')
-X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ)
+X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ, limit_background = False)
 print ('finished reading validation images')
 
 # Create model

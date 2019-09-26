@@ -3,6 +3,7 @@ import tensorflow as tf
 import helpers as help
 import pdb
 import os
+import random
 
 # 6. Process grid cell image
 
@@ -17,7 +18,7 @@ def process_grid_cell(filename):
 	Y = [0] * 58 # num classes
 	if splits[3] == '':
 		print 'nada'
-		Y[0] = 1
+		#Y[0] = 1 # (just leave 0's for all in this case)
 		# cell class will be 0
 	else:
 		for i in range(3, len(splits)):
@@ -28,15 +29,40 @@ def process_grid_cell(filename):
 	return Y
 
 # 6.B Process all grid cells
-def read_images(input_directory, batch_size):
-
+def read_images(input_directory, batch_size, limit_background = False):
 	file_names = [file_name for file_name in os.listdir(input_directory) if file_name.endswith('.png')]
 	image_paths, labels = list(), list()
+	skipped = 0
+	taken = 0
 	for file_name in file_names:
 		print (file_name)
-		labels.append(process_grid_cell(file_name))
-		image_paths.append(input_directory + file_name)
+		label = process_grid_cell(file_name)
+		image_path = input_directory + file_name
 
+		# 6.C Limit background class to 1 out of 10
+		if limit_background:
+			all_zeros = True
+			for dig in label:
+				if dig == 1:
+					all_zeros = False
+			rnd = random.randint(0,10)
+			if all_zeros and rnd != 0:
+				# do nothing
+				print "skip image"
+				skipped += 1
+			else:
+				labels.append(label)
+				image_paths.append(image_path)
+				print "take image"
+				if all_zeros:
+					taken += 1
+		else:
+			labels.append(label)
+			image_paths.append(image_path)
+			print "take image"
+
+	print "Skipped ", skipped, " background cells"
+	print "Took ", taken, " background cells"
 	image_paths = tf.convert_to_tensor(image_paths, dtype = tf.string)
 	labels = tf.convert_to_tensor(labels, dtype = tf.int32)
 	#print image_paths, labels
