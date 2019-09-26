@@ -232,9 +232,11 @@ for index, row in df_classes.iterrows():
 # 	grid_cells_w_classes(image_id, './eye_val_grid_cells/')
 
 no_images = 0
+#limit_images = 280 # initial medium without 90% background skip
+limit_images = 680
 for dirname, _, filenames in os.walk('./train'):
 	for filename in filenames:
-		if filename.endswith('.jpg') and no_images < 280:
+		if filename.endswith('.jpg') and no_images < limit_images:
 			image_id = filename.split('.')[0]
 			if not image_id in val_image_ids:
 				resize_image(image_id)

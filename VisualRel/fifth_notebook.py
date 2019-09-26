@@ -48,18 +48,15 @@ def read_images(input_directory, batch_size, limit_background = False):
 			rnd = random.randint(0,10)
 			if all_zeros and rnd != 0:
 				# do nothing
-				print "skip image"
 				skipped += 1
 			else:
 				labels.append(label)
 				image_paths.append(image_path)
-				print "take image"
 				if all_zeros:
 					taken += 1
 		else:
 			labels.append(label)
 			image_paths.append(image_path)
-			print "take image"
 
 	print "Skipped ", skipped, " background cells"
 	print "Took ", taken, " background cells"
