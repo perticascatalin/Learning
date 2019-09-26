@@ -7,6 +7,7 @@
 # 4. scheduled training
 # 5. batch accuracy
 # 6.r loss defined as mean, maybe change penalization
+# the current loss can get stuck in local minima (eg. always choose background)
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'

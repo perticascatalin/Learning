@@ -45,7 +45,8 @@ def read_images(input_directory, batch_size, limit_background = False):
 			for dig in label:
 				if dig == 1:
 					all_zeros = False
-			rnd = random.randint(0,10)
+			#rnd = random.randint(0,10) # 1 out of 10 => 20-25% bckg
+			rnd = random.randint(0,30) # 1 out of 30 => 7-8% bckg
 			if all_zeros and rnd != 0:
 				# do nothing
 				skipped += 1
