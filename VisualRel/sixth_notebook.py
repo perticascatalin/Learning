@@ -1,4 +1,6 @@
-# 7. Test NN (multi-label multi-class, 80% acc on training, 12% acc on validation)
+# 7. Test NN (multi-label multi-class) 
+# 80% acc on training, 12% acc on validation for second medium (18000 steps)
+# 22% acc on training, 12% acc on validation third medium (18000 steps)
 
 # Summary
 # 1. read data and conv net from multi_class multi_labels (open_nenos)
@@ -30,9 +32,14 @@ import pickle
 
 # General architecture
 
-IMG_SZ = 32
-INPUT_DIR = './medium_grid_cells/'
-VAL_DIR = './medium_val_grid_cells/'
+#IMG_SZ = 32
+#INPUT_DIR = './medium_grid_cells/'
+#VAL_DIR = './medium_val_grid_cells/'
+
+IMG_SZ = 48
+INPUT_DIR = './medium_50/'
+VAL_DIR = './medium_val_50/'
+
 BATCH_SZ = 64
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ
@@ -45,8 +52,8 @@ learning_rate_1 = 0.001
 learning_rate_2 = 0.0005
 learning_rate_3 = 0.0001
 
-num_steps = 18000
-display_step = 1000
+num_steps = 22000
+display_step = 2000
 
 # Network Parameters
 dropout = 0.6 # Dropout, probability to keep units
@@ -129,8 +136,8 @@ accuracy_val = tf.reduce_mean(correct_pred_val)
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
 
-THRESH_1 = 3000
-THRESH_2 = 6000
+THRESH_1 = 4000
+THRESH_2 = 8000
 with tf.Session() as sess:
     # Run the initializer
     sess.run(init)
@@ -140,7 +147,7 @@ with tf.Session() as sess:
 
     # Training cycle
     for step in range(1, num_steps+1):
-        if step % display_step == 0 or (step < 2000 and step % 100 == 0):
+        if step % display_step == 0:
             # Run optimization
             if step <= THRESH_1:
                 sess.run([train_op_1])
