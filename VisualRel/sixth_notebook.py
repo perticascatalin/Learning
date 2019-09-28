@@ -1,4 +1,4 @@
-# 7. Test NN
+# 7. Test NN (multi-label multi-class, 80% acc on training, 12% acc on validation)
 
 # Summary
 # 1. read data and conv net from multi_class multi_labels (open_nenos)

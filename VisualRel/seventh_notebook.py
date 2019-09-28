@@ -1,3 +1,8 @@
+# 1. Check prediction samples
+# 2. For learning probability distribution over all objects in grid cell, 
+#       train with all labels separately
+# 3. Increase training data to check if any changes in validation accuracy & loss
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import fifth_notebook as data
@@ -39,12 +44,12 @@ def conv_net(x, num_classes, dropout, reuse, is_training):
     with tf.variable_scope('ConvNet', reuse=reuse):
 
         # Convolution Layer with 48 filters and a kernel size of 4
-        conv1 = tf.layers.conv2d(x, 16, 4, activation=tf.nn.relu)
+        conv1 = tf.layers.conv2d(x, 48, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
         # Convolution Layer with 96 filters and a kernel size of 4
-        conv2 = tf.layers.conv2d(conv1, 32, 4, activation=tf.nn.relu)
+        conv2 = tf.layers.conv2d(conv1, 96, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
