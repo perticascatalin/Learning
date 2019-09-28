@@ -17,7 +17,7 @@
 # 7.r the network capacity might be too low for medium ds
 # thus without being able to capture the data properties it always predicts background
 
-# 8. evaluation - more than one batch (todo)
+# 8. evaluation - more than one batch (done)
 # 9. training time - more iterations (doing)
 
 
@@ -62,13 +62,13 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
     # Define a scope for reusing the variables
     with tf.variable_scope('ConvNet', reuse=reuse):
 
-        # Convolution Layer with 32 filters and a kernel size of 4
-        conv1 = tf.layers.conv2d(x, 32, 4, activation=tf.nn.relu)
+        # Convolution Layer with 48 filters and a kernel size of 4
+        conv1 = tf.layers.conv2d(x, 48, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
-        # Convolution Layer with 64 filters and a kernel size of 4
-        conv2 = tf.layers.conv2d(conv1, 64, 4, activation=tf.nn.relu)
+        # Convolution Layer with 96 filters and a kernel size of 4
+        conv2 = tf.layers.conv2d(conv1, 96, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
@@ -76,7 +76,7 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
         fc1 = tf.contrib.layers.flatten(conv2)
 
         # Fully connected layer (in contrib folder for now)
-        fc1 = tf.layers.dense(fc1, 256)
+        fc1 = tf.layers.dense(fc1, 128)
         # Apply Dropout (if is_training is False, dropout is not applied)
         fc1 = tf.layers.dropout(fc1, rate=dropout, training=is_training)
 
@@ -109,7 +109,7 @@ for i in range(N_OUT_CLASSES):
 optimizer_1 = tf.train.AdamOptimizer(learning_rate = learning_rate_1)
 train_op_1 = optimizer_1.minimize(train_loss_op)
 optimizer_2 = tf.train.AdamOptimizer(learning_rate = learning_rate_2)
-train_op_2 = optimizer_2.minimize(train_oss_op)
+train_op_2 = optimizer_2.minimize(train_loss_op)
 optimizer_3 = tf.train.AdamOptimizer(learning_rate = learning_rate_3)
 train_op_3 = optimizer_3.minimize(train_loss_op)
 
