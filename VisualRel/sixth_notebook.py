@@ -147,27 +147,37 @@ with tf.Session() as sess:
             total_loss = 0.0
             training_accuracy = 0.0
             validation_accuracy = 0.0
+            train_total_success = 0.0
+            valid_total_success = 0.0
 
             RUNS = 100
             for i in range(RUNS):
-                loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val]) 
-                if i == 0:
-                    correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
-                    co.debugger(correct_pred, logits, y_exp, x)
-                    co.print_pretty(correct_pred, logits, y_exp, x, step)
-                    co.batch_accuracy(correct_pred, logits, y_exp, x, step)
+                loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val])
                 total_loss += loss
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
+                correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
+                # if i == 0:
+                #     co.debugger(correct_pred, logits, y_exp, x)
+                #     co.print_pretty(correct_pred, logits, y_exp, x, step)
+                success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
+                valid_total_success += success_rate
+
+                correct_pred, logits, y_exp, x = sess.run([correct_pred_train, logits_train, Y, X])
+                success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
+                train_total_success += success_rate
+                
             total_loss /= float(RUNS)
+            train_total_success /= (BATCH_SZ * float(RUNS))
+            valid_total_success /= (BATCH_SZ * float(RUNS))
             training_accuracy /= (N_OUT_CLASSES * float(RUNS))
             validation_accuracy /= (N_OUT_CLASSES * float(RUNS))
 
             print("Step " + str(step) + ", Loss= " + \
-                "{:.4f}".format(total_loss) + ", Training Accuracy= " + \
-                "{:.3f}".format(training_accuracy) + ", Validation Accuracy= " + \
-                "{:.3f}".format(validation_accuracy))
+                "{:.4f}".format(total_loss) + ", Validation Sucess Rate= " + \
+                "{:.3f}".format(valid_total_success) + ", Training Success Rate= " + \
+                "{:.3f}".format(train_total_success))
         else:
             # Only run the optimization op (backprop)
             if step <= THRESH_1:
