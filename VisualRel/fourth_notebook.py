@@ -154,64 +154,64 @@ def resize_image(IMAGE_ID):
 # 3. Split into grid
 def grid_cells(IMAGE_ID):
 	filename = './train_resized/' + IMAGE_ID + '.jpg'
-	img = io.imread(filename)
-
-	no_rows = img.shape[0] / 32
-	no_cols = img.shape[1] / 32
-	for r in range(no_rows):
-		for c in range(no_cols):
-			r_min = 32 * r
-			r_max = 32 * (r + 1)
-			c_min = 32 * c
-			c_max = 32 * (c + 1)
-			cell = img[r_min:r_max, c_min:c_max,:]
-			res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_cell.jpg'
-			io.imsave(res_filename, cell)
+	if os.path.isfile(filename):
+		img = io.imread(filename)
+		no_rows = img.shape[0] / 32
+		no_cols = img.shape[1] / 32
+		for r in range(no_rows):
+			for c in range(no_cols):
+				r_min = 32 * r
+				r_max = 32 * (r + 1)
+				c_min = 32 * c
+				c_max = 32 * (c + 1)
+				cell = img[r_min:r_max, c_min:c_max,:]
+				res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_cell.jpg'
+				io.imsave(res_filename, cell)
 
 # 4. Split into grid cells and assign classes
 def grid_cells_w_classes(IMAGE_ID, out_dir):
 	filename = './train_resized/' + IMAGE_ID + '.jpg'
-	img = io.imread(filename)
+	if os.path.isfile(filename):
+		img = io.imread(filename)
+		objects = df_bbox[df_bbox.ImageID == IMAGE_ID]
+		no_rows = img.shape[0] / 32
+		no_cols = img.shape[1] / 32
 
-	objects = df_bbox[df_bbox.ImageID == IMAGE_ID]
-	no_rows = img.shape[0] / 32
-	no_cols = img.shape[1] / 32
-
-	img_labels = []
-	for i in range(no_rows):
-		img_cols = []
-		for j in range(no_cols):
-			img_cols.append([])
-		img_labels.append(img_cols)
+		img_labels = []
+		for i in range(no_rows):
+			img_cols = []
+			for j in range(no_cols):
+				img_cols.append([])
+			img_labels.append(img_cols)
 
 
-	for index, row in objects.iterrows():
+		for index, row in objects.iterrows():
+			for r in range(no_rows):
+				for c in range(no_cols):
+					min_r = r / float(no_rows)
+					max_r = (r + 1) / float(no_rows)
+					min_c = c / float(no_cols)
+					max_c = (c + 1) / float(no_cols)
+					hmin = row['YMin']
+					hmax = row['YMax']
+					if row['XMin'] < max_c and row['XMax'] > min_c and hmin < max_r and hmax > min_r:
+						object_name = help.map_to_name(row['LabelName']).replace(" ", "_")
+						img_labels[r][c].append(object_name)
+
 		for r in range(no_rows):
 			for c in range(no_cols):
-				min_r = r / float(no_rows)
-				max_r = (r + 1) / float(no_rows)
-				min_c = c / float(no_cols)
-				max_c = (c + 1) / float(no_cols)
-				hmin = row['YMin']
-				hmax = row['YMax']
-				if row['XMin'] < max_c and row['XMax'] > min_c and hmin < max_r and hmax > min_r:
-					object_name = help.map_to_name(row['LabelName']).replace(" ", "_")
-					img_labels[r][c].append(object_name)
-
-	for r in range(no_rows):
-		for c in range(no_cols):
-			r_min = 32 * r
-			r_max = 32 * (r + 1)
-			c_min = 32 * c
-			c_max = 32 * (c + 1)
-			cell = img[r_min:r_max, c_min:c_max,:]
-			labels = img_labels[r][c]
-			nums = []
-			for label in labels:
-				nums.append(str(class_labels_dict[label.replace("_", " ")])) 
-			numeric_labels = '_'.join(nums)
-			res_filename = out_dir + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.png'
-			io.imsave(res_filename, cell)
+				r_min = 32 * r
+				r_max = 32 * (r + 1)
+				c_min = 32 * c
+				c_max = 32 * (c + 1)
+				cell = img[r_min:r_max, c_min:c_max,:]
+				labels = img_labels[r][c]
+				nums = []
+				for label in labels:
+					nums.append(str(class_labels_dict[label.replace("_", " ")])) 
+				numeric_labels = '_'.join(nums)
+				res_filename = out_dir + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_' + numeric_labels + '_cell.png'
+				io.imsave(res_filename, cell)
 
 # 5. Create dictionary with classes as numbers
 df_classes = pd.read_csv('./input/challenge-2019-classes-vrd.csv')
