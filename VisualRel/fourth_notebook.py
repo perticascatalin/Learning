@@ -10,6 +10,17 @@ import os
 df_rel = pd.read_csv('./input/challenge-2019-train-vrd.csv')
 df_bbox = pd.read_csv('./input/challenge-2019-train-vrd-bbox.csv')
 
+# 6. Variable grid cell size (image is made 4 times smaller)
+# CELL = 32
+# RESIZED_LOC = './train_resized/'
+# TRAIN_GRID = './medium_grid_cells/'
+# VAL_GRID = './medium_val_grid_cells/'
+
+CELL = 48
+RESIZED_LOC = './train_resized_50'
+TRAIN_GRID = './medium_50/'
+VAL_GRID = './medium_val_50/'
+
 # a few sample images which contain mostly 
 # men, women, cars and chairs to test simple net
 
@@ -139,43 +150,43 @@ def resize_image(IMAGE_ID):
 		if len(dims) == 2:
 			img = np.stack((img,img,img), axis = 2)
 
-		if no_rows % 32 != 0:
-			no_rows = 32 * round(float(no_rows)/32)
-		if no_cols % 32 != 0:
-			no_cols = 32 * round(float(no_cols)/32)	
+		if no_rows % CELL != 0:
+			no_rows = CELL * round(float(no_rows)/CELL)
+		if no_cols % CELL != 0:
+			no_cols = CELL * round(float(no_cols)/CELL)	
 
 		res_img = transform.resize(img, (no_rows,no_cols,3))
 		#print res_img.shape
 
-		res_filename = './train_resized/' + IMAGE_ID + '.jpg'
+		res_filename = RESIZED_LOC + IMAGE_ID + '.jpg'
 		io.imsave(res_filename, res_img)
 	# otherwise ignore file/image
 
 # 3. Split into grid
 def grid_cells(IMAGE_ID):
-	filename = './train_resized/' + IMAGE_ID + '.jpg'
+	filename = RESIZED_LOC + IMAGE_ID + '.jpg'
 	if os.path.isfile(filename):
 		img = io.imread(filename)
-		no_rows = img.shape[0] / 32
-		no_cols = img.shape[1] / 32
+		no_rows = img.shape[0] / CELL
+		no_cols = img.shape[1] / CELL
 		for r in range(no_rows):
 			for c in range(no_cols):
-				r_min = 32 * r
-				r_max = 32 * (r + 1)
-				c_min = 32 * c
-				c_max = 32 * (c + 1)
+				r_min = CELL * r
+				r_max = CELL * (r + 1)
+				c_min = CELL * c
+				c_max = CELL * (c + 1)
 				cell = img[r_min:r_max, c_min:c_max,:]
 				res_filename = './grid_cells/' + IMAGE_ID + '_' + str(r) + '_' + str(c) + '_cell.jpg'
 				io.imsave(res_filename, cell)
 
 # 4. Split into grid cells and assign classes
 def grid_cells_w_classes(IMAGE_ID, out_dir):
-	filename = './train_resized/' + IMAGE_ID + '.jpg'
+	filename = RESIZED_LOC + IMAGE_ID + '.jpg'
 	if os.path.isfile(filename):
 		img = io.imread(filename)
 		objects = df_bbox[df_bbox.ImageID == IMAGE_ID]
-		no_rows = img.shape[0] / 32
-		no_cols = img.shape[1] / 32
+		no_rows = img.shape[0] / CELL
+		no_cols = img.shape[1] / CELL
 
 		img_labels = []
 		for i in range(no_rows):
@@ -200,10 +211,10 @@ def grid_cells_w_classes(IMAGE_ID, out_dir):
 
 		for r in range(no_rows):
 			for c in range(no_cols):
-				r_min = 32 * r
-				r_max = 32 * (r + 1)
-				c_min = 32 * c
-				c_max = 32 * (c + 1)
+				r_min = CELL * r
+				r_max = CELL * (r + 1)
+				c_min = CELL * c
+				c_max = CELL * (c + 1)
 				cell = img[r_min:r_max, c_min:c_max,:]
 				labels = img_labels[r][c]
 				nums = []
@@ -236,7 +247,7 @@ no_images = 0
 #limit_images = 280 # initial medium without 90% background skip
 #limit_images = 800 # second medium dataset w. 80/12 and 
 #val_limit_images = 1000
-limit_images = 2000
+limit_images = 2000 # third medium dataset (x 2 last medium)
 val_limit_images = 2600
 for dirname, _, filenames in os.walk('./train'):
 	for filename in filenames:
@@ -245,12 +256,12 @@ for dirname, _, filenames in os.walk('./train'):
 			if no_images < limit_images:
 				if not image_id in val_image_ids:
 					resize_image(image_id)
-					grid_cells_w_classes(image_id, './medium_grid_cells/')
+					grid_cells_w_classes(image_id, TRAIN_GRID)
 					no_images += 1
 			elif no_images < val_limit_images:
 				if not image_id in val_image_ids:
 					resize_image(image_id)
-					grid_cells_w_classes(image_id, './medium_val_grid_cells/')
+					grid_cells_w_classes(image_id, VAL_GRID)
 					no_images += 1
 
 
