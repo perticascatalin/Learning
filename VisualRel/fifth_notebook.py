@@ -7,7 +7,7 @@ import random
 
 # 6. Process grid cell image
 
-# 6.A Process grid cell classes
+# 6.A Process grid cell classes (multi label multi class)
 def process_grid_cell(filename):
 	# do not forget to read as dirname + filename
 	splits = filename.split('.')[0].split('_')
@@ -28,22 +28,45 @@ def process_grid_cell(filename):
 			# compute uniques of ints
 	return Y
 
+# 6.A Process grid cell classes (multi class)
+def process_grid_cell_mc(filename):
+	# do not forget to read as dirname + filename
+	splits = filename.split('.')[0].split('_')
+	splits = splits[:-1] # ignore "cell"
+	image_id = splits[0]
+	row = splits[1]
+	col = splits[2]
+	if splits[3] == '':
+		print 'nada'
+		return [0]
+		# cell class will be 0
+	else:
+		for i in range(3, len(splits)):
+			print '+', splits[i]
+			class_label = int(splits[i])
+			return [class_label]
+			# compute uniques of ints
+	return [0]
+
 # 6.B Process all grid cells
-def read_images(input_directory, batch_size, limit_background = False):
+def read_images(input_directory, batch_size, limit_background = False, multi_class = False):
 	file_names = [file_name for file_name in os.listdir(input_directory) if file_name.endswith('.png')]
 	image_paths, labels = list(), list()
 	skipped = 0
 	taken = 0
 	for file_name in file_names:
 		print (file_name)
-		label = process_grid_cell(file_name)
+		if not multi_class:
+			label = process_grid_cell(file_name)
+		else:
+			label = process_grid_cell_mc(file_name)
 		image_path = input_directory + file_name
 
 		# 6.C Limit background class to 1 out of 10
 		if limit_background:
 			all_zeros = True
 			for dig in label:
-				if dig == 1:
+				if dig > 0:
 					all_zeros = False
 			#rnd = random.randint(0,10) # 1 out of 10 => 20-25% bckg
 			rnd = random.randint(0,30) # 1 out of 30 => 7-8% bckg
@@ -51,12 +74,18 @@ def read_images(input_directory, batch_size, limit_background = False):
 				# do nothing
 				skipped += 1
 			else:
-				labels.append(label)
+				if len(label) == 1:
+					labels.append(label[0]) # just multi class
+				else:
+					labels.append(label)
 				image_paths.append(image_path)
 				if all_zeros:
 					taken += 1
 		else:
-			labels.append(label)
+			if len(label) == 1:
+				labels.append(label[0]) # just multi class
+			else:	
+				labels.append(label)
 			image_paths.append(image_path)
 
 	print "Skipped ", skipped, " background cells"

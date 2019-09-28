@@ -28,9 +28,9 @@ display_step = 1000
 dropout = 0.6 # Dropout, probability to keep units
 
 # Change limit_background to include background grid cells
-X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ, limit_background = True)
+X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ, limit_background = True, multi_class = True)
 print ('finished reading train images')
-X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ, limit_background = True)
+X_val, Y_val = data.read_images(input_directory = VAL_DIR, batch_size = BATCH_SZ, limit_background = True, multi_class = True)
 print ('finished reading validation images')
 
 # Create model
@@ -38,13 +38,13 @@ def conv_net(x, num_classes, dropout, reuse, is_training):
     # Define a scope for reusing the variables
     with tf.variable_scope('ConvNet', reuse=reuse):
 
-        # Convolution Layer with 32 filters and a kernel size of 4
-        conv1 = tf.layers.conv2d(x, 48, 4, activation=tf.nn.relu)
+        # Convolution Layer with 48 filters and a kernel size of 4
+        conv1 = tf.layers.conv2d(x, 16, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
         # Convolution Layer with 96 filters and a kernel size of 4
-        conv2 = tf.layers.conv2d(conv1, 96, 4, activation=tf.nn.relu)
+        conv2 = tf.layers.conv2d(conv1, 32, 4, activation=tf.nn.relu)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
@@ -58,26 +58,6 @@ def conv_net(x, num_classes, dropout, reuse, is_training):
         out = tf.nn.softmax(out) if not is_training else out
 
     return out
-
-
-# START INSERT
-
-# Create a graph for training
-logits_train = conv_net(X, N_CLASSES, dropout, reuse=False, is_training=True)
-# Create another graph for testing that reuse the same weights
-logits_test = conv_net(X, N_CLASSES, dropout, reuse=True, is_training=False)
-
-# Define loss and optimizer (with train logits, for dropout to take effect)
-loss_op = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
-    logits=logits_train, labels=Y))
-optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
-train_op = optimizer.minimize(loss_op)
-
-# Evaluate model (with test logits, for dropout to be disabled)
-correct_pred = tf.equal(tf.argmax(logits_test, 1), tf.cast(Y, tf.int64))
-accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
-
-# END INSERT
 
 # Define the logits for all datasets
 logits_train = conv_net(X, N_OUT_CLASSES, dropout, reuse = False, is_training = True)
@@ -144,29 +124,29 @@ with tf.Session() as sess:
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
-                correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
-                if i == 0:
-                    co.debugger(correct_pred, logits, y_exp, x)
-                    co.print_pretty(correct_pred, logits, y_exp, x, step)
-                success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
-                valid_total_success += success_rate
+                # correct_pred, logits, y_exp, x = sess.run([correct_pred_val, logits_val, Y_val, X_val])
+                # if i == 0:
+                #     co.debugger(correct_pred, logits, y_exp, x)
+                #     co.print_pretty(correct_pred, logits, y_exp, x, step)
+                # success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
+                # valid_total_success += success_rate
 
-                correct_pred, logits, y_exp, x = sess.run([correct_pred_train, logits_train, Y, X])
-                success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
-                train_total_success += success_rate
+                # correct_pred, logits, y_exp, x = sess.run([correct_pred_train, logits_train, Y, X])
+                # success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
+                # train_total_success += success_rate
                 
             total_train_loss /= float(RUNS)
             total_val_loss /= float(RUNS)
             train_total_success /= (BATCH_SZ * float(RUNS))
             valid_total_success /= (BATCH_SZ * float(RUNS))
-            training_accuracy /= (N_OUT_CLASSES * float(RUNS))
-            validation_accuracy /= (N_OUT_CLASSES * float(RUNS))
+            training_accuracy /= float(RUNS)
+            validation_accuracy /= float(RUNS)
 
             print("Step " + str(step) + ", Val Loss= " + \
                 "{:.4f}".format(total_val_loss) + ", Train Loss= " + \
-                "{:.4f}".format(total_train_loss) + ", Validation Sucess Rate= " + \
-                "{:.3f}".format(valid_total_success) + ", Training Success Rate= " + \
-                "{:.3f}".format(train_total_success))
+                "{:.4f}".format(total_train_loss) + ", Validation Accuracy= " + \
+                "{:.3f}".format(validation_accuracy) + ", Training Accuracy= " + \
+                "{:.3f}".format(training_accuracy))
         else:
             # Only run the optimization op (backprop)
             if step <= THRESH_1:
