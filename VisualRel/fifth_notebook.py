@@ -74,7 +74,6 @@ def read_images(input_directory, batch_size, limit_background = False):
 	X, Y = tf.train.batch([image, label], batch_size = batch_size, capacity = batch_size * 8, num_threads = 4)
 	return X, Y
 
-
 # dirname = './eye_grid_cells/'
 # f1 = '001156eb13f37194_2_5_49_cell.png' # car
 # f2 = '0007ad5c6245a41d_1_6_27_cell.png' # man
