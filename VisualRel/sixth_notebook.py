@@ -95,18 +95,23 @@ logits_test = conv_net(X, N_OUT_CLASSES, N_CLASSES, dropout, reuse = True, is_tr
 logits_val = conv_net(X_val, N_OUT_CLASSES, N_CLASSES, dropout, reuse = True, is_training = False)
 
 # Define the loss operation
-loss_op = tf.constant(0.0, dtype = tf.float32)
+train_loss_op = tf.constant(0.0, dtype = tf.float32)
 for i in range(N_OUT_CLASSES):
-    loss_op = loss_op + tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(\
+    train_loss_op = train_loss_op + tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(\
     logits = logits_train[i], labels = Y[:,i]))
+
+val_loss_op = tf.constant(0.0, dtype = tf.float32)
+for i in range(N_OUT_CLASSES):
+    val_loss_op = val_loss_op + tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(\
+    logits = logits_val[i], labels = Y_val[:,i]))
 
 # Define loss and optimizer (with train logits, for dropout to take effect)
 optimizer_1 = tf.train.AdamOptimizer(learning_rate = learning_rate_1)
-train_op_1 = optimizer_1.minimize(loss_op)
+train_op_1 = optimizer_1.minimize(train_loss_op)
 optimizer_2 = tf.train.AdamOptimizer(learning_rate = learning_rate_2)
-train_op_2 = optimizer_2.minimize(loss_op)
+train_op_2 = optimizer_2.minimize(train_oss_op)
 optimizer_3 = tf.train.AdamOptimizer(learning_rate = learning_rate_3)
-train_op_3 = optimizer_3.minimize(loss_op)
+train_op_3 = optimizer_3.minimize(train_loss_op)
 
 # Define loss for prediction on training dataset
 correct_pred_train = tf.constant(0.0, dtype = tf.float32)
@@ -144,7 +149,8 @@ with tf.Session() as sess:
             else:
                 sess.run([train_op_3])
             # Calculate average batch loss and accuracy
-            total_loss = 0.0
+            total_train_loss = 0.0
+            total_val_loss = 0.0
             training_accuracy = 0.0
             validation_accuracy = 0.0
             train_total_success = 0.0
@@ -152,8 +158,9 @@ with tf.Session() as sess:
 
             RUNS = 100
             for i in range(RUNS):
-                loss, acc_train, acc_val = sess.run([loss_op, accuracy_train, accuracy_val])
-                total_loss += loss
+                train_loss, val_loss, acc_train, acc_val = sess.run([train_loss_op, val_loss_op, accuracy_train, accuracy_val])
+                total_train_loss += train_loss
+                total_val_loss += val_loss
                 training_accuracy += acc_train
                 validation_accuracy += acc_val
 
@@ -168,14 +175,16 @@ with tf.Session() as sess:
                 success_rate = co.batch_accuracy(correct_pred, logits, y_exp, x, step)
                 train_total_success += success_rate
                 
-            total_loss /= float(RUNS)
+            total_train_loss /= float(RUNS)
+            total_val_loss /= float(RUNS)
             train_total_success /= (BATCH_SZ * float(RUNS))
             valid_total_success /= (BATCH_SZ * float(RUNS))
             training_accuracy /= (N_OUT_CLASSES * float(RUNS))
             validation_accuracy /= (N_OUT_CLASSES * float(RUNS))
 
-            print("Step " + str(step) + ", Loss= " + \
-                "{:.4f}".format(total_loss) + ", Validation Sucess Rate= " + \
+            print("Step " + str(step) + ", Val Loss= " + \
+                "{:.4f}".format(total_val_loss) + ", Train Loss= " + \
+                "{:.4f}".format(total_train_loss) + ", Validation Sucess Rate= " + \
                 "{:.3f}".format(valid_total_success) + ", Training Success Rate= " + \
                 "{:.3f}".format(train_total_success))
         else:
