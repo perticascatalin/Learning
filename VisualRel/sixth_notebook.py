@@ -18,7 +18,7 @@
 # thus without being able to capture the data properties it always predicts background
 
 # 8. evaluation - more than one batch (done)
-# 9. training time - more iterations (doing)
+# 9. training time - more iterations (done)
 
 
 import os
@@ -140,7 +140,7 @@ with tf.Session() as sess:
 
     # Training cycle
     for step in range(1, num_steps+1):
-        if step % display_step == 0:
+        if step % display_step == 0 or (step < 2000 and step % 100 == 0):
             # Run optimization
             if step <= THRESH_1:
                 sess.run([train_op_1])

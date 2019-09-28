@@ -1,3 +1,5 @@
+# 8. Test NN (multi class 45% acc training 22% acc validation)
+
 # 1. Check prediction samples
 # 2. For learning probability distribution over all objects in grid cell, 
 #       train with all labels separately
@@ -105,7 +107,7 @@ with tf.Session() as sess:
 
     # Training cycle
     for step in range(1, num_steps+1):
-        if step % display_step == 0:
+        if step % display_step == 0 or (step < 2000 and step % 100 == 0):
             # Run optimization
             if step <= THRESH_1:
                 sess.run([train_op_1])
