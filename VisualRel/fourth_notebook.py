@@ -17,7 +17,7 @@ df_bbox = pd.read_csv('./input/challenge-2019-train-vrd-bbox.csv')
 # VAL_GRID = './medium_val_grid_cells/'
 
 CELL = 48
-RESIZED_LOC = './train_resized_50'
+RESIZED_LOC = './train_resized_50/'
 TRAIN_GRID = './medium_50/'
 VAL_GRID = './medium_val_50/'
 
