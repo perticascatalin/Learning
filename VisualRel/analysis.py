@@ -36,5 +36,5 @@ def batch_accuracy(correct_pred, logits, y_exp, x, epoch):
 		if correct_labels == N_OUT_CLASSES:
 			succ += 1
 
-	print "Correct ", succ, " out of 64 (", succ/float(64), ")"
+	#print "Correct ", succ, " out of 64 (", succ/float(64), ")"
 	return succ

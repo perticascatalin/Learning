@@ -1,9 +1,11 @@
-# 8. Test NN (multi class 45% acc training 22% acc validation)
+# 8. Test NN (multi class)
+# 45% acc training 22% acc validation for second medium
 
 # 1. Check prediction samples
 # 2. For learning probability distribution over all objects in grid cell, 
 #       train with all labels separately
 # 3. Increase training data to check if any changes in validation accuracy & loss
+# 4. Changed learning rates (1 level / schedule)
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -24,9 +26,9 @@ IMG_WIDTH = IMG_SZ
 N_OUT_CLASSES = 58 # total number of classes
 
 # Parameters
-learning_rate_1 = 0.001
-learning_rate_2 = 0.0005
-learning_rate_3 = 0.0001
+learning_rate_1 = 0.005
+learning_rate_2 = 0.001
+learning_rate_3 = 0.0005
 
 num_steps = 18000
 display_step = 1000
