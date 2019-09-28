@@ -129,25 +129,27 @@ def resize_image(IMAGE_ID):
 	img = io.imread(filename)
 
 	print img.shape
-
-	no_rows = img.shape[0]/4
-	no_cols = img.shape[1]/4
-	
-	# 6. add grayscale check and conversion
 	dims = list(img.shape)
-	if len(dims) == 2:
-		img = np.stack((img,img,img), axis = 2)
 
-	if no_rows % 32 != 0:
-		no_rows = 32 * round(float(no_rows)/32)
-	if no_cols % 32 != 0:
-		no_cols = 32 * round(float(no_cols)/32)	
+	if len(dims) == 2 or len(dims) == 3:
+		no_rows = img.shape[0]/4
+		no_cols = img.shape[1]/4
+		
+		# 6. add grayscale check and conversion
+		if len(dims) == 2:
+			img = np.stack((img,img,img), axis = 2)
 
-	res_img = transform.resize(img, (no_rows,no_cols,3))
-	#print res_img.shape
+		if no_rows % 32 != 0:
+			no_rows = 32 * round(float(no_rows)/32)
+		if no_cols % 32 != 0:
+			no_cols = 32 * round(float(no_cols)/32)	
 
-	res_filename = './train_resized/' + IMAGE_ID + '.jpg'
-	io.imsave(res_filename, res_img)
+		res_img = transform.resize(img, (no_rows,no_cols,3))
+		#print res_img.shape
+
+		res_filename = './train_resized/' + IMAGE_ID + '.jpg'
+		io.imsave(res_filename, res_img)
+	# otherwise ignore file/image
 
 # 3. Split into grid
 def grid_cells(IMAGE_ID):
@@ -232,8 +234,10 @@ for index, row in df_classes.iterrows():
 
 no_images = 0
 #limit_images = 280 # initial medium without 90% background skip
-limit_images = 800
-val_limit_images = 1000
+#limit_images = 800 # second medium dataset w. 80/12 and 
+#val_limit_images = 1000
+limit_images = 2000
+val_limit_images = 2600
 for dirname, _, filenames in os.walk('./train'):
 	for filename in filenames:
 		if filename.endswith('.jpg'):
