@@ -56,7 +56,7 @@ num_steps = 22000
 display_step = 2000
 
 # Network Parameters
-dropout = 0.6 # Dropout, probability to keep units
+dropout = 0.4 # Dropout, probability to keep units
 
 # Change limit_background to include background grid cells
 X, Y = data.read_images(input_directory = INPUT_DIR, batch_size = BATCH_SZ, limit_background = True)
@@ -69,13 +69,15 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
     # Define a scope for reusing the variables
     with tf.variable_scope('ConvNet', reuse=reuse):
 
-        # Convolution Layer with 48 filters and a kernel size of 4
-        conv1 = tf.layers.conv2d(x, 48, 4, activation=tf.nn.relu)
+        # Convolution Layer with 60 filters and a kernel size of 4
+        conv1 = tf.layers.conv2d(x, 60, 4, activation=tf.nn.relu)
+        conv1 = tf.layers.dropout(conv1, rate = 0.1, training=is_training)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv1 = tf.layers.max_pooling2d(conv1, 2, 2)
 
-        # Convolution Layer with 96 filters and a kernel size of 4
-        conv2 = tf.layers.conv2d(conv1, 96, 4, activation=tf.nn.relu)
+        # Convolution Layer with 48 filters and a kernel size of 2
+        conv2 = tf.layers.conv2d(conv1, 48, 2, activation=tf.nn.relu)
+        conv2 = tf.layers.dropout(conv2, rate = 0.1, training=is_training)
         # Max Pooling (down-sampling) with strides of 2 and kernel size of 2
         conv2 = tf.layers.max_pooling2d(conv2, 2, 2)
 
@@ -85,7 +87,7 @@ def conv_net(x, num_classes, num_labels, dropout, reuse, is_training):
         # Fully connected layer (in contrib folder for now)
         fc1 = tf.layers.dense(fc1, 128)
         # Apply Dropout (if is_training is False, dropout is not applied)
-        fc1 = tf.layers.dropout(fc1, rate=dropout, training=is_training)
+        fc1 = tf.layers.dropout(fc1, rate = dropout, training=is_training)
 
         # Define outputs
         outputs = list()
