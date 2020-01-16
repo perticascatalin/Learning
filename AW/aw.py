@@ -56,13 +56,16 @@ works = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t]
 works.sort(key=lambda x: x.gain(), reverse = True)
 
 total_sum = 0
+total_time = 0
 
 for work in works:
 	print work.name, work.gain(), '/', work.price()
 	total_sum += work.gain()
+	total_time += work.time
 
 print '==========================='
 print 'Total Sum:', total_sum
+print 'Total Time', total_time
 print 'Number of Works:', len(works)
 
 # d = Work('Fido')
