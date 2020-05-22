@@ -22,42 +22,43 @@ print ("Hello AW!")
 print '==========================='
 
 g_rate = 30
-s_rate = 20
+s_rate = 18
 b_rate = 10
 
-# Rate 30
-a = Work('Michelangelo\'s Dream', 26, g_rate, False, 1.54)
-b = Work('Energy Transform Hand', 18, g_rate, False, 1.54)
+# Gold Rate
 c = Work('Universal Shaman', 50, g_rate, True, 1.54)
+f = Work('Cranium Universalis', 40, g_rate, True, 1.54)
 d = Work('Divide et Impera', 40, g_rate, True, 1.54)
 e = Work('Mind Zoom-In', 30, g_rate, True, 1.54)
-f = Work('Cranium Universalis', 40, g_rate, True, 1.54)
-i = Work('Afterlife & Creation',16, g_rate, False, 1.54)
-j = Work('Death', 10, g_rate, True, 1.54)
-m = Work('Octopus', 12, g_rate, False, 1.54)
+a = Work('Michelangelo\'s Dream', 26, g_rate, False, 1.54)
 r = Work('Althea', 20, g_rate, True, 1.54)
+i = Work('Afterlife & Creation',16, g_rate, False, 1.54)
+m = Work('Octopus', 12, g_rate, False, 1.54)
+j = Work('Death', 10, g_rate, True, 1.54)
+s = Work('Still Mona', 6, g_rate, False, 1.54)
 
-# Rate 20
+# Silver Rate
+x = Work('Entailed Coincidences', 20, s_rate, True, 1.54)
 h = Work('Tineretea', 20, s_rate, True, 1.54)
-k = Work('Meteor Collide', 2, s_rate, False, 1.54)
+b = Work('Energy Transform Hand', 18, s_rate, False, 1.54)
 n = Work('The Room', 12, s_rate, False, 1.54)
 o = Work('Gamma Particle 31', 10, s_rate, False, 1.54)
+a1 = Work('Kol Blast', 10, s_rate, False, 1.54)
+y = Work('Banknote 100 pieces', 10, s_rate, False, 1.54)
 q = Work('Fire Angel', 8, s_rate, False, 1.54)
-s = Work('Still Mona', 6, s_rate, False, 1.54)
+z = Work('King', 6, s_rate, False, 1.54)
+k = Work('Meteor Collide', 2, s_rate, False, 1.54)
 u = Work('Surreal Rat Horse', 2, s_rate, False, 1.54)
 v = Work('Surreal Cat Shaman', 2, s_rate, False, 1.54)
 w = Work('Shaman-Portrait', 2, s_rate, False, 1.54)
-y = Work('Banknote 100 pieces', 10, s_rate, False, 1.54)
-x = Work('Entailed Coincidences', 20, s_rate, True, 1.54)
-z = Work('King', 6, s_rate, False, 1.54)
 
-# Rate 10
+# Bronze Rate
 g = Work('Notebook 2019', 36, b_rate, False, 1.54)
 l = Work('Euler', 6, b_rate, False, 1.54)
 p = Work('Smile', 6, b_rate, False, 1.54)
 t = Work('Flying Cat-Dog', 4, b_rate, False, 1.54)
 
-works = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,x,z]
+works = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,x,z,a1]
 
 works.sort(key=lambda x: x.gain(), reverse = True)
 
