@@ -1,0 +1,7 @@
+T1: 2SAT, CNF
+	- transformation x0 v x1 into -xo -> x1 or -x1 -> xo
+	- implication graph (ref. constraint graph)
+	- strongly connected component
+Links:
+	https://en.wikipedia.org/wiki/2-satisfiability
+	https://infoarena.ro/problema/2sat (incl. coloring map problem)
