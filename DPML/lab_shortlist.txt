@@ -5,6 +5,7 @@ T1: 2SAT, CNF
 Links:
 	https://en.wikipedia.org/wiki/2-satisfiability
 	https://infoarena.ro/problema/2sat (incl. coloring map problem)
+
 Abstract:
 	Solve 2SAT using graph algorithms. Reduce various problems to solving 2SAT.
 
@@ -14,6 +15,7 @@ T2: Zvon/Pandemic
 	- strongly connected component
 	- counting problem/solve standard linear eq. system
 	- potentially a good toy problem to research consistency
+
 Abstract:
 	Given a network of people with nodes as people and edges representing the probability to pass on a rumour, identify the probability for any person to find out the rumour given a starting node.
 
@@ -22,6 +24,7 @@ T3: DeepCoder
 	- DSL, program synthesis
 Links:
 	https://openreview.net/pdf?id=ByldLrqlx
+
 Abstract:
 	Using a DSL for writing problems working on simple arrays. Search for a program which satisfies input-output examples.
 
@@ -29,16 +32,30 @@ T4: Solar's Sketch/Template methods for Program Synthesis
 	- focuses on search and constraint solvers
 Links:
 	https://people.csail.mit.edu/asolar/SynthesisCourse/TOC.htm
+
 Abstract: TODO
 
 T5: A backtracking problem
 	- N Queens
 	- Map Coloring
 	- Timetable
-Abstract: TODO
+	- Knights Problem
+Links:
+	https://people.eng.unimelb.edu.au/pstuckey/PPDP2013.pdf
+	https://developers.google.com/optimization/cp/queens
+	https://camo.ici.ro/journal/vol19/v19b11.pdf
+
+Abstract: Constraint satisfaction + Transformations & isomorphism
 
 T6: Multiple divisions awarding
 	- backtracking
 	- constraints
 	- tricky problem once we dive into details
+
 Abstract: Members of a tournament participate in several divisions, each with its prizes. Find an optimal way to distribute the prizes such that a member only receives prizes from one division, whichever is more favorable.
+
+T7: Maximal common subgraph
+
+Abstract (basic version): find a maximal common subgraph through backtracking. Nodes n1, n2, ... nN in the first graph. Nodes m1, m2, ..., mM in the second graph. The backtracking part consists of asigning labels for the values n1, n2, ..., nN. Asign 0 when a node is not part of the subgraph. Otherwise asign the associated node in the second graph. Unasigned labels from the second graph are not part of the subgraph. Constraints appear at the level of edges in the comon subgraph. Eg. if nodes A, B & C from the first graph (included in the subgraph) have edges A-B, A-C, (not B-C) then also the associated nodes A', B', C' from the second graph (included in the subgraph) must have the same edge relationships A'-B', A'-C', (not B'-C').
+
+T8: Common subgraph applications in chemistry & genetics
