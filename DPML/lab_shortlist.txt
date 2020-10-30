@@ -59,6 +59,8 @@ KLA: lookahead technique, proritize search based on smallest width subtree
 N Queens
 
 Q: basic solution with validity check at the end
+QV: validation at each step, path consistency (attack between placed queens)
+QLA: lookahead validation at each step (at least one free cell on each remaining row)
 
 T6: Multiple divisions awarding
 	- backtracking
@@ -72,3 +74,5 @@ T7: Maximal common subgraph
 Abstract (basic version): find a maximal common subgraph through backtracking. Nodes n1, n2, ... nN in the first graph. Nodes m1, m2, ..., mM in the second graph. The backtracking part consists of asigning labels for the values n1, n2, ..., nN. Asign 0 when a node is not part of the subgraph. Otherwise asign the associated node in the second graph. Unasigned labels from the second graph are not part of the subgraph. Constraints appear at the level of edges in the comon subgraph. Eg. if nodes A, B & C from the first graph (included in the subgraph) have edges A-B, A-C, (not B-C) then also the associated nodes A', B', C' from the second graph (included in the subgraph) must have the same edge relationships A'-B', A'-C', (not B'-C').
 
 T8: Common subgraph applications in chemistry & genetics
+
+Abstract: TODO
