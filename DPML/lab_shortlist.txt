@@ -44,8 +44,21 @@ Links:
 	https://people.eng.unimelb.edu.au/pstuckey/PPDP2013.pdf
 	https://developers.google.com/optimization/cp/queens
 	https://camo.ici.ro/journal/vol19/v19b11.pdf
+	https://en.wikipedia.org/wiki/AC-3_algorithm
+	https://www.cs.colostate.edu/~cs440/fall14/assignments/assignment4.pdf
+	http://www.cs.toronto.edu/~fbacchus/Presentations/CSP-BasicIntro.pdf
 
 Abstract: Constraint satisfaction + Transformations & isomorphism
+
+Knights Problem
+
+K: basic solution backtracking next 8 positions
+KC: apply arc consistency to remove check on moves landing outside the board, build a constraint graph
+KLA: lookahead technique, proritize search based on smallest width subtree
+
+N Queens
+
+Q: basic solution with validity check at the end
 
 T6: Multiple divisions awarding
 	- backtracking
