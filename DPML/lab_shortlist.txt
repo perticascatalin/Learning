@@ -75,4 +75,9 @@ Abstract (basic version): find a maximal common subgraph through backtracking. N
 
 T8: Common subgraph applications in chemistry & genetics
 
+Present lab Week 8
+
 Abstract: TODO
+
+Report 1 - Week 9 Constraint Programming in Genetic Algorithms
+Report 2 - Week 12 Constraint Programming applied to Problems involving Graphs NO/Program Synthesis NO/Music YES
