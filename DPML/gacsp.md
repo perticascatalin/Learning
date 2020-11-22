@@ -2,7 +2,15 @@
 
 ## Introduction
 
-Genetic algorithms are known to be used in solving constraint satisfaction problems[G1, G2], such as the larger class of scheduling problems [G3]. This study is however on a different matter. As such, we attempt to model parts of a genetic algorithm using constraint programming. Later on, we'll see that both the problems of constraint satisfaction, as well as constraint optimization can be used to formalize steps in a generic genetic algorithm. Whether these models are actually useful in practice remains a matter for further research. Thus, the main goal of this study is to conduct an investigation on which parts of a genetic algorithm could be formalized using constraint programming and then speculate on the benefits of such an approach.
+Genetic algorithms are known to be used in solving constraint satisfaction problems[G1, G2], especially for the larger class of scheduling problems [G3]. This study is however on a different matter. As such, we attempt to model parts of a genetic algorithm using constraint programming. Later on, we'll see that both the problems of constraint satisfaction, as well as constraint optimization can be used to formalize steps in a generic genetic algorithm. Whether these models are actually useful in practice remains a matter for further research. Thus, the main goal of this study is to conduct an investigation on which parts of a genetic algorithm could be formalized using constraint programming and then speculate on the benefits of such an approach.
+
+General structure of a genetic algorithm:
+
+- selection
+- crossover
+- mutation
+
+One related subject is the incorporation of constraints in genetic/evolutionary algorithms. Past attempts include [G0, G4, G6]. [G0] includes a new kind of operator named infection. Its purpose is to apply mutations (caused by a virus) to parts of the candidate population of solutions, differing from the mutation operator which acts on an individual by individual basis. These viral mutations enforce constraints on the pool of candidates.
 
 ## Papers
 
@@ -60,7 +68,6 @@ crossover functions was conducted. Also, the possible effect of aging out some
 of the old individuals from the population was hinted at. A parameter set
 expected to give the optimal performance and a discussion on the design
 considerations are presented below.*
-
 
 ### G6: Genetic Algorithms in Constrained Optimization
 
