@@ -30,8 +30,7 @@ ArXiv Neural and Evolutionary Computing
 
 *In this paper a Metaheuristic approach for solving the N-Queens Problem is introduced to find the best possible solution in a reasonable amount of time. Genetic Algorithm is used with a novel fitness function as the Metaheuristic. The aim of N-Queens Problem is to place N queens on an N x N chessboard, in a way so that no queen is in conflict with the others. Chromosome representation and genetic operations like Mutation and Crossover are described in detail. Results show that this approach yields promising and satisfactory results in less time compared to that obtained from the previous approaches for several large values of N.*
 
-### G3: A Genetic Algorithm with CSP for multi-objective Optimization in Workflow
-Scheduling
+### G3: A Genetic Algorithm with CSP for multi-objective Optimization in Workflow Scheduling
 
 2013, J. Sublime et al.
 
@@ -39,8 +38,7 @@ International Journal of Metaheuristics
 
 *Cloud computing is a fast growing technology allowing companies to use on-demand computation, and data services for their everyday needs. The main contribution of this work is to propose a new model of genetic algorithm for the workflow scheduling problem. The algorithm must be capable of: 1) dealing with the multi-objective problem of optimising several quality of service (QoS) variables, namely: computation time, cost, reliability or security; 2) handling a large number of workflow scheduling aspects such as adding constraints on QoS variables (deadlines and budgets); 3) handling hard constraints such as restrictions on task scheduling that the previous algorithms have not addressed. Using data from Amazon elastic compute cloud (EC2) and workflows from the London e-Science Centre; we have compared our algorithm with other scheduling algorithms. Simulation results indicate the efficiency of the proposed metaheuristic both in terms of solution quality and computational time.*
 
-### G4: Evolutionary Algorithms and Constraint Satisfaction: Definitions, Survey,
-Methodology, and Research Directions
+### G4: Evolutionary Algorithms and Constraint Satisfaction: Definitions, Survey, Methodology, and Research Directions
 
 2001, A.E. Eiben
 
@@ -48,8 +46,7 @@ Theoretical Aspects of Evolutionary Computing. Natural Computing Series
 
 *In this tutorial we consider the issue of constraint handling by evolutionary algorithms (EA). We start this study with a categorization of constrained problems and observe that constraint handling is not straightforward in an EA. Namely, the search operators mutation and recombination are ‘blind’ to constraints. Hence, there is no guarantee that if the parents satisfy some constraints the offspring will satisfy them as well. This suggests that the presence of constraints in a problem makes EAs intrinsically unsuited to solve this problem. This should especially hold if there are no objectives but only constraints in the original problem specification — the category of constraint satisfaction problems. A survey of related literature, however, discloses that there are quite a few successful attempts at evolutionary constraint satisfaction. Based on this survey we identify a number of common features in these approaches and arrive at the conclusion that the presence of constraints is not harmful, but rather helpful in that it provides extra information that EAs can utilize. The tutorial is concluded by considering a number of key questions on research methodology and some promising future research directions.*
 
-### G5: Comparative Performances of Crossover Functions in
-Genetic Algorithms
+### G5: Comparative Performances of Crossover Functions in Genetic Algorithms
 
 2015, M. I. Ezeani et al.
 
