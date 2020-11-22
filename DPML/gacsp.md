@@ -23,14 +23,25 @@ The process of evolving the population is performed through the use of a chosen 
 
 ## General goals in evolutionary programming
 
-- generate offsprings that represent valid solutions (reduce redundancy)
-- different pairs of crossed-over individuals should result in different offsprings (maintain diversity)
+- generate offspring that represent valid solutions (reduce redundancy)
+- different pairs of crossed-over individuals should result in different offspring (maintain diversity)
 
 ## Modelling evolutionary goals through constraint programming
 
 Interlink: fitness vs consistency
 
 ### Constraining Selection: the Pairing Idea
+
+Upon each selection of the crossed-over sub-population, perform pairings of individuals such that:
+
+- each individual is used in a single crossover => variable assignment problem (diversity++ because each set of genes is only used once)
+
+- constraint 1: variables have different labels (binary, similar to N-queens not attacking on columns)
+- constraint 2: if variable i is assigned label l, then variable l must be assigned label i (binary)
+
+- we can add additional constraints for having variable i assigned label l, in the sense that genes(i) should not be too similar to genes(l) (diversity++ because we avoid mixing similar data)
+
+**Potential beneficial outcomes of such constraints:**
 
 - increase the diversity of the population
 - decrease the redundancy of mainting a high similarity group of individuals
@@ -42,7 +53,7 @@ These should occur irrespective of the chosen crossover operator (do not rely on
 - control non-determinism of offspring generation and express its fitness as sub-parts of inherited genes fitness (resemblance)
 - decrease the redundancy of generating inconsistent solutions (constraints)
 
-These should occur irrespective of the selection step specifics (do not rely on injective relation).
+These should occur irrespective of the selection step specifics (do not rely on bijective relation).
 
 ## Papers
 
