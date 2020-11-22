@@ -36,8 +36,9 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 
 - each individual is used in a single crossover => variable assignment problem (diversity++ because each set of genes is only used once)
 
-- constraint 1: variables have different labels (binary, similar to N-queens not attacking on columns)
-- constraint 2: if variable i is assigned label l, then variable l must be assigned label i (binary)
+- constraint 1: variable i cannot be assigned label i (unary, similar to x < 3, x > 3)
+- constraint 2: variables have different labels (binary, similar to N-queens not attacking on columns)
+- constraint 3: if variable i is assigned label l, then variable l must be assigned label i (binary)
 
 - we can add additional constraints for having variable i assigned label l, in the sense that genes(i) should not be too similar to genes(l) (diversity++ because we avoid mixing similar data)
 
