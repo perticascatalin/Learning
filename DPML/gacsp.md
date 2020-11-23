@@ -48,6 +48,13 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 - constraint 2: variables have different labels (binary, similar to N-queens not attacking on columns)
 - constraint 3: if variable i is assigned label l, then variable l must be assigned label i (binary)
 
+**Constraint Graph and Assignments for 4 individuals**
+
+| Constraint Graph for 1 & 2|Assignment Graph Constraints for 1, 2 & 3|
+|:--------:|:--------:|
+|![Constraint Graph for 1 & 2](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/CG1.png)|![Assignment Constraints for 1, 2 & 3](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/CG2.png)|
+| Unary constraints integrated in variable domain {}, Binary constraints represented as edges.| Each node represents a valid assignement. +: assignments must occur together. -: assignments must not occur together.|
+
 - we can add additional constraints for having variable i assigned label l, in the sense that genes(i) should not be too similar to genes(l) (diversity++ because we avoid mixing similar data)
 
 **Potential beneficial outcomes of such constraints:**
