@@ -1,9 +1,12 @@
 # Constraint Programming in Genetic Algorithms: Report
 
-## Goals
+### Abstract
+
+### Goals
 
 - Theoretically model GAs as CSPs
 - Speculate on the benefits of such a formalism
+- Experimental part left as future work
 
 ## 1. Introduction
 
@@ -37,6 +40,10 @@ The process of evolving the population is performed through the use of a chosen 
 ## 2. Modelling evolutionary goals through constraint programming
 
 Interlink: fitness vs consistency
+
+While the purpose of genetic algorithms is to maximize a certain fitness function through heuristic methods, constraint satisfaction & optimization modelling allow us to formalize search in a general constrained variable assignment space. Thus we are able to utilze general problem reduction and search strategy algorithms. If we then look back at genetic algorithms, we can see that we can impose constraints in the steps of maximizing a fitness function, namely the selection and crossover steps.
+
+The selection of a subpopulation of individuals can be transformed into a variable assignment problem with constraints, for instance constraints to include diversity or specific features into the subpopulation. This can be further formalized into a constraint optimization problem, where we maximize some utility function. The crossover step relies on an operator for mixing genes/features. This mixing is also prone to constraints and utility because it can be respresented as a variable assignment problem where we want to discover the best mapping possible for the crossover operator, the one which potentially produces highest fitness individuals.
 
 ### 2.1 Constraining Selection: the Pairing Idea
 
