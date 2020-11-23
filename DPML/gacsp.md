@@ -14,11 +14,19 @@ Genetic algorithms are known to be used in solving constraint satisfaction probl
 
 Whether these models are actually useful in practice remains a matter for further research. Thus, the main goal of this study is to conduct an investigation on which parts of a genetic algorithm could be formalized using constraint programming and then speculate on the benefits of such an approach.
 
+## 2. General goals in evolutionary programming
+
 The general structure of a genetic algorithm is represented by these steps:
 
 - Selection
 - Crossover
 - Mutation
+
+**Fitness**
+
+The process of evolving the population is performed through the use of a chosen fitness function. This function guides the selection of individuals for crossover, as well as the retention of newly obtained individuals to the pool.
+
+**Constraints**
 
 One related subject is the incorporation of constraints in genetic/evolutionary algorithms. Past attempts include [G0, G4, G6]. 
 
@@ -30,22 +38,18 @@ One related subject is the incorporation of constraints in genetic/evolutionary 
 
 Across the genetic algorithms literature, we can find other such nature inspired techniques. For instance [G5] mentions a process similar to aging applied to the candidate population, such that the size of the pool is constrained to avoid increasing the computation time for the selection step across generations.
 
-The process of evolving the population is performed through the use of a chosen fitness function. This function guides the selection of individuals for crossover, as well as the retention of newly obtained individuals to the pool.
-
-### General goals in evolutionary programming
+**Goals**
 
 - generate offspring that represent valid solutions (reduce redundancy)
 - different pairs of crossed-over individuals should result in different offspring (maintain diversity)
 
-## 2. Modelling evolutionary goals through constraint programming
-
-Interlink: fitness vs consistency
+## 3. Modelling evolutionary goals through constraint programming
 
 While the purpose of genetic algorithms is to maximize a certain fitness function through heuristic methods, constraint satisfaction & optimization modelling allow us to formalize search in a general constrained variable assignment space. Thus we are able to utilze general problem reduction and search strategy algorithms. If we then look back at genetic algorithms, we can see that we can impose constraints in the steps of maximizing a fitness function, namely the selection and crossover steps.
 
 The selection of a subpopulation of individuals can be transformed into a variable assignment problem with constraints, for instance constraints to include diversity or specific features into the subpopulation. This can be further formalized into a constraint optimization problem, where we maximize some utility function. The crossover step relies on an operator for mixing genes/features. This mixing is also prone to constraints and utility because it can be respresented as a variable assignment problem where we want to discover the best mapping possible for the crossover operator, the one which potentially produces highest fitness individuals.
 
-### 2.1 Constraining Selection: the Pairing Idea
+### 3.1 Constraining Selection: the Pairing Idea
 
 Upon each selection of the crossed-over sub-population, perform pairings of individuals such that:
 
@@ -71,7 +75,7 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 
 These should occur irrespective of the chosen crossover operator (do not rely on operator specifics).
 
-### 2.2 Constraining Crossover: the Resemblance Idea
+### 3.2 Constraining Crossover: the Resemblance Idea
 
 - control non-determinism of offspring generation and express its fitness as sub-parts of inherited genes fitness (resemblance)
 - decrease the redundancy of generating inconsistent solutions (constraints)
