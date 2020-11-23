@@ -72,3 +72,11 @@ These should occur irrespective of the chosen crossover operator (do not rely on
 These should occur irrespective of the selection step specifics (do not rely on bijective relation).
 
 ### References
+
+- [G0] Solving constraint satisfaction problems by a genetic algorithm adopting viral infection, 1997, H. Kanoh et al., *Engineering Applications of Artificial Intelligence*
+- [G1] Solving the Constraint Satisfaction Problem using Genetic Algorithms, 2008, N. Hassan et al., *International Conference on Artificial Intelligence*
+- [G2] An Adaptive Genetic Algorithm for Solving N-Queens Problem, 2017, U. Sarkar & S. Nag, *ArXiv: Neural and Evolutionary Computing*
+- [G3] A Genetic Algorithm with CSP for multi-objective Optimization in Workflow Scheduling, 2013, J. Sublime et al., *International Journal of Metaheuristics*
+- [G4] Evolutionary Algorithms and Constraint Satisfaction: Definitions, Survey, Methodology, and Research Directions, 2001, A.E. Eiben, *Theoretical Aspects of Evolutionary Computing. Natural Computing Series*
+- [G5] Comparative Performances of Crossover Functions in Genetic Algorithms, 2015, M. I. Ezeani et al., *International Journal of Scientific & Engineering Research*
+- [G6] Genetic Algorithms in Constrained Optimization, 1996, D. J. Reid, *Mathematical and Computer Modelling*
