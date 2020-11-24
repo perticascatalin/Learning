@@ -77,6 +77,7 @@ These should occur irrespective of the chosen crossover operator (do not rely on
 
 ### 3.2 Constraining Crossover: the Resemblance Idea
 
+Assuming a total possible population of N, or the equivalent to assuming that the given problem has solutions from a finite set, then finding a valid crossover operator can be modelled as assigning labels from the population to variables representing combinations of 2 from the total possible population. Then there are N(N-1)/2 variables to assign. However, there are some which will not be assigned labels, either because we cannot or because this would be inconsistent with the constraints.
 
 **Potential beneficial outcomes of such constraints:**
 
