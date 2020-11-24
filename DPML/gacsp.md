@@ -2,7 +2,7 @@
 
 ### Abstract
 
-This study presents the initial ideas gathered while trying to model the processes involved in genetic algorithms as constraint satisfaction problems (and constraint optimization).
+This study presents the initial ideas gathered while trying to model the processes involved in genetic algorithms as constraint satisfaction problems (and constraint optimization). We present 2 ideas: pairing and resemblance, which try to formalize the selection and the crossover steps from evolutionary algorithms into constraint satisfaction problems. To do so, we explain the variables and the relations between the variables, either by using graphs or mathematical definitions. The constraints modelled are then linked to potential goals they might serve in the context of evolutionary programming.
 
 ### Goals
 
@@ -71,6 +71,8 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 | Unary constraints integrated in variable domain {}, Binary constraints represented as edges.| Each node represents a valid assignement. +: assignments must occur together. -: assignments must not occur together.|
 
 - we can add additional constraints for having variable i assigned label l, in the sense that genes(i) should not be too similar to genes(l) (diversity++ because we avoid mixing similar data)
+
+
 
 **Potential beneficial outcomes of such constraints:**
 
