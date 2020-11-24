@@ -72,7 +72,7 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 
 - we can add additional constraints for having variable i assigned label l, in the sense that genes(i) should not be too similar to genes(l) (diversity++ because we avoid mixing similar data)
 
-
+Then the problem would be transformed into a constraint satisfaction optimization problem.
 
 **Potential beneficial outcomes of such constraints:**
 
@@ -129,7 +129,7 @@ Then the constraints for resemblance (genes transfer) are:
 
 Maybe, but not necessarily `F(a) ⋃ F(b) = F(c)` - no new genetic material. Then mutation can relax this constraint.
 
-Going further, we could enforce on the fitness function `Fit(c) = some_funct_of(Fit(a), Fit(b))`
+Going further, we could enforce on the fitness function: `Fit(c) = some_funct_of(Fit(a), Fit(b))` Then maximizing the fitness function for an assignment can be seen as the maximum utility problem, slightly connected to gene similarity constraint at the selection step.
 
 As for ensuring that the crossover operator maintains consistency, we would need to look into the details of gene encoding, whether sets or strings. This would have to be done based on the specificity of the problem. Since we label all possible solutions as individuals, then a solution is inconsistent when its genes are not consistent wrt. genetic constraints.
 
@@ -141,6 +141,9 @@ A side note that for searching a string in a dictionary we could use a data stru
 - decrease the redundancy of generating inconsistent solutions (constraints)
 
 These should occur irrespective of the selection step specifics (do not rely on bijective relation).
+
+## 4. Conclusions
+
 
 ### References
 
