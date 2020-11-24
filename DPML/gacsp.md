@@ -144,6 +144,7 @@ These should occur irrespective of the selection step specifics (do not rely on 
 
 ## 4. Conclusions
 
+We managed to link several genetic algorithms concepts and goals to models of constraint programming. These are similarity and diversity for problem reduction at the selection step, resemblance for the crossover operator consistency and fitness as utility. Where possible we added some small examples or definitions to backup these ideas, but without going into genes representation details because we felt that this wouldn't serve the purpose of integrating constraint programming into genetic algorithms at this step because so far we have no practical experiments to approve of disprove of these ideas.
 
 ### References
 
