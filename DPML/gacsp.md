@@ -45,7 +45,7 @@ Across the genetic algorithms literature, we can find other such nature inspired
 
 ## 3. Modelling evolutionary goals through constraint programming
 
-While the purpose of genetic algorithms is to maximize a certain fitness function through heuristic methods, constraint satisfaction & optimization modelling allow us to formalize search in a general constrained variable assignment space. Thus we are able to utilze general problem reduction and search strategy algorithms. If we then look back at genetic algorithms, we can see that we can impose constraints in the steps of maximizing a fitness function, namely the selection and crossover steps.
+While the purpose of genetic algorithms is to maximize a certain fitness function through heuristic methods, constraint satisfaction & optimization modelling allow us to formalize search in a general constrained variable assignment space. Thus we are able to utilze general problem reduction and search strategy algorithms. If we then look back at genetic algorithms, we can see that we can impose similar general constraints in the steps of maximizing a fitness function, namely the selection and the crossover steps.
 
 The selection of a subpopulation of individuals can be transformed into a variable assignment problem with constraints, for instance constraints to include diversity or specific features into the subpopulation. This can be further formalized into a constraint optimization problem, where we maximize some utility function. The crossover step relies on an operator for mixing genes/features. This mixing is also prone to constraints and utility because it can be respresented as a variable assignment problem where we want to discover the best mapping possible for the crossover operator, the one which potentially produces highest fitness individuals.
 
@@ -76,6 +76,9 @@ Upon each selection of the crossed-over sub-population, perform pairings of indi
 These should occur irrespective of the chosen crossover operator (do not rely on operator specifics).
 
 ### 3.2 Constraining Crossover: the Resemblance Idea
+
+
+**Potential beneficial outcomes of such constraints:**
 
 - control non-determinism of offspring generation and express its fitness as sub-parts of inherited genes fitness (resemblance)
 - decrease the redundancy of generating inconsistent solutions (constraints)
