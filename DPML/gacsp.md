@@ -2,6 +2,8 @@
 
 ### Abstract
 
+This study presents the initial ideas gathered while trying to model the processes involved in genetic algorithms as constraint satisfaction problems (and constraint optimization).
+
 ### Goals
 
 - Theoretically model GAs as CSPs
@@ -21,6 +23,8 @@ The general structure of a genetic algorithm is represented by these steps:
 - Selection
 - Crossover
 - Mutation
+
+Genes encoding: various ways, sometimes finite strings assumed
 
 **Fitness**
 
@@ -78,6 +82,56 @@ These should occur irrespective of the chosen crossover operator (do not rely on
 ### 3.2 Constraining Crossover: the Resemblance Idea
 
 Assuming a total possible population of N, or the equivalent to assuming that the given problem has solutions from a finite set, then finding a valid crossover operator can be modelled as assigning labels from the population to variables representing combinations of 2 from the total possible population. Then there are N(N-1)/2 variables to assign. However, there are some which will not be assigned labels, either because we cannot or because this would be inconsistent with the constraints.
+
+The problem is split into an unconstrained or a constrained version based on the assumption of whether to allow an individual to participate in at most 1 pair. We partially formalized this at the selector topic, the extension is as follows:
+
+```
+v1 (1, 2) -> 3
+v2 (1, 4) -> 2
+...
+```
+
+or
+
+```
+v1 (1, 2) -> 3
+v2 (1, 4) -> ∅
+...
+```
+
+Either way, it is not possible to satisfy 
+
+```
+v_1 ≠ v_2 ≠ ... ≠ v_n_n-1/2
+```
+
+all of the time in a discrete finite space. This is without disabling certain mappings. However, this makes sense in practice because the population does not span the whole domain.
+
+Besides the constraints imposed on the mapping of combinations to individuals, we also want the mapping to retain features from parent to offspring.
+
+Given a variable `v_i`, we have the following model:
+
+- `N` population & domain for labels assignment
+- `V` variables `= N x N`
+- `v_i = (a,b)`
+- `M : V -> N`
+- `p1(v_i) = a`
+- `p2(v_i) = b`
+- `M(v_i) = c`
+- `F : N -> Str(k)` features/genes encoded as a finite string or set
+
+Then the constraints for resemblance (genes transfer) are:
+
+- `F(c) ⋂ F(a) ≠ ∅`
+- `F(c) ⋂ F(b) ≠ ∅`
+
+Maybe, but not necessarily `F(a) ⋃ F(b) = F(c)` - no new genetic material. Then mutation can relax this constraint.
+
+Going further, we could enforce on the fitness function `Fit(c) = some_funct_of(Fit(a), Fit(b))`
+
+As for ensuring that the crossover operator maintains consistency, we would need to look into the details of gene encoding, whether sets or strings. This would have to be done based on the specificity of the problem. Since we label all possible solutions as individuals, then a solution is inconsistent when its genes are not consistent wrt. genetic constraints.
+
+A side note that for searching a string in a dictionary we could use a data structure called trie. This trie could be seen as an analogy to the genetic constraints.
 
 **Potential beneficial outcomes of such constraints:**
 
