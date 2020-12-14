@@ -32,7 +32,7 @@ Section 4: Model Musical Patterns using CSP
 - **Interval**: the distance between 2 sounds (musical notes). 
 - **Scale**: a succession of musical notes adhering to a musical pattern. For instance, the major scale is comprised of the following intervals: TTSTTTSTTSTTTSTTSTTTS... (T = tone, S = semitone)
 - **Chord**: a group of musical notes which are played together.
-- **Arpegio**: a succession of musical notes extracted from a chord (played successively instead of together).
+- **Arpeggio**: a succession of musical notes extracted from a chord (played successively instead of together).
 
 |Musical Representation|Explanation|
 |:-----------------------:|-----------|
@@ -50,7 +50,17 @@ There have been numerous attempts to generate music using software. One of the f
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
+[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2.
 
+### 4.1 All Interval Series
+
+This problem requires finding all the sequences consisting of 12 different pitches with 12 different intervals. It can fe formalized as follows:
+
+- variables `v_1`, `v_2` ... `v_n` with domains `[1..n]`, `[1..n]` ... `[1..n]`
+- `all_diff(v_i)`
+- `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
+
+### 4.2 Jarrell's CSP
 
 ## 5. Conclusions
 
