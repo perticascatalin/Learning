@@ -59,9 +59,9 @@ For our purpose to apply CSP to music, the most important part to understand are
 
 [More on intervals quality](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
-[Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
+[Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf) - Eg: C0 at 16hz, C1 at 32hz ...
 
-[Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.)
+[Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.) - Eg: 20hz - 20khz.
 
 ## 3. Linking Music to Mathematics & AI
 
@@ -84,7 +84,7 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2.
+[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment.
 
 ### 4.1 All Interval Series
 
@@ -98,8 +98,9 @@ This problem requires finding all the sequences consisting of 12 different pitch
 
 Automated generation of music by searching for a sequence of n musical notes which adhere to a set of rules / constraints. These are:
 
-- fixed number of occurences for motives (a motif is a sequence of intervals)
-- each note from the output should belong to a chord (from a preset collection of chords)
+- starting and ending notes are fixed: `L_1`, `L_n`
+- each note from the output should belong to a chord `Ch`
+- fixed number of occurences for motives (a motif is a sequence of intervals): `OM1`, `OM2` ... `OMA` for motives `M1`, `M2` ... `MA`.
 
 ## 5. Conclusions
 
