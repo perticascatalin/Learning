@@ -55,7 +55,6 @@ For our purpose to apply CSP to music, the most important part to understand are
 |C-E|major third (2 tones)|3M|
 |...|...|...|
 
-
 [More on intervals quality](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
 [Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
@@ -83,6 +82,11 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
 
 ### 4.2 Jarrell's CSP
+
+Automatically generate music by finding a sequence of n musical notes and applying a set of rules/ constraints. These are:
+
+- fixed number of occurences for motives (a motif is a sequence of intervals)
+- each note from the output should belong to a chord (from a preset collection of chords?)
 
 ## 5. Conclusions
 
