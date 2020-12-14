@@ -56,7 +56,7 @@ For our purpose to apply CSP to music, the most important part to understand are
 |...|...|...|
 
 
-[More on intervals quality:](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
+[More on intervals quality](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
 [Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
 
@@ -76,7 +76,7 @@ There have been numerous attempts to generate music using software. One of the f
 
 ### 4.1 All Interval Series
 
-This problem requires finding all the sequences consisting of 12 different pitches with 12 different intervals. It can fe formalized as follows:
+This problem requires finding all the sequences consisting of 12 different pitches with 12 different intervals. It can be formalized as follows:
 
 - variables `v_1`, `v_2` ... `v_n` with domains `[1..n]`, `[1..n]` ... `[1..n]`
 - `all_diff(v_i)`
