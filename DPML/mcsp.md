@@ -21,13 +21,13 @@
 
 ### 3.1 Generative RNNs for Musical Composition
 
-There have been numerous attempts to generate music using software. One of the first approaches that I heard of is [M5] - [video source](https://www.youtube.com/watch?v=A2gyidoFsoI) & [tutorial](https://www.danieldjohnson.com/2015/08/03/composing-music-with-recurrent-neural-networks/), which leverages the generative power of recurrent neural networks based on many musical pieces as training data. This approach focuses on classical music (Bach) and polyphony (several instrumental tracks). RNNs and other neural networks derived from them will usually map an input sequence to an output sequence (the NN learns the mapping from the input to the output based on history and current input). !!! reference [M6] !!! 
+There have been numerous attempts to generate music using software. One of the first approaches that I heard of is [M5] - [video source](https://www.youtube.com/watch?v=A2gyidoFsoI) & [tutorial](https://www.danieldjohnson.com/2015/08/03/composing-music-with-recurrent-neural-networks/), which leverages the generative power of recurrent neural networks based on many musical pieces as training data. This approach focuses on classical music (Bach) and polyphony (several instrumental tracks). RNNs and other neural networks derived from them will usually map an input sequence to an output sequence (the NN learns the mapping from the input to the output based on history and current input). However, we can also feed an RNN its own output and thus generate a potentially novel sequence - eg. generating a handwritten sequence in [M6]. Earlier studies for how to generate music using RNNs/LSTMs include [M7].
 
-### 3.2 Ideas from GEB
+### 3.2 Ideas from GEB: Canons & Fugues
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-## 5. Conclusion
+## 5. Conclusions
 
 ### References
 
@@ -37,4 +37,5 @@ There have been numerous attempts to generate music using software. One of the f
 - [M3] Goedel, Escher, Bach: An Eternal Golden Braid, Douglas Hofstadter, 1979, *Basic Books*
 - [M4] Introducere in Studiul Chitarei Electrice, Andrei Rosulescu, 2008
 - [M5] Generating Polyphonic Music using Tied Parallel Networks, Daniel D. Johnson, 2017, *International Conference on Evolutionary and Biologically Inspired Music, Sound, Art and Design*
-- [M6] RNN Reference
+- [M6] Generating Sequences with Recurrent Neural Networks, Alex Graves, 2014, **ArXiv: Neural and Evolutionary Computing*
+- [M7] A First Look at Music Composition using LSTM Recurrent Neural Networks, Douglas Eck & Juergen Schmidthueber, 2002, *Technical Report IDSIA*
