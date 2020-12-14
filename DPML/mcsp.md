@@ -20,8 +20,8 @@ Section 2: Music Theory Background:
 	- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios
 
 Section 3: Background on previous Experiments that:
-	- relate Music to Mathematics (& AI in general)
 	- use Software to generate or compose Music
+	- relate Music to Mathematics (& AI in general)
 
 Section 4: Model Musical Patterns using CSP
 
@@ -100,7 +100,7 @@ Automated generation of music by searching for a sequence of n musical notes whi
 
 - starting and ending notes are fixed: `L_1`, `L_n`
 - each note from the output should belong to a chord `Ch`
-- fixed number of occurences for motives (a motif is a sequence of intervals): `OM1`, `OM2` ... `OMA` for motives `M1`, `M2` ... `MA`.
+- fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
 
 ## 5. Conclusions
 
