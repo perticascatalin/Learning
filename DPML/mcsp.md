@@ -69,6 +69,12 @@ There have been numerous attempts to generate music using software. One of the f
 
 ### 3.2 Ideas from GEB: Canons & Fugues
 
+While reading through Douglas Hofstadter's book [M3], I came across these interesting musical constructs (canons & fugues), which could serve as a nice application of constraint programming to music. For instance, canons are musical pieces which begin by playing a theme and then after a time delay a second voice begins playing the same theme (possibly in a different key or inverted). Whichever is the case, the challenge is to harmonize the theme with itself given the time delay, or find a variation of the initial theme which is in harmony. Although Hofstadter showcases these musical examples to support the idea that strange loops (& self-reference) appear in numerous forms (including Bach's compositions and Esher's drawings), one can imagine solving the harmonization of a theme with itself or its inversions by using constraint programming. 
+
+*"In order for a theme to work as a canon theme, each of its notes must be able to
+serve in a dual (or triple, or quadruple) role: it must firstly be part of a melody, and
+secondly it must be part of a harmonization of the same melody"* - [M3].
+
 ## 4. Modelling Musical Patterns through Constraint Programming
 
 [M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2.
