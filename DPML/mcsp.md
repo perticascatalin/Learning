@@ -1,7 +1,5 @@
 # Constraint Programming applied to Music: Report
 
-https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23
-
 https://www.youtube.com/watch?v=A2gyidoFsoI
 
 https://www.danieldjohnson.com/2015/08/03/composing-music-with-recurrent-neural-networks/
@@ -18,7 +16,8 @@ https://www.danieldjohnson.com/2015/08/03/composing-music-with-recurrent-neural-
 
 |Standard Musical Representation|Explanation|
 |:-----------------------:|-----------|
-|![Standard Scale](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/scale.png)|Western music has a 12 note musical system. These can be obtained by taking the 7 basic notes (**A, B, C, D, E, F, G**) and then augmenting (# sharp) or diminishing (b bemol) each with half a tone (semitone). To note that the distance between notes varies, thus we have 1 tone between G-A, A-B, C-D, D-E, F-G and 1 semitone between B-C and E-F. In this image we have standard G tuning (key). Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is reffered to as octaviation (8 notes to get back to where we were).|
+|![Standard Scale](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/scale.png)|Western music has a 12 note musical system. These can be obtained by taking the 7 basic notes (**A, B, C, D, E, F, G**) and then augmenting (# sharp) or diminishing (b bemol) each with half a tone (semitone).|
+|![Notes Circle](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/notes_circle.png)|To note that the distance between notes varies, thus we have 1 tone between G-A, A-B, C-D, D-E, F-G and 1 semitone between B-C and E-F. In the first image we have standard G tuning (key). Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is reffered to as octaviation (8 notes to get back to where we were). See second image. [reference link](https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23)|
 
 ## 2. The Basics in Music Theory
 
