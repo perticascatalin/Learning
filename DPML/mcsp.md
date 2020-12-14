@@ -55,6 +55,8 @@ For our purpose to apply CSP to music, the most important part to understand are
 |C-E|major third (2 tones)|3M|
 |...|...|...|
 
+**Important Note**: Even if the number of steps in an interval are equal (eg. both 2+ and 3m are 1 tone + 1 semitone long), their quality might differ and therefore their sound effect as well. This is where the distinction between an interval's quantity vs. quality appears.
+
 [More on intervals quality](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
 [Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
@@ -94,7 +96,7 @@ This problem requires finding all the sequences consisting of 12 different pitch
 
 ### 4.2 Jarrell's CSP
 
-Automatically generate music by finding a sequence of n musical notes and applying a set of rules/ constraints. These are:
+Automated generation of music by searching for a sequence of n musical notes which adhere to a set of rules / constraints. These are:
 
 - fixed number of occurences for motives (a motif is a sequence of intervals)
 - each note from the output should belong to a chord (from a preset collection of chords)
