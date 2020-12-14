@@ -54,11 +54,11 @@ Section 4: Model Musical Patterns using CSP
 |...|...|...|
 
 
-![More on intervals quality:](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
+[More on intervals quality:](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
-![Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
+[Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
 
-![Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.))
+[Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.))
 
 ## 3. Linking Music to Mathematics & AI
 
