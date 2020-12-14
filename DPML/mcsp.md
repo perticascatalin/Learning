@@ -40,6 +40,26 @@ Section 4: Model Musical Patterns using CSP
 |![Circle of Tonality](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/notes_circle.png)|To note that the distance between notes varies, thus we have **1 tone** between G-A, A-B, C-D, D-E, F-G and **1 semitone** between B-C and E-F. Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is referred to as **octaviation** (8 notes to get back to where we were). See image to the left([image source](https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23)).|
 |![Major Scale Intervals](https://github.com/perticascatalin/open_nenos/blob/master/DPML/imgs/c_scale.png?raw=true)|**The Major Scale** is comprised of 5 tones and 2 semitones. The image to the left shows the C major scale (**C-D-E-F-G-A-B-C**) together with its intervals. By transposing 1 tone higher, we get the D major scale (**D-E-F#-G-A-B-C#-D**). Image source and explanation from [M4].|
 
+**Interval Notation** (source: [M4]):
+
+|A-B Example|Name|Notation|
+|:---------:|:--:|:------:|
+|C1-C1|unison (perfect)|1P|
+|C-C#|augmented unison (semitone)|1+|
+|C-Db|minor second (semitone)|2m|
+|C-D|major second (tone)|2M|
+|C-D#|augmented second (tone + semitone)|2+|
+|C-Eb|minor third (tone + semitone)|3m|
+|C-E|major third (2 tones)|3M|
+|...|...|...|
+
+
+![More on intervals quality:](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
+
+![Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
+
+![Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.))
+
 ## 3. Linking Music to Mathematics & AI
 
 ### 3.1 Generative RNNs for Musical Composition
