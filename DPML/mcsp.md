@@ -75,6 +75,11 @@ While reading through Douglas Hofstadter's book [M3], I came across these intere
 serve in a dual (or triple, or quadruple) role: it must firstly be part of a melody, and
 secondly it must be part of a harmonization of the same melody"* - [M3].
 
+Musical Samples mentioned in [M3]:
+
+- [Good King Wenceslas](https://www.youtube.com/watch?v=SQVUMG6LZGM), a christmas carol, fairly simple structure, but very melodic and pleasant
+- [Crab Canon](https://www.youtube.com/watch?v=xUHQ2ybTejU), same theme played forwards and backwards at the same time, great symmetries
+
 ## 4. Modelling Musical Patterns through Constraint Programming
 
 [M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2.
@@ -92,7 +97,7 @@ This problem requires finding all the sequences consisting of 12 different pitch
 Automatically generate music by finding a sequence of n musical notes and applying a set of rules/ constraints. These are:
 
 - fixed number of occurences for motives (a motif is a sequence of intervals)
-- each note from the output should belong to a chord (from a preset collection of chords?)
+- each note from the output should belong to a chord (from a preset collection of chords)
 
 ## 5. Conclusions
 
