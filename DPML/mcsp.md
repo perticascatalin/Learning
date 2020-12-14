@@ -15,7 +15,7 @@ Music is known to have a mathematical structure at its basis, .... some link to 
 
 The purpose of the paper and how we reach it:
 
-Section 2: Basics in Music Theory: 
+Section 2: Music Theory Background: 
 	- Melody, Harmony, Rhythm, Bass
 	- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios
 
@@ -25,7 +25,7 @@ Section 3: Background on previous Experiments that:
 
 Section 4: Model Musical Patterns using CSP
 
-## 2. The Basics in Music Theory
+## 2. Music Theory Background
 
 **Definitions**:
 
@@ -34,10 +34,12 @@ Section 4: Model Musical Patterns using CSP
 - **Chord**: a group of musical notes which are played together.
 - **Arpeggio**: a succession of musical notes extracted from a chord (played successively instead of together).
 
+For our purpose to apply CSP to music, the most important part to understand are intervals & scales. Thus, in the coming paragraphs I will focus on their representation. Chords & arpeggios are slightly more advanced musical topics and studying them does not necessarily help towards realizing the purpose of this study.
+
 |Musical Representation|Explanation|
 |:-----------------------:|-----------|
 |![Standard Scale](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/scale.png)|Western music has a 12 note musical system. These can be obtained by taking the 7 basic notes (**A, B, C, D, E, F, G**) and then augmenting (# sharp) or diminishing (b bemol) each with half a tone (semitone). The image to the left showcases a score with standard G tuning (key).|
-|![Circle of Tonality](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/notes_circle.png)|To note that the distance between notes varies, thus we have **1 tone** between G-A, A-B, C-D, D-E, F-G and **1 semitone** between B-C and E-F. Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is referred to as **octaviation** (8 notes to get back to where we were). See image to the left([image source](https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23)).|
+|![Circle of Tonality](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/notes_circle.png)|To note that the distance between notes varies, thus we have **1 tone** between G-A, A-B, C-D, D-E, F-G and **1 semitone** between B-C and E-F. Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is referred to as **octaviation** (8 notes to get back to where we were). See image to the left ([image source](https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23)).|
 |![Major Scale Intervals](https://github.com/perticascatalin/open_nenos/blob/master/DPML/imgs/c_scale.png?raw=true)|**The Major Scale** is comprised of 5 tones and 2 semitones. The image to the left shows the C major scale (**C-D-E-F-G-A-B-C**) together with its intervals. By transposing 1 tone higher, we get the D major scale (**D-E-F#-G-A-B-C#-D**). Image source and explanation from [M4].|
 
 **Interval Notation** (source: [M4]):
@@ -58,7 +60,7 @@ Section 4: Model Musical Patterns using CSP
 
 [Musical Notes to Frequency](https://www.audiology.org/sites/default/files/ChasinConversionChart.pdf)
 
-[Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.))
+[Human Hearing Frequency Range](https://www.ncbi.nlm.nih.gov/books/NBK10924/#:~:text=Humans%20can%20detect%20sounds%20in,to%2015%E2%80%9317%20kHz.)
 
 ## 3. Linking Music to Mathematics & AI
 
