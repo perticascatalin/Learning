@@ -2,6 +2,8 @@
 
 ### Abstract
 
+Music is a special kind of art form because of its duality: it is created from inspiration, but at the same time, it has a mathematical basis: its representation is very clear and precise and sounds need to follow certain rules in order to be compatible with each other and to create a pleasant response in the listener's mind. In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. This study attempts to explore some of the basics in music theory in order to identify ways in which constraint programming could be applied to music. The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers have to do "manually". Therefore, the fundamental premise is to leave composition to composers and if it comes to fitting musical patterns together, then use computational power to search for potential solutions adhering to the required musical rules (eg. classical music canons, rock songs improvisation & harmonization).
+
 ### Goals
 
 - Briefly look over music theory to understand how musical patterns are represented
