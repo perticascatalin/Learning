@@ -11,7 +11,7 @@
 
 ## 1. Introduction
 
-Music is known to have a mathematical structure at its basis, .... some link to [M0] ... although what was considered acceptable varied greatly across different periods, trends and genres in music.
+Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has quite a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
 The purpose of the paper and how we reach it:
 
