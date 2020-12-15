@@ -104,6 +104,12 @@ In order to model this kind of musical structures using CSP, we would need to ha
 
 ## 5. Conclusions
 
+I think solving harmony and melody problems by using search techniques would have more value than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
+
+![Dali's Swallowtail](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/swallow_tail.jpg)
+
+The Swallow Tail, Salvador Dali's last painting, based on mathematical catastrophy theory, includes cello f-holes.
+
 ### References
 
 - [M0] How Music Works (Melody, Rhythm, Harmony, Bass), documentary, Howard Goodall, 2006
