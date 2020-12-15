@@ -9,11 +9,11 @@
 - Investigate combinatorial problems resulting from modelling musical patterns as CSPs
 - Experimental part left as future work
 
-## 1. Introduction
+### Structure & Contents
 
-Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
-
-The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step.
+Section 1: Introduction
+	- Purpose of the study
+	- Provides a general idea of how music & csp fit together
 
 Section 2: Music Theory Background: 
 	- Melody, Harmony, Rhythm, Bass (fundamentals showcased in [M0] documentary)
@@ -24,6 +24,16 @@ Section 3: Background on previous Experiments that:
 	- relate Music to Mathematics & AI in general
 
 Section 4: Model Musical Patterns using CSP
+
+## 1. Introduction
+
+Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
+
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step.
+
+If we take a look at more modern music, such as (pop-)rock ballads for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: G-D-Em-C, part B: Em-D-C-G, part C (after every A & B): G-D-C-GAmG. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A major pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+
+In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
 
 ## 2. Music Theory Background
 
