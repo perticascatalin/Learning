@@ -9,27 +9,6 @@
 - Investigate combinatorial problems resulting from modelling musical patterns as CSPs
 - Experimental part left as future work
 
-### Structure & Contents
-
-Section 1: Introduction:
-
-- Purpose of the study
-- Provides a general idea of how music & csp fit together
-
-Section 2: Music Theory Background: 
-
-- Melody, Harmony, Rhythm, Bass (fundamentals showcased in [M0] documentary)
-- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios
-
-Section 3: Background on previous Experiments that:
-
-- use Software to generate or compose Music (eg. by using Machine Learning)
-- relate Music to Mathematics & AI in general
-
-Section 4: Model Musical Patterns using CSP
-
-Section 5: Conclusions
-
 ## 1. Introduction
 
 Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
