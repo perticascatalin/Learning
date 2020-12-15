@@ -15,11 +15,7 @@ Music is a special kind of art form because of its duality: it is created from i
 
 Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
-The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step.
-
-If we take a look at more modern music, such as (pop-)rock ballads for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: G-D-Em-C, part B: Em-D-C-G, part C (after every A & B): G-D-C-GAmG. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A major pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
-
-In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this, one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. A similar idea is tackled for the structure of a rock song in section 4.3.
 
 ## 2. Music Theory Background
 
@@ -82,7 +78,7 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment.
+[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. Based on this related study, I make my own preliminary attempt at modelling a rock song harmonization as a CSP in section 4.3.
 
 ### 4.1 All Interval Series
 
@@ -99,6 +95,12 @@ Automated generation of music by searching for a sequence of n musical notes whi
 - starting and ending notes are fixed: `L_1`, `L_n`
 - each note from the output should belong to a chord `Ch`
 - fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
+
+### 4.3 Harmony and Melody of a Rock Song as a Search Problem
+
+If we take a look at more modern music, such as (pop-)rock ballads for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: G-D-Em-C, part B: Em-D-C-G, part C (after every A & B): G-D-C-GAmG. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A major pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+
+In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this, one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
 
 ## 5. Conclusions
 
