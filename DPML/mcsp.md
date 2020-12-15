@@ -11,17 +11,17 @@
 
 ## 1. Introduction
 
-Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has quite a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
+Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
-The purpose of the paper and how we reach it:
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step.
 
 Section 2: Music Theory Background: 
-	- Melody, Harmony, Rhythm, Bass
+	- Melody, Harmony, Rhythm, Bass (fundamentals showcased in [M0] documentary)
 	- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios
 
 Section 3: Background on previous Experiments that:
-	- use Software to generate or compose Music
-	- relate Music to Mathematics (& AI in general)
+	- use Software to generate or compose Music (eg. by using Machine Learning)
+	- relate Music to Mathematics & AI in general
 
 Section 4: Model Musical Patterns using CSP
 
@@ -69,7 +69,7 @@ For our purpose to apply CSP to music, the most important part to understand are
 
 There have been numerous attempts to generate music using software. One of the first approaches that I heard of is [M5] - [video source](https://www.youtube.com/watch?v=A2gyidoFsoI) & [tutorial](https://www.danieldjohnson.com/2015/08/03/composing-music-with-recurrent-neural-networks/). The experiment leverages the generative power of recurrent neural networks by using many musical pieces as training data. This approach focuses on classical music (Bach) and polyphony (several instrumental tracks). RNNs and other neural networks derived from them will usually map an input sequence to an output sequence (the NN learns the mapping from the input to the output based on history and current input). However, we can also feed an RNN its own output and thus generate a potentially novel sequence - eg. generating a handwritten sequence in [M6]. Another study on how to generate music using RNNs/LSTMs is [M7].
 
-Whether deep learning with recurrent neural networks can actually compose new pieces of music of some artistic value is a debatable question. One reason to doubt this is that the whole mechanism of deep learning relies on some form of imitation. So the resulting music will be a hybrid comprised of the previously seen musical patterns at the best. In this sense, a loss function will not be able to compose a piece of music the way a human composer would do, because a composer would make music based on some deep internal senses or feelings, which are the result of human experience (I am not referring to general commercial music when making this statement). However, these generative systems look promising from the perspective of playing with music, creating variations and re-mixes, not in the sense of creating new music, but rather as an aiding system.
+Whether deep learning with recurrent neural networks can actually compose new pieces of music of some artistic value is a debatable question. One reason to doubt this is that the whole mechanism of deep learning relies on some form of imitation. So the resulting music will be a hybrid comprised of the previously seen musical patterns at the best. In this sense, a loss function will not be able to compose a piece of music the way a human composer would do, because a composer would make music based on some deep internal senses or feelings, which are the result of real life human experience (I am not referring to general commercial music when making this statement). However, these generative systems look promising from the perspective of playing with music, creating variations and re-mixes, not in the sense of creating new music, but rather as an aiding system.
 
 ### 3.2 Ideas from GEB: Canons & Fugues
 
