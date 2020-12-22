@@ -90,3 +90,34 @@ For instance, the note C, the first in C Major Scale can be accompanied by any n
 - `B D F A`
 - the fifth is diminished (denoted by b5)
 
+## 3. Natural order of musical notes (perfect fifth progression)
+
+- `C G D A E B F# C# G# D# A# F C`
+
+### 3.1 G Major
+
+- `G A B C D E F# G`
+
+### 3.2 D Major
+
+- `D E F# G A B C# D`
+
+### 3.3 A Major
+
+- `A B C# D E F# G# A`
+
+### 3.4 E Major
+
+- `E F# G# A B C# D# E`
+
+### 3.5 B Major
+
+- `B C# D# E F# G# A# B`
+
+### 3.6 F# Major
+
+- `F# G# A# B C# D# F F#`
+
+### 3.7 C# Major
+
+- `C# D# F F# G# A# C C#`
