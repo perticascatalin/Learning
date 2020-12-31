@@ -100,6 +100,8 @@ Automated generation of music by searching for a sequence of n musical notes whi
 
 If we take a look at more modern music, such as (pop-)rock ballads for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: C-G-Am-F, part B: Am-G-F-C, part C (after every A & B): C-G-F-CDmC. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
 
+[Songs in Key](https://www.songkeyfinder.com/learn/songs-in-key)
+
 In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this, one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
 
 ## 5. Conclusions

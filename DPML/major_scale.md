@@ -1,9 +1,5 @@
 # The Major Scale
 
-## 0. Questions
-
-- what do you call `A, B, C, D, E, F, G` vs `A#, C#, D#, F#, G#`?
-
 ## 1. Definitions and Examples
 
 ### 1.1 Scale definition
@@ -26,16 +22,16 @@ For instance, the C Major scale: `C D E_F G A B_C`
 
 ### 1.3 Octave definition
 
-In an octave, there are 12 semitones:
+In an octave, there are 12 tones (steps on a ladder):
 
-- 7 diationic semitones (`C D E F G A B`)
-- 5 chromatic semitones (`C# D# F# G# A#`)
+- 7 diationic (natural) tones (`C D E F G A B`)
+- 5 chromatic (altered) tones (`C# D# F# G# A#`)
 
-It is important to note that the C Major scale does not contain chromatic semitones.
+It is important to note that the C Major scale does not contain chromatic tones. Also, all the diatonic tones belong to the C Major scale family of sounds, while the cromatic ones don't.
 
 ### 1.4 Transposition of the major scale
 
-However, if we analyze the D Major scale (1 tone higher than C Major), we will notice the following pattern: `D E F# G A B C# D`. This is because we need to adhere to the TTSTTTS rule for creating the major scale pattern. Eg. Going from E 1 tone up (the second T in TTSTTS, will require us to jump S(E-F)+ S (F-F#) = T, going from E to F#). Here we have 2 chromatic semitones: F# and C#. 
+However, if we analyze the D Major scale (1 tone higher than C Major), we will notice the following pattern: `D E F# G A B C# D`. This is because we need to adhere to the TTSTTTS rule for creating the major scale pattern. Eg. Going from E 1 tone up (the second T in TTSTTS, will require us to jump S(E-F)+ S (F-F#) = T, going from E to F#). Here we have 2 chromatic tones: F# and C#. 
 
 - D-E: T
 - E-F#: T
@@ -57,18 +53,18 @@ For instance, the note C, the first in C Major Scale can be accompanied by any n
 - `1 2 3_4 5 6 7_1`
 - **C** D **E** F **G** A **B** C
 - if we extract the notes at positions `1,3,5,7` we get `C E G B`.
-- we use the notation Maj7 to denote that it has a major seventh (the distance between C and B is half a tone larger than a minor seventh)
-- and because it has a major third, it is a major chord (denoted by the lack of `m`)
+- we use the notation **Maj7** to denote that it has a **major seventh** (the distance between C and B is half a tone larger than a minor seventh)
+- and because it has a **major third**, it is a **major chord** (denoted by the lack of `m`)
 
 ### 2.2 Dm7 chord
 
 - `D F A C`
-- because it has a minor third, it is a minor chord (denoted by `m`)
+- because it has a **minor third**, it is a **minor chord** (denoted by `m`)
 
 ### 2.3 Em7 chord
 
 - `E G B D`
-- because it has a minor third, it is a minor chord (denoted by `m`)
+- because it has a **minor third**, it is a **minor chord** (denoted by `m`)
 
 ### 2.4 FMaj7 chord
 
@@ -78,7 +74,7 @@ For instance, the note C, the first in C Major Scale can be accompanied by any n
 ### 2.5 G7 chord
 
 - `G B D F`
-- it is a major chord (major third) with minor seventh
+- it is a major chord (major third) with **minor seventh**
 
 ### 2.6 Am7 chord
 
