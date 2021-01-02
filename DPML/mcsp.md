@@ -38,7 +38,7 @@ For our purpose to apply CSP to music, the most important part to understand are
 
 |A-B Example|Name|Notation|Value|
 |:---------:|:--:|:------:|:---:|
-|C1-C1|unison (perfect)|1P|0|
+|C0-C0|unison (perfect)|1P|0|
 |C-C#|augmented unison (semitone)|1+|0.5|
 |C-Db|minor second (semitone)|2m|0.5|
 |C-D|major second (tone)|2M|1|
