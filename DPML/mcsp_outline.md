@@ -1,4 +1,4 @@
-# Constraint Programming applied to Music: Outline
+# Constraint Satisfaction in Music: Outline
 
 ### Structure & Contents
 

@@ -1,4 +1,4 @@
-# Constraint Programming applied to Music: Report
+# Constraint Satisfaction in Music: Report
 
 ### Abstract
 
@@ -36,15 +36,15 @@ For our purpose to apply CSP to music, the most important part to understand are
 
 **Interval Notation** (source: [M4]):
 
-|A-B Example|Name|Notation|
-|:---------:|:--:|:------:|
-|C1-C1|unison (perfect)|1P|
-|C-C#|augmented unison (semitone)|1+|
-|C-Db|minor second (semitone)|2m|
-|C-D|major second (tone)|2M|
-|C-D#|augmented second (tone + semitone)|2+|
-|C-Eb|minor third (tone + semitone)|3m|
-|C-E|major third (2 tones)|3M|
+|A-B Example|Name|Notation|Value|
+|:---------:|:--:|:------:|:---:|
+|C1-C1|unison (perfect)|1P|0|
+|C-C#|augmented unison (semitone)|1+|0.5|
+|C-Db|minor second (semitone)|2m|0.5|
+|C-D|major second (tone)|2M|1|
+|C-D#|augmented second (tone + semitone)|2+|1.5|
+|C-Eb|minor third (tone + semitone)|3m|1.5|
+|C-E|major third (2 tones)|3M|2|
 |...|...|...|
 
 **Important Note**: Even if the number of steps in an interval are equal (eg. both 2+ and 3m are 1 tone + 1 semitone long), their quality might differ and therefore their sound effect as well. This is where the distinction between an interval's quantity vs. quality appears.
@@ -78,7 +78,9 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. Based on this related study, I make my own preliminary attempt at modelling a rock song harmonization as a CSP in section 4.3.
+[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are show-cased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section.
+
+Based on this related studies, **I make my own preliminary attempt at modelling a rock song harmonization as a CSP in section 4.3** (todo: might change).
 
 ### 4.1 All Interval Series
 
@@ -87,6 +89,8 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - variables `v_1`, `v_2` ... `v_n` with domains `[1..n]`, `[1..n]` ... `[1..n]`
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
+
+Although the related studies do not mention this, the concept of using 12 different pitches (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the twelve-tone serialism method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody to not belong to a specific key.
 
 ### 4.2 Jarrell's CSP
 
@@ -98,9 +102,10 @@ Automated generation of music by searching for a sequence of n musical notes whi
 
 ### 4.3 Harmony and Melody of a Rock Song as a Search Problem
 
-If we take a look at more modern music, such as (pop-)rock ballads for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: C-G-Am-F, part B: Am-G-F-C, part C (after every A & B): C-G-F-CDmC. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+If we take a look at more modern music, such as pop / rock songs for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: C-G-Am-F, part B: Am-G-F-C, part C (after every A & B): C-G-F-CDmC. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
 
 [Songs in Key](https://www.songkeyfinder.com/learn/songs-in-key)
+
 [Let it Be C Major](https://www.pianote.com/blog/how-to-play-let-it-be-piano/)
 
 In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this, one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
@@ -123,3 +128,4 @@ The Swallow Tail, Salvador Dali's last painting, based on mathematical catastrop
 - [M5] Generating Polyphonic Music using Tied Parallel Networks, Daniel D. Johnson, 2017, *International Conference on Evolutionary and Biologically Inspired Music, Sound, Art and Design*
 - [M6] Generating Sequences with Recurrent Neural Networks, Alex Graves, 2014, *ArXiv: Neural and Evolutionary Computing*
 - [M7] A First Look at Music Composition using LSTM Recurrent Neural Networks, Douglas Eck & Juergen Schmidthueber, 2002, *Technical Report IDSIA*
+- [M8] Twelve-tone Technique, [Wikipedia](https://en.wikipedia.org/wiki/Twelve-tone_technique)
