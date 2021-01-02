@@ -15,7 +15,7 @@ Music is a special kind of art form because of its duality: it is created from i
 
 Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
-The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. A similar idea is tackled for the structure of a rock song in section 4.3.
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. A similar idea is tackled for the structure of a rock song in section 4.6.
 
 ## 2. Music Theory Background
 
@@ -78,9 +78,9 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are show-cased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section.
+[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are show-cased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
 
-Based on this related studies, **I make my own preliminary attempt at modelling a rock song harmonization as a CSP in section 4.3** (todo: might change).
+Based on these related studies, **I make my own attempt at modelling a rock song harmonization as a CSP in section 4.4** (todo: might change).
 
 ### 4.1 All Interval Series
 
@@ -90,17 +90,25 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
 
-Although the related studies do not mention this, the concept of using 12 different pitches (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the twelve-tone serialism method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody to not belong to a specific key.
+Although the related studies do not mention this, the concept of using 12 different pitches (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody to not belong to a specific key.
 
-### 4.2 Jarrell's CSP
+[Sample from serialist composer Schoenberg](https://www.youtube.com/watch?v=vqODySSxYpc)
 
-Automated generation of music by searching for a sequence of n musical notes which adhere to a set of rules / constraints. These are:
+### 4.2 Michael Jarell: Automated Generation of Music through Search
+
+This application attempts to formalize a kind of automated generation of music by searching for a sequence of n musical notes which adhere to a set of rules / constraints. These are:
 
 - starting and ending notes are fixed: `L_1`, `L_n`
 - each note from the output should belong to a chord `Ch`
 - fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
 
-### 4.3 Harmony and Melody of a Rock Song as a Search Problem
+### 4.3 Fabien Levy: Chord Progressions with Common Notes
+
+### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
+
+### 4.5 Travelling Salesman Problem on Chords
+
+### 4.6 Harmony and Melody of a Rock Song as a Search Problem
 
 If we take a look at more modern music, such as pop / rock songs for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: C-G-Am-F, part B: Am-G-F-C, part C (after every A & B): C-G-F-CDmC. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
 

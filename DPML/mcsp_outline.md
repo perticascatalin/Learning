@@ -21,7 +21,7 @@ Section 3: Background on previous Research & Experiments:
 Section 4: Model Musical Patterns using CSP
 
 - Related research examples (4.1 & 4.2, more can be found in Musical Constraint Satisfaction Problems Solved with Adaptive Search)
-- Own preliminary attempt at modelling the construction of a rock song as a CSP (4.3)
+- Own attempt at modelling the construction of a rock song as a CSP (4.6)
 
 Section 5: Conclusions
 
