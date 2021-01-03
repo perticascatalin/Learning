@@ -26,7 +26,7 @@ vector <string> common_notes[LM][LM];
 
 // Variables related to backtracking and search
 int sol[NM];
-int num_sol = 10;
+int num_sol = 100;
 int total_sol;
 
 double double_mod(double num, int m) {
@@ -102,9 +102,21 @@ void establish_relations() {
 		}
 }
 
-int valid(int min_nc, max_nc, length) {
-	for (int i = 1; i < length; ++i)
+int valid(int min_nc, int max_nc, int length) {
+	for (int i = 1; i < length; ++i) {
+		int c1 = sol[i-1];
+		int c2 = sol[i];
+		if (common_notes[c1][c2].size() < min_nc || common_notes[c1][c2].size() > max_nc) return 0;
+	}
+	return 1;
+}
 
+void print_sol(int length) {
+	for (int i = 0; i < length; ++i) {
+		string ch = c_major_ch[sol[i]];
+		cout << ch << " ";
+	}
+	cout << "\n";
 }
 
 void generate(int pos, int min_nc, int max_nc, int length) {
@@ -118,14 +130,14 @@ void generate(int pos, int min_nc, int max_nc, int length) {
 	for (int i = 0; i < c_major_num; ++i) {
 		sol[pos] = i;
 		generate(pos + 1, min_nc, max_nc, length);
+		if (total_sol >= num_sol) return;
 	}
-	if (total_sol >= num_sol) return;
 }
 
 // C Major scale chord progression generator
 // start/end: starting/ending chord index (eg. 0 for C, 1 for D...)
 // min_nc/max_nc: how many notes should 2 successive chords have in common
-// length: the lenght of the chords progression
+// length: the length of the chords progression
 void generate_chords(int start, int end, int min_nc, int max_nc, int length) {
 	sol[0] = start;
 	sol[length - 1] = end;
@@ -137,7 +149,11 @@ int main() {
 	create_chords();
 	establish_relations();
 	total_sol = 0;
-	generate_chords(0, 0, 1, 1, 8);
+	generate_chords(2, 2, 0, 0, 8); // 0 common notes progression from E
+	total_sol = 0;
+	generate_chords(0, 0, 1, 1, 8); // 1 common note progression from C
+	total_sol = 0;
+	generate_chords(1, 1, 2, 2, 8); // 2 common notes progression from D
 	// Test double mod
 	// cout << double_mod(7.75, L1) << "\n";
 
