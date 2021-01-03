@@ -72,9 +72,19 @@ void create_chords() {
 	}
 }
 
+void establish_relations() {
+	cout << "\n" << "4. Establish relations between C Major scale harmonic chords" << "\n\n";
+	for (int i = 0; i < c_major_num; ++i)
+		for (int j = 0; j < c_major_num; ++j){
+			string ch_1 = c_major_ch[i];
+			string ch_2 = c_major_ch[j];
+		}
+}
+
 int main() {
 	read_input();
 	create_chords();
+	establish_relations();
 	// Test double mod
 	// cout << double_mod(7.75, L1) << "\n";
 
