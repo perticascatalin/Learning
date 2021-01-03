@@ -145,17 +145,25 @@ void generate_chords(int start, int end, int min_nc, int max_nc, int length) {
 }
 
 int main() {
+	// Test double mod
+	// cout << double_mod(7.75, L1) << "\n";
 	read_input();
 	create_chords();
 	establish_relations();
 	total_sol = 0;
+	cout << "\n" << "Various starts, various num common notes exact" << "\n\n";
 	generate_chords(2, 2, 0, 0, 8); // 0 common notes progression from E
 	total_sol = 0;
 	generate_chords(0, 0, 1, 1, 8); // 1 common note progression from C
 	total_sol = 0;
 	generate_chords(1, 1, 2, 2, 8); // 2 common notes progression from D
-	// Test double mod
-	// cout << double_mod(7.75, L1) << "\n";
+	cout << "\n" << "All from C, various num common notes exact" << "\n\n";
+	total_sol = 0;
+	generate_chords(0, 0, 0, 0, 8); // 0 common notes progression from E
+	total_sol = 0;
+	generate_chords(0, 0, 1, 1, 8); // 1 common note progression from C
+	total_sol = 0;
+	generate_chords(0, 0, 2, 2, 8); // 2 common notes progression from D
 
 	return 0;
 }
