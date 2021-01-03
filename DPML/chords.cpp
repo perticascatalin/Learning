@@ -5,18 +5,23 @@
 #include <map>
 
 using namespace std;
+#define LM 7
 
-map <string, double> ch_pos;
-map <double, string> pos_ch;
-int ch_num;
+// Variables related to diatonic and chromatic notes absolute position
+map <string, double> note_pos;
+map <double, string> pos_note;
+int notes_num;
 int L1 = 6;
 
+// Variables related to the C Major scale steps and harmonic chords
 vector <string> c_major_step;
 vector <string> c_major_ch;
 int c_major_num;
 int L2 = 7;
 
+// Variables related to chords and the notes they consist of
 map <string, vector<string> > chord_notes;
+vector <string> common_notes[LM][LM];
 
 double double_mod(double num, int m) {
 	int inum = int(num);
@@ -25,17 +30,17 @@ double double_mod(double num, int m) {
 }
 
 void read_input() {
-	ifstream cin1("ch_pos.in");
+	ifstream cin1("note_pos.in");
 	ifstream cin2("c_major_ch.in");
 
 	cout << "\n" << "1. Diatonic & chromatic notes mapped to their absolute position" << "\n\n";
-	cin1 >> ch_num;
-	for (int i = 0; i < ch_num; ++i) {
-		string ch; double pos;
-		cin1 >> ch >> pos;
-		cout << ch << " " << pos << "\n";
-		ch_pos[ch] = pos;
-		pos_ch[pos] = ch;
+	cin1 >> notes_num;
+	for (int i = 0; i < notes_num; ++i) {
+		string note; double pos;
+		cin1 >> note >> pos;
+		cout << note << " " << pos << "\n";
+		note_pos[note] = pos;
+		pos_note[pos] = note;
 	}
 
 	cout << "\n" << "2. Chords (& roots) in C Major scale" << "\n\n";
@@ -59,14 +64,10 @@ void create_chords() {
 	for (int i = 0; i < c_major_num; ++i) {
 		cout << c_major_ch[i] << "\n";
 		vector <string> ch_notes;
-		// Add root
-		ch_notes.push_back(c_major_step[i]);
-		// Add third
-		ch_notes.push_back(c_major_step[(i+2) % L2]);
-		// Add fifth
-		ch_notes.push_back(c_major_step[(i+4) % L2]);
-		for (int j = 0; j < ch_notes.size(); ++j)
-			cout << ch_notes[j] << " ";
+		ch_notes.push_back(c_major_step[i]);			// Add root
+		ch_notes.push_back(c_major_step[(i+2) % L2]);	// Add third
+		ch_notes.push_back(c_major_step[(i+4) % L2]);	// Add fifth
+		for (int j = 0; j < ch_notes.size(); ++j) cout << ch_notes[j] << " ";
 		cout << "\n";
 		chord_notes[c_major_ch[i]] = ch_notes;
 	}
@@ -78,6 +79,20 @@ void establish_relations() {
 		for (int j = 0; j < c_major_num; ++j){
 			string ch_1 = c_major_ch[i];
 			string ch_2 = c_major_ch[j];
+			for (int k = 0; k < chord_notes[ch_1].size(); ++k)
+				for (int l = 0; l < chord_notes[ch_2].size(); ++l)
+					if (chord_notes[ch_1][k] == chord_notes[ch_2][l]) 
+						common_notes[i][j].push_back(chord_notes[ch_1][k]);
+		}
+
+	for (int i = 0; i < c_major_num; ++i)
+		for (int j = 0; j < c_major_num; ++j){
+			string ch_1 = c_major_ch[i];
+			string ch_2 = c_major_ch[j];
+			cout << ch_1 << " and " << ch_2 << ": ";
+			for (int k = 0; k < common_notes[i][j].size(); ++k)
+				cout << common_notes[i][j][k] << " ";
+			cout << "\n";
 		}
 }
 
