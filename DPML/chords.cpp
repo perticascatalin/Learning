@@ -16,21 +16,18 @@ vector <string> c_major_ch;
 int c_major_num;
 int L2 = 7;
 
-double double_mod(double num, int m)
-{
+double double_mod(double num, int m) {
 	int inum = int(num);
 	double rem = num - inum;
 	return (inum % m) + rem;
 }
 
-int main()
-{
+void read_input() {
 	ifstream cin1("ch_pos.in");
 	ifstream cin2("c_major_ch.in");
 
 	cin1 >> ch_num;
-	for (int i = 0; i < ch_num; ++i)
-	{
+	for (int i = 0; i < ch_num; ++i) {
 		string ch; double pos;
 		cin1 >> ch >> pos;
 		cout << ch << " " << pos << "\n";
@@ -38,25 +35,25 @@ int main()
 		pos_ch[pos] = ch;
 	}
 
-	// Test double mod
-	// cout << double_mod(7.75, L1) << "\n";
-
 	cin2 >> c_major_num;
-	for (int i = 0; i < c_major_num; ++i)
-	{
+	for (int i = 0; i < c_major_num; ++i) {
 		string step;
 		cin2 >> step;
 		c_major_step.push_back(step);
 	}
-	for (int i = 0; i < c_major_num; ++i)
-	{
+	for (int i = 0; i < c_major_num; ++i) {
 		string chord;
 		cin2 >> chord;
 		c_major_ch.push_back(chord);
 	}
+	for (int i = 0; i < c_major_ch.size(); ++i)
+		cout << c_major_ch[i] << "\n";
+}
 
-	cout << "Reached this place !!" << "\n";
-	for (int i = 0; i < c_major_ch.size(); ++i) cout << c_major_ch[i] << "\n";
+int main() {
+	read_input();
+	// Test double mod
+	// cout << double_mod(7.75, L1) << "\n";
 
 	return 0;
 }
