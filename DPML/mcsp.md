@@ -104,7 +104,7 @@ This application attempts to formalize a kind of automated generation of music b
 - each note from the output should belong to a chord `Ch`
 - fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
 
-As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` (`L_i ∈ S(Ch)`).
+As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` - `L_i ∈ S(Ch)`.
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
@@ -114,7 +114,15 @@ As mentioned in [M2], the second constraint: the variable for the i-th note `L_i
 
 ### 4.6 Harmony and Melody of a Rock Song as a Search Problem
 
-If we take a look at more modern music, such as pop / rock songs for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played. For instance, *"Let it be"* by Beatles has part A: C-G-Am-F, part B: Am-G-F-C, part C (after every A & B): C-G-F-CDmC. The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+If we take a look at more modern music, such as pop / rock songs for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played.
+
+For instance, *"Let it be"* by Beatles has:
+
+- part A: `C-G-Am-F`
+- part B: `Am-G-F-C`
+- part C (after every A & B): `C-G-F-CDmC`. 
+
+The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
 
 [Songs in Key](https://www.songkeyfinder.com/learn/songs-in-key)
 
