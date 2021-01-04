@@ -4,9 +4,9 @@
 
 Music is a special kind of art form because of the following duality: it is created from inspiration, but at the same time, it has a mathematical basis - its representation is very clear and precise and sounds need to follow certain rules in order to be compatible with each other and to create a pleasant response in the listener's mind.
 
-In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. This study attempts to explore some of the basics in music theory in order to identify constraint satisfaction problems in music and to find out ways in which constraint programming could be applied to music. The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers do "manually" or "by ear".
+In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. **This study attempts to explore some of the basics in music theory in order to identify constraint satisfaction problems in music and to find out ways in which constraint programming could be applied to music.** The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers do "manually" or "by ear".
 
-Therefore, the fundamental premise is to leave composition to composers and when it comes to fitting musical patterns together, then use computational power to search for potential solutions adhering to the required musical rules. The examples used here will range from classical music canons to rock songs improvisation & harmonization. These will illustrate how harmony, melody, intervals and chords can be defined using sets and then how these relate to each other based on constraints extracted from music theory.
+Therefore, the fundamental premise is to leave composition to composers and when it comes to fitting musical patterns together, then use computational power to search for potential solutions adhering to the required musical rules. The examples used here will range from classical music canons to rock songs improvisation & harmonization. **These will illustrate how harmony, melody, intervals and chords can be defined using sets and then how these relate to each other based on constraints extracted from music theory.**
 
 ### Goals
 
@@ -89,9 +89,9 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are show-cased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
+My starting point for modelling musical patterns using constraint programming are the ideas presented in [M1] and [M2]. This section showcases these ideas and makes further progress in formalizing the discovered problems as constraint satisfaction problems.[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are showcased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
 
-Based on these related studies, **I make my own attempt at modelling a rock song harmonization as a CSP in section 4.4** (**TODO: Should Change because you don't say nothing**).
+Based on these related studies,I make my own attempt at modelling a rock song harmonization as a CSP in section 4.6 (**TODO: Should Change because you don't say nothing**).
 
 ### 4.1 All Interval Series
 
@@ -125,7 +125,7 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 - generate a sequence of intervals: `2, 1.5` and then constrain the resulting notes to be in a set
 - generate a sequence of notes from the chord set: `E, G` and then constrain the resulting intervals
 
-Since the first model is the preferred choice in these studies, let us further formalize it:
+**TODO: Since the first model is the preferred choice in these studies, let us further formalize it:**
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
