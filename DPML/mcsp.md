@@ -143,6 +143,7 @@ For instance, *"Let it be"* by Beatles has:
 
 **Table 3. Sample Chord progression in a song**
 
+|Theme|Progression|
 |:----:|:----------:|
 |Part A | `C-G-Am-F` |
 |Part B | `Am-G-F-C` |
