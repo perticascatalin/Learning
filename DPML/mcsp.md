@@ -2,12 +2,16 @@
 
 ### Abstract
 
-Music is a special kind of art form because of its duality: it is created from inspiration, but at the same time, it has a mathematical basis: its representation is very clear and precise and sounds need to follow certain rules in order to be compatible with each other and to create a pleasant response in the listener's mind. In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. This study attempts to explore some of the basics in music theory in order to identify ways in which constraint programming could be applied to music. The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers have to do "manually". Therefore, the fundamental premise is to leave composition to composers and if it comes to fitting musical patterns together, then use computational power to search for potential solutions adhering to the required musical rules (eg. classical music canons, rock songs improvisation & harmonization).
+Music is a special kind of art form because of the following duality: it is created from inspiration, but at the same time, it has a mathematical basis - its representation is very clear and precise and sounds need to follow certain rules in order to be compatible with each other and to create a pleasant response in the listener's mind.
+
+In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. This study attempts to explore some of the basics in music theory in order to identify constraint satisfaction problems in music and to find out ways in which constraint programming could be applied to music. The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers do "manually" or "by ear".
+
+Therefore, the fundamental premise is to leave composition to composers and when it comes to fitting musical patterns together, then use computational power to search for potential solutions adhering to the required musical rules. The examples used here will range from classical music canons to rock songs improvisation & harmonization. These will illustrate how harmony, melody, intervals and chords can be defined using sets and then how these relate to each other based on constraints extracted from music theory.
 
 ### Goals
 
 - Briefly look over music theory to understand how musical patterns are represented
-- Provide background on computer assisted (musical) composition
+- Provide background on computer assisted composition (background research)
 - Investigate combinatorial problems resulting from modelling musical patterns as CSPs
 - Experimental work in progress
 
@@ -15,7 +19,12 @@ Music is a special kind of art form because of its duality: it is created from i
 
 Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
-The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a string of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. A similar idea is tackled for the structure of a rock song in section 4.6.
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a sequence of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. 
+
+
+**TODO: Shoud revise because lacks development wrt. the abstract**
+
+A similar idea is tackled for the structure of a rock song in section 4.6.
 
 ## 2. Music Theory Background
 
@@ -82,7 +91,7 @@ Musical Samples mentioned in [M3]:
 
 [M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are show-cased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
 
-Based on these related studies, **I make my own attempt at modelling a rock song harmonization as a CSP in section 4.4** (todo: might change).
+Based on these related studies, **I make my own attempt at modelling a rock song harmonization as a CSP in section 4.4** (**TODO: Should Change because you don't say nothing**).
 
 ### 4.1 All Interval Series
 
@@ -98,7 +107,7 @@ Although the related studies do not mention this, the concept of using 12 differ
 
 [Sample from serialist composer Schoenberg](https://www.youtube.com/watch?v=vqODySSxYpc)
 
-### 4.2 Michael Jarell: Automated Generation of Music through Search
+### 4.2 Michael Jarrel: Automated Generation of Music through Search
 
 This application attempts to formalize a kind of automated generation of music by searching for a sequence of n musical notes which adhere to a set of rules / constraints. These are:
 
@@ -111,7 +120,7 @@ As mentioned in [M2], the second constraint: the variable for the i-th note `L_i
 
 In order to determine the set of notes for a chord, we can simply take a look at how chords are built. Most fundamental chords are built on the 1st, 3rd and 5th notes (starting from a root note). For instance, the C major chord, will contain the notes: `C, E and G`. To determine whether the chord is minor or major, we look at the interval between the 1st note and the 3rd note (see Table 2). If it is a minor third, than the chord is minor, otherwise it's a major third interval and the chord is major. In the case of C major, we have a distance of 2 tones between C and E, so the chord containing C, E and G is the C major chord (see [M9] for more details). To get the C minor chord, we have to flat out the 3rd note one semitone (b flat), resulting in C, Eb and G. The distance between C and Eb is 1 tone and a half. We can also add the 7th note (from C), 9th and so on, in order to get more complex and colorful chords (like the ones which can be heard in jazz genres).
 
-Going further into analyzing this musical constraint satisfaction setup, the motives (also referred to as gestures in [M2]), are simply interval patterns, so if I were to successively play C, E and G, I would get 2 intervals: C-E a major third (2) and E-G a minor third (1.5). At this point, 2 ways to model this problem arise:
+Going further into analyzing this musical constraint satisfaction setup (now looking at the third constraint), the motives (also referred to as gestures in [M2]), are simply interval patterns, so if I were to successively play C, E and G, I would get 2 intervals: C-E a major third (2) and E-G a minor third (1.5). At this point, 2 ways to model this problem arise:
 
 - generate a sequence of intervals: `2, 1.5` and then constrain the resulting notes to be in a set
 - generate a sequence of notes from the chord set: `E, G` and then constrain the resulting intervals
