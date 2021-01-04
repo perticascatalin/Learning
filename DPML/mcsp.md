@@ -9,7 +9,7 @@ Music is a special kind of art form because of its duality: it is created from i
 - Briefly look over music theory to understand how musical patterns are represented
 - Provide background on computer assisted (musical) composition
 - Investigate combinatorial problems resulting from modelling musical patterns as CSPs
-- Experimental part left as future work
+- Experimental work in progress
 
 ## 1. Introduction
 
@@ -89,6 +89,8 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - variables `v_1`, `v_2` ... `v_n` with domains `[1..n]`, `[1..n]` ... `[1..n]`
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
+
+**Note**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave. However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between) are then directly measured in tones, like they are in music.
 
 Although the related studies do not mention this, the concept of using 12 different pitches (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody to not belong to a specific key.
 
