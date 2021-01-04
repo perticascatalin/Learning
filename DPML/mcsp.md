@@ -90,9 +90,9 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
 
-**Note**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave. However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between) are then directly measured in tones, like they are in music.
+**Note**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave, with `n = 12`. Depending on the use case, we might want to use notes or pitches (= notes + octave, then we go above 12, but 13 will simply represent note 1, with an octave higher - eg. note 1 is C0, then note 13 is C1). However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between 2 notes) are then directly measured in tones, like they are in music (eg. `tone + semitone = 1.5`, and not 3).
 
-Although the related studies do not mention this, the concept of using 12 different pitches (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody to not belong to a specific key.
+Although the related studies do not mention this, the concept of using 12 different pitches / notes (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody not to belong to a specific key.
 
 [Sample from serialist composer Schoenberg](https://www.youtube.com/watch?v=vqODySSxYpc)
 
@@ -103,6 +103,8 @@ This application attempts to formalize a kind of automated generation of music b
 - starting and ending notes are fixed: `L_1`, `L_n`
 - each note from the output should belong to a chord `Ch`
 - fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
+
+As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` (`L_i ∈ S(Ch)`).
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
