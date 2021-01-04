@@ -6,7 +6,7 @@ Music is a special kind of art form because of the following duality: it is crea
 
 In recent years there have been a number of attempts to compose music in an autonomous way by using machine learning techniques. **This study attempts to explore some of the basics in music theory in order to identify constraint satisfaction problems in music and to find out ways in which constraint programming could be applied to music.** The focus is not to automatically generate music, but rather to identify ways of leveraging declarative programming and search techniques for the purpose of solving harmony and melody problems ([M2]), which is what many human composers do "manually" or "by ear".
 
-Therefore, the fundamental premise is not to try and automate music composition, but to assist fitting musical patterns together through use of computational power in searching for potential solutions adhering to the required musical rules. The examples in this study range from classical music canons to rock songs improvisation & harmonization. **These will illustrate how harmony, melody, intervals and chords can be defined using sets and then how these relate to each other based on constraints extracted from music theory.**
+Therefore, the fundamental premise is not to try and automate music composition, but to assist fitting musical patterns together through the use of computational power in searching for potential solutions adhering to the required musical rules. The examples in this study range from classical music canons to rock songs improvisation & harmonization. **These will illustrate how harmony, melody, intervals and chords can be defined using sets and then how these relate to each other based on constraints extracted from music theory.**
 
 ### Goals
 
@@ -179,7 +179,7 @@ Constraints identified:
 - RELATIVE SCALES
 - NUMBER OF COMMON NOTES BETWEEN 2 SUCCESSIVE CHORDS
 
-I think solving harmony and melody problems by using search techniques would have more value than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
+I think solving harmony and melody problems by using search techniques would have more value (/ would be more practical) than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
 
 ![Dali's Swallowtail](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/swallow_tail.jpg)
 
