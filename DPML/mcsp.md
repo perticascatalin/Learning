@@ -107,7 +107,16 @@ This application attempts to formalize a kind of automated generation of music b
 - fixed number of occurences for motives (a motif is a sequence of intervals)
 - `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`
 
-As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` - `L_i ∈ S(Ch)`. In order to determine the set of notes for a chord, we can simply take a look at how chords are built. Most fundamental chords are built on the 1st, 3rd and 5th notes (starting from a root note). For instance, the C major chord, will contain the notes: `C, E and G`. To determine whether the chord is minor or major, we look at the interval between the 1st note and the 3rd note. If it is a minor third, than the chord is minor, otherwise it's major.  
+As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` - `L_i ∈ S(Ch)`.
+
+In order to determine the set of notes for a chord, we can simply take a look at how chords are built. Most fundamental chords are built on the 1st, 3rd and 5th notes (starting from a root note). For instance, the C major chord, will contain the notes: `C, E and G`. To determine whether the chord is minor or major, we look at the interval between the 1st note and the 3rd note (see Table 2). If it is a minor third, than the chord is minor, otherwise it's a major third interval and the chord is major. In the case of C major, we have a distance of 2 tones between C and E, so the chord containing C, E and G is the C major chord (see [M9] for more details). To get the C minor chord, we have to flat out the 3rd note one semitone (b flat), resulting in C, Eb and G. The distance between C and Eb is 1 tone and a half. We can also add the 7th note (from C), 9th and so on, in order to get more complex and colorful chords (like the ones which can be heard in jazz genres).
+
+Going further into analyzing this musical constraint satisfaction setup, the motives (also referred to as gestures in [M2]), are simply interval patterns, so if I were to successively play C, E and G, I would get 2 intervals: C-E a major third (2) and E-G a minor third (1.5). At this point, 2 ways to model this problem arise:
+
+- generate a sequence of intervals: `2, 1.5` and then constrain the resulting notes to be in a set
+- generate a sequence of notes from the chord set: `E, G` and then constrain the resulting intervals
+
+Since the first model is the preferred choice in these studies, let us further formalize it:
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
@@ -152,3 +161,4 @@ The Swallow Tail, Salvador Dali's last painting, based on mathematical catastrop
 - [M6] Generating Sequences with Recurrent Neural Networks, Alex Graves, 2014, *ArXiv: Neural and Evolutionary Computing*
 - [M7] A First Look at Music Composition using LSTM Recurrent Neural Networks, Douglas Eck & Juergen Schmidthueber, 2002, *Technical Report IDSIA*
 - [M8] Twelve-tone Technique, [Wikipedia](https://en.wikipedia.org/wiki/Twelve-tone_technique)
+- [M9] Major Scale Study, myself, 2020
