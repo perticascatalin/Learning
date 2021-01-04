@@ -28,13 +28,15 @@ The purpose of this study is to explore the fundamentals of music and its mathem
 
 For our purpose to apply CSP to music, the most important part to understand are intervals & scales. Thus, in the coming paragraphs I will focus on their representation. Chords & arpeggios are slightly more advanced musical topics and studying them does not necessarily help towards realizing the purpose of this study.
 
+**Table 1. Basic Concepts**:
+
 |Musical Representation|Explanation|
 |:-----------------------:|-----------|
 |![Standard Scale](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/scale.png)|Western music has a 12 note musical system. These can be obtained by taking the 7 basic notes (**A, B, C, D, E, F, G**) and then augmenting (# - sharp) or diminishing (b - flat) each with half a tone (semitone). The image to the left showcases a score with standard G tuning (key).|
 |![Circle of Tonality](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/notes_circle.png)|To note that the distance between notes varies, thus we have **1 tone** between G-A, A-B, C-D, D-E, F-G and **1 semitone** between B-C and E-F. Note that from G onwards, the notes repeat themselves (same notes, but higher pitch). This is referred to as **octaviation** (8 notes to get back to where we were). See image to the left ([image source](https://ezra-sandzer-bell.medium.com/music-theory-foundations-in-a-few-lines-of-code-90026efb5b23)).|
 |![Major Scale Intervals](https://github.com/perticascatalin/open_nenos/blob/master/DPML/imgs/c_scale.png?raw=true)|**The Major Scale** is comprised of 5 tones and 2 semitones. The image to the left shows the C major scale (**C-D-E-F-G-A-B-C**) together with its intervals. By transposing 1 tone higher, we get the D major scale (**D-E-F#-G-A-B-C#-D**). Image source and explanation from [M4].|
 
-**Interval Notation** (source: [M4]):
+**Table 2. Interval Notation** (source: [M4]):
 
 |A-B Example|Name|Notation|Value|
 |:---------:|:--:|:------:|:---:|
@@ -47,7 +49,7 @@ For our purpose to apply CSP to music, the most important part to understand are
 |C-E|major third (2 tones)|3M|2|
 |...|...|...|
 
-**Important Note**: Even if the number of steps in an interval are equal (eg. both 2+ and 3m are 1 tone + 1 semitone long), their quality might differ and therefore their sound effect as well. This is where the distinction between an interval's quantity vs. quality appears.
+**Note 1**: Even if the number of steps in an interval are equal (eg. both 2+ and 3m are 1 tone + 1 semitone long), their quality might differ and therefore their sound effect as well. This is where the distinction between an interval's quantity vs. quality appears.
 
 [More on intervals quality](https://www.earmaster.com/wiki/music-memos/what-are-intervals-in-music.html) - Perfect, Diminished, Augmented, Major & Minor
 
@@ -90,7 +92,7 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
 
-**Note**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave, with `n = 12`. Depending on the use case, we might want to use notes or pitches (= notes + octave, then we go above 12, but 13 will simply represent note 1, with an octave higher - eg. note 1 is C0, then note 13 is C1). However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between 2 notes) are then directly measured in tones, like they are in music (eg. `tone + semitone = 1.5`, and not 3).
+**Note 2**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave, with `n = 12`. Depending on the use case, we might want to use notes or pitches (= notes + octave, then we go above 12, but 13 will simply represent note 1, with an octave higher - eg. note 1 is C0, then note 13 is C1). However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between 2 notes) are then directly measured in tones, like they are in music (eg. `tone + semitone = 1.5`, and not 3).
 
 Although the related studies do not mention this, the concept of using 12 different pitches / notes (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody not to belong to a specific key.
 
@@ -102,9 +104,10 @@ This application attempts to formalize a kind of automated generation of music b
 
 - starting and ending notes are fixed: `L_1`, `L_n`
 - each note from the output should belong to a chord `Ch`
-- fixed number of occurences for motives (a motif is a sequence of intervals): `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`.
+- fixed number of occurences for motives (a motif is a sequence of intervals)
+- `OM_1`, `OM_2` ... `OM_A` for motives `M_1`, `M_2` ... `M_A`
 
-As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` - `L_i ∈ S(Ch)`.
+As mentioned in [M2], the second constraint: the variable for the i-th note `L_i` to belong to a chord `Ch` is analogous to stating that `L_i` should belong to a fixed set `S(Ch)`, where `S(Ch)` are all the notes in chord `Ch` - `L_i ∈ S(Ch)`. In order to determine the set of notes for a chord, we can simply take a look at how chords are built. Most fundamental chords are built on the 1st, 3rd and 5th notes (starting from a root note). For instance, the C major chord, will contain the notes: `C, E and G`. To determine whether the chord is minor or major, we look at the interval between the 1st note and the 3rd note. If it is a minor third, than the chord is minor, otherwise it's major.  
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
@@ -122,7 +125,7 @@ For instance, *"Let it be"* by Beatles has:
 - part B: `Am-G-F-C`
 - part C (after every A & B): `C-G-F-CDmC`. 
 
-The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For "Let it be", we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For *"Let it be"*, we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
 
 [Songs in Key](https://www.songkeyfinder.com/learn/songs-in-key)
 
