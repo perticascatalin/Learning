@@ -127,6 +127,8 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 
 **TODO 3: Since the first model is the preferred choice in these studies, let us further formalize it:**
 
+**TODO 4: intervals as relative to previous note or to the root note**
+
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
 ### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
@@ -152,6 +154,18 @@ The chords make the harmony for the melody and within each chord there is only a
 In order to model this kind of musical structures using CSP, we would need to have a set of variables for the chords progression (harmony) and a set of variables for the melody. Then the search problem would consist of finding the right scales within the chosen chords progression. The scales then determine the domain for the melody variables. On top of this, one can then add all kinds of rules to either avoid too much repetition in the melody or to use some recurring themes.
 
 ## 5. Conclusions
+
+**MEGA TODO**
+
+Constraints identified:
+
+- DIFFERENT NOTES, DIFFERENT INTERVALS
+- NOTES (STEPS) IN A SCALE
+- INTERVALS IN A THEME
+
+- CHORDS IN A SCALE FAMILY
+- NUMBER OF COMMON NOTES BETWEEN 2 SUCCESSIVE CHORDS
+- ...
 
 I think solving harmony and melody problems by using search techniques would have more value than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
 
