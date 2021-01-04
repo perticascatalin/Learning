@@ -22,7 +22,7 @@ Music is an art form which has been constanly developing for centuries now. We o
 The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a sequence of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. 
 
 
-**TODO: Shoud revise because lacks development wrt. the abstract**
+**TODO 1: Shoud revise because lacks development wrt. the abstract**
 
 A similar idea is tackled for the structure of a rock song in section 4.6.
 
@@ -91,7 +91,7 @@ Musical Samples mentioned in [M3]:
 
 My starting point for modelling musical patterns using constraint programming are the ideas presented in [M1] and [M2]. This section showcases these ideas and makes further progress in formalizing the discovered problems as constraint satisfaction problems.[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are showcased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
 
-Based on these related studies,I make my own attempt at modelling a rock song harmonization as a CSP in section 4.6 (**TODO: Should Change because you don't say nothing**).
+Based on these related studies,I make my own attempt at modelling a rock song harmonization as a CSP in section 4.6 (**TODO 2: Should Change because you don't say nothing**).
 
 ### 4.1 All Interval Series
 
@@ -125,7 +125,7 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 - generate a sequence of intervals: `2, 1.5` and then constrain the resulting notes to be in a set
 - generate a sequence of notes from the chord set: `E, G` and then constrain the resulting intervals
 
-**TODO: Since the first model is the preferred choice in these studies, let us further formalize it:**
+**TODO 3: Since the first model is the preferred choice in these studies, let us further formalize it:**
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
