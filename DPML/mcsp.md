@@ -141,11 +141,21 @@ If we take a look at more modern music, such as pop / rock songs for instance, w
 
 For instance, *"Let it be"* by Beatles has:
 
-- part A: `C-G-Am-F`
-- part B: `Am-G-F-C`
-- part C (after every A & B): `C-G-F-CDmC`. 
+**Table 3. Sample Chord progression in a song**
 
-The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. For *"Let it be"*, we can create any melody using the notes from the A minor pentatonic scale and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent music.
+|:----:|:----------:|
+|Part A | `C-G-Am-F` |
+|Part B | `Am-G-F-C` |
+|Part C (after every A & B) | `C-G-F-CDmC` |
+
+The chords make the harmony for the melody and within each chord there is only a limited number of notes which fit. Because *"Let it be"* is written in the C major key, we can create any melody using the notes from the C major scale, the A minor scale (the C major relative) & their pentatonic versions, and it will sound well across the whole song. There are quite a few general rules to relate scales to chords progressions and by adhering to them one can obtain decent solos / melodic improvisations on top of the existing harmony.
+
+Take the chord progression in Table 3, we can determine that it is in the C major key because:
+
+- it starts on C major
+- it contains only chords in the C major scale (either looking at their root notes or the entire chords)
+- F# would not belong to C major scale (only `C D E F G A B`)
+- Gm would not belong to C major chords family (only `C Dm Em F G Am Bmb5`) - can check why in [M9]
 
 [Songs in Key](https://www.songkeyfinder.com/learn/songs-in-key)
 
@@ -163,9 +173,10 @@ Constraints identified:
 - NOTES (STEPS) IN A SCALE
 - INTERVALS IN A THEME
 
+
 - CHORDS IN A SCALE FAMILY
+- RELATIVE SCALES
 - NUMBER OF COMMON NOTES BETWEEN 2 SUCCESSIVE CHORDS
-- ...
 
 I think solving harmony and melody problems by using search techniques would have more value than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
 
