@@ -137,6 +137,7 @@ Since the first model is the preferred choice in these studies, let us further f
 - final note `L_n = L_n-1 + v_n = E` (given)
 - constrain all `L_i ∈ S_notes`
 - eg. if `S_notes` is represented by the C major scale, then `S_notes = {0, 1, 2, 2.5, 3.5, 4.5, 5.5}`, 0 associated to C note. Then `S_out_notes = {0.5, 1.5, 3, 4, 5}` are not to be used in the generated sequence.
+- further constraints on subsequences of variables representing the motives
 
 **TODO: intervals as relative to previous note or to the root note**
 
