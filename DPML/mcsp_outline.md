@@ -10,7 +10,7 @@ Section 1: Introduction:
 Section 2: Music Theory Background: 
 
 - Melody, Harmony, Rhythm, Bass (fundamentals showcased in How Music Works documentary)
-- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios (based on some guitar lessons I took a while back)
+- Representation, Musical Notes, Intervals, Scales, Chords, Arpeggios 
 
 Section 3: Background on previous Research & Experiments:
 
@@ -20,9 +20,10 @@ Section 3: Background on previous Research & Experiments:
 
 Section 4: Model Musical Patterns using CSP
 
-- Related research examples (4.1 & 4.2, more can be found in Musical Constraint Satisfaction Problems Solved with Adaptive Search)
+- Related research examples: all interval series (4.1), constraining intervals to obtain themes (4.2), successive chords properties and constraints (4.3, 4.4, 4.5)
 - Own attempt at modelling the construction of a rock song as a CSP (4.6)
 
 Section 5: Conclusions
 
 - I think solving harmony and melody problems by using search techniques would have more value than trying to compose music automatically based on training data, at least from a musical perspective
+- A number of elements of music have been identified and defined as constraint satisfaction problems, in a declarative way
