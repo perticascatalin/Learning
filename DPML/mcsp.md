@@ -17,18 +17,18 @@ Therefore, the fundamental premise is not to try and automate music composition,
 
 ## 1. Introduction
 
-Music is an art form which has been constanly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
+Music is an art form which has been constantly developing for centuries now. We often listen to music to enhance or change our mood and therefore we can consider it as the most accessible form of art in our everyday lives. Disregarding the more experimental type of music, one can notice that although an art form, music has a bit of a rigid structure and adheres to certain rules and repetitivity in order to make it pleasant to the human ear. However, what was considered acceptable/pleasant music varied greatly across different periods, cultures, trends and genres in music - Howard Goodall explains this very well in [M0], a documentary about the general mechanisms underlying music. Even so, it is generally agreed upon that music has a mathematical structure at its basis.
 
-The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a sequence of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. 
+The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a sequence of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony with each other at each step. 
 
-The exact steps to generate a canon are however not studied here and for the purpose of applying constraint satisfaction I start with some easier tasks, such as:
+The exact steps for using constraint programming to generate a canon are however not studied here due to the difficulty of modelling such a task, so this example only serves as motivation to take some steps in this direction by applying constraint satisfaction on some easier tasks involving notes, intervals and chords. These tasks are briefly listed below:
 
 - melody generation with constraints on notes and successive intervals - Section 4.1
 - melody generation with constraints on notes to belong to a chord and to use given motives - Section 4.2
 - harmony generation with constraints on the common notes of succesive chords - Section 4.3
 - harmony generation with constraints on the intervals between the notes of successive chords - Section 4.4
 - optimization problem on chords progression (TSP) - Section 4.5
-- analysis of harmony and melody of a song, such that all previous concepts are put together - Section 4.6
+- analysis of harmony and melody of a pop song, such that all previous concepts are put together - Section 4.6
 
 ## 2. Music Theory Background
 
@@ -93,9 +93,9 @@ Musical Samples mentioned in [M3]:
 
 ## 4. Modelling Musical Patterns through Constraint Programming
 
-My starting point for modelling musical patterns using constraint programming are the ideas presented in [M1] and [M2]. This section showcases these ideas and makes further progress in formalizing the discovered problems as constraint satisfaction problems.[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment. The same problems are showcased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail and analyze these problems in sections 4.3, 4.4 and 4.5.
+My starting point for modelling musical patterns using constraint programming are the ideas presented in [M1] and [M2]. This section showcases these ideas and makes further progress in formalizing the discovered problems as constraint satisfaction problems.[M1] showcases 2 applications of constraint programming in music, which I detail in sections 4.1 and 4.2. The 2 problems are solved by declaring variables and constraints using graphical interfaces linked to a lisp solver and the open music visual programming environment.
 
-Based on these related studies,I make my own attempt at modelling a rock song harmonization as a CSP in section 4.6 (**TODO 2: Should Change because you don't say nothing**).
+The same problems are showcased in [M2] as problems 8 and 9 in the *(2.3) Melodies* section. Additionally, [M2] presents some applications to musical harmony: problems 1,2 & 3 in the *(2.1) Harmony* section. I detail, analyze and start formalizing these problems in sections 4.3, 4.4 and 4.5. Based on these related studies, I also make my own attempt at modelling a pop song harmonization & improvisation as a CSP in section 4.6.
 
 ### 4.1 All Interval Series
 
@@ -158,7 +158,7 @@ Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) â
 
 This problem refers to sorting a sequence of chords such that the sum of common notes between successive chords is maximized. If we view the given chords as nodes in a graph and draw edges with weights equal to the number of common notes, then this is analogous to the traveling salesman problem.
 
-### 4.6 Harmony and Melody of a Rock Song as a Search Problem
+### 4.6 Harmony and Melody of a Pop Song as a Search Problem
 
 If we take a look at more modern music, such as pop / rock songs for instance, we can notice that they still retain most of the structure of classical music. Generally there would be 2-3 themes: verse, refrain, bridge, solo. Then the song would go along playing a succession of verses and refrains, possibly with some small variations (exploring the theme), followed by a bridge, solo and then the ending. Separately from this structure, each theme would consist of a succession of chords, onto which a melody is played.
 
@@ -189,20 +189,9 @@ In order to model this kind of musical structures using CSP, we would need to ha
 
 ## 5. Conclusions
 
-**MEGA TODO**
+I think solving harmony and melody problems by using search techniques would have more value (/ would be more practical) than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data.
 
-Constraints identified:
-
-- DIFFERENT NOTES, DIFFERENT INTERVALS
-- NOTES (STEPS) IN A SCALE
-- INTERVALS IN A THEME
-
-
-- CHORDS IN A SCALE FAMILY
-- RELATIVE SCALES
-- NUMBER OF COMMON NOTES BETWEEN 2 SUCCESSIVE CHORDS
-
-I think solving harmony and melody problems by using search techniques would have more value (/ would be more practical) than trying to compose music automatically based on training data, at least from a musical perspective. One reason for this is that music should be a creative endeavour, rather than some kind of imitation based on a large collection of training data. On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a very extensive understanding of music theory and the process of musical composition.
+On the other hand, there seems to be a lot of potential to apply CSP and search techniques to solve certain musical fitting problems. However, this is quite challenging because it would require a deeper understanding of music theory and the process of musical composition. In this study I believe to have managed to scratch the surface of potential applications of constraint satisfaction in music, namely the formalization of constraints related to the following musical elements: generating series of different notes with different intervals, notes (steps) in a scale, intervals in a theme, chords in a scale family, relative scales and some properties of successive chords in chords progressions.
 
 ![Dali's Swallowtail](https://raw.githubusercontent.com/perticascatalin/open_nenos/master/DPML/imgs/swallow_tail.jpg)
 
