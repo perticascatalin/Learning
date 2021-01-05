@@ -159,11 +159,11 @@ int main() {
 	generate_chords(1, 1, 2, 2, 8); // 2 common notes progression from D
 	cout << "\n" << "All from C, various num common notes exact" << "\n\n";
 	total_sol = 0;
-	generate_chords(0, 0, 0, 0, 8); // 0 common notes progression from E
+	generate_chords(0, 0, 0, 0, 8); // 0 common notes progression from C
 	total_sol = 0;
 	generate_chords(0, 0, 1, 1, 8); // 1 common note progression from C
 	total_sol = 0;
-	generate_chords(0, 0, 2, 2, 8); // 2 common notes progression from D
+	generate_chords(0, 0, 2, 2, 8); // 2 common notes progression from C
 
 	return 0;
 }

@@ -21,10 +21,14 @@ Music is an art form which has been constanly developing for centuries now. We o
 
 The purpose of this study is to explore the fundamentals of music and its mathematical structures in order to get an idea on how to leverage constraint programing in the process of fitting musical themes together. A very good example of this idea will be showcased later on in Section 3.2, where I take a brief look into how classical music canons are constructed. I believe that canons show some potential to be modelled as constraint satisfaction problems as long as we are able to encode the rules of harmonization into constraints. Additionally, we are required to have the musical themes available (as a sequence of notes for instance). Then the task is to find the right overlaps of musical themes such that the notes played at the same time (belonging to different themes) are in harmony at each step. 
 
+The exact steps to generate a canon are however not studied here and for the purpose of applying constraint satisfaction I start with some easier tasks, such as:
 
-**TODO 1: Shoud revise because lacks development wrt. the abstract**
-
-A similar idea is tackled for the structure of a rock song in section 4.6.
+- melody generation with constraints on notes and successive intervals - Section 4.1
+- melody generation with constraints on notes to belong to a chord and to use given motives - Section 4.2
+- harmony generation with constraints on the common notes of succesive chords - Section 4.3
+- harmony generation with constraints on the intervals between the notes of successive chords - Section 4.4
+- optimization problem on chords progression (TSP) - Section 4.5
+- analysis of harmony and melody of a song, such that all previous concepts are put together - Section 4.6
 
 ## 2. Music Theory Background
 
@@ -35,7 +39,7 @@ A similar idea is tackled for the structure of a rock song in section 4.6.
 - **Chord**: a group of musical notes which are played together.
 - **Arpeggio**: a succession of musical notes extracted from a chord (played successively instead of together).
 
-For our purpose to apply CSP to music, the most important part to understand are intervals & scales. Thus, in the coming paragraphs I will focus on their representation. Chords & arpeggios are slightly more advanced musical topics and studying them does not necessarily help towards realizing the purpose of this study.
+For our purpose to apply CSP to music, the most important parts to understand are intervals & scales. Thus, in the coming paragraphs I will focus on their representation. Chords are then built based on intervals (sets of notes situated at different distances between one another) and arpeggios are built on top of chords.
 
 **Table 1. Basic Concepts**:
 
@@ -141,6 +145,12 @@ Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) â
 **Note 3**: The domain of the chords needs to be pre-defined and one can vary the domain such that the chords are in the family of a given scale or not (eg. major, natural minor, harmonic minor, melodic minor, major pentatonic, minor pentatonic, etc).
 
 **Note 4**: A preliminary implementation of this idea is available in *chords.cpp*.
+
+**Example solutions 1:**
+
+- 8 chords from C major (& start and end in C), **0 common notes**: `C Dm Em F G Am Bmb5 C`
+- 8 chords from C major (& start and end in C), **1 common note**: `C F Bmb5 Em Am Dm G C `
+- 8 chords from C major (& start and end in C), **2 common notes**: `C Em G Bmb5 Dm F Am C `
 
 ### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
 
