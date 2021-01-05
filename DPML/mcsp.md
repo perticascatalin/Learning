@@ -129,9 +129,16 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 - generate a sequence of intervals: `2, 1.5` and then constrain the resulting notes to be in a set
 - generate a sequence of notes from the chord set: `E, G` and then constrain the resulting intervals
 
-**TODO 3: Since the first model is the preferred choice in these studies, let us further formalize it:**
+Since the first model is the preferred choice in these studies, let us further formalize it:
 
-**TODO 4: intervals as relative to previous note or to the root note**
+- assign variables `v_2, ... v_n` in the domain `{0, 0.5, 1, 1.5, ...}`
+- start note `S`, end note `E`
+- notes obtained as follows: `L_1 = S` (given), `L_i = (L_i-1 + v_i) % 6`
+- final note `L_n = L_n-1 + v_n = E` (given)
+- constrain all `L_i ∈ S_notes`
+- eg. if `S_notes` is represented by the C major scale, then `S_notes = {0, 1, 2, 2.5, 3.5, 4.5, 5.5}`, 0 associated to C note. Then `S_out_notes = {0.5, 1.5, 3, 4, 5}` are not to be used in the generated sequence.
+
+**TODO: intervals as relative to previous note or to the root note**
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
