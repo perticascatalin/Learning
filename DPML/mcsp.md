@@ -131,14 +131,22 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
 
-Let `Ch_1, Ch_2, ..., Ch_n` be a chord progression represented by n ordered variables. The variables are from a fixed domain and they are denoted by strings (eg. `Am, C, Em7, Asus2, GMaj7`). Each chord is associated a subset of notes from the set of all notes. Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) ⊆ S_all` for any `Ch_i`. The set of common notes between 2 successive chords `Ch_i, Ch_i+1` is denoted by `SC(Ch_i, Ch_i+1) = S(Ch_i) ∩ S(Ch_i+1)`. We can then have constraints on the exact number of common notes or in a range:
+Let `Ch_1, Ch_2, ..., Ch_n` be a chord progression represented by n ordered variables. The variables are from a fixed domain and they are denoted by strings (eg. `Am, C, Em7, Asus2, GMaj7`). Each chord is associated a subset of notes from the set of all notes.
+
+Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) ⊆ S_all` for any `Ch_i`. The set of common notes between 2 successive chords `Ch_i, Ch_i+1` is denoted by `SC(Ch_i, Ch_i+1) = S(Ch_i) ∩ S(Ch_i+1)`. We can then have constraints on the exact number of common notes or in a range:
 
 - `card (SC(Ch_i, Ch_i+1)) = A`, for all `Ch_i`, `i < n`
 - `min_A ≤ card (SC(Ch_i, Ch_i+1)) ≤ max_A`, for all `Ch_i`, `i < n`
 
+**Note 3**: The domain of the chords needs to be pre-defined and one can vary the domain such that the chords are in the family of a given scale or not (eg. major, natural minor, harmonic minor, melodic minor, major pentatonic, minor pentatonic, etc).
+
+**Note 4**: A preliminary implementation of this idea is available in *chords.cpp*.
+
 ### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
 
 ### 4.5 Travelling Salesman Problem on Chords
+
+This problem refers to sorting a sequence of chords such that the sum of common notes between successive chords is maximized. If we view the given chords as nodes in a graph and draw edges with weights equal to the number of common notes, then this is analogous to the traveling salesman problem.
 
 ### 4.6 Harmony and Melody of a Rock Song as a Search Problem
 
