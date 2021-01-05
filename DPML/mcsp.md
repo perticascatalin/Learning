@@ -101,7 +101,7 @@ This problem requires finding all the sequences consisting of 12 different pitch
 - `all_diff(v_i)`
 - `all_diff((v_i+1 - v_i) % n)`, `i <= n-1`
 
-**Note 2**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: 1, 2, ..., 12. These will represent the notes A, A#, B, C, ... G, G# in an octave, with `n = 12`. Depending on the use case, we might want to use notes or pitches (= notes + octave, then we go above 12, but 13 will simply represent note 1, but an octave higher - eg. if note 1 is C0, then note 13 is C1). However, in my own experiments, I use 0, 0.5, 1, ..., 6 instead, so that intervals (the distance between 2 notes) are then directly measured in tones, like they are in music (eg. `tone + semitone = 1.5`, and not 3).
+**Note 2**: the above assumes that the notes (from a whole chromatic scale) are labeled as integers: `1, 2, ..., 12`. These will represent the notes `A, A#, B, C, ... G, G#` in an octave, with `n = 12`. Depending on the use case, we might want to use notes or pitches (= notes + octave, then we go above 12, but 13 will simply represent note 1, but an octave higher - eg. if note 1 is C0, then note 13 is C1). However, in my own experiments, I use `0, 0.5, 1, ..., 6` instead, so that intervals (the distance between 2 notes) are then directly measured in tones, like they are in music (eg. `tone + semitone = 1.5`, and not 3).
 
 Although the related studies do not mention this, the concept of using 12 different pitches / notes (from the chromatic scale) within any contiguous sequence of 12 notes is the basis for the **twelve-tone serialism** method of composition. This originated in the 1920s (see [M8]), so it is a very modern approach to musical composition. The purpose of using 12 different pitches is for the melody not to belong to a specific key.
 
@@ -130,6 +130,11 @@ Going further into analyzing this musical constraint satisfaction setup (now loo
 **TODO 4: intervals as relative to previous note or to the root note**
 
 ### 4.3 Fabien Levy: Chord Progressions with Common Notes
+
+Let `Ch_1, Ch_2, ..., Ch_n` be a chord progression represented by n ordered variables. The variables are from a fixed domain and they are denoted by strings (eg. `Am, C, Em7, Asus2, GMaj7`). Each chord is associated a subset of notes from the set of all notes. Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) ⊆ S_all` for any `Ch_i`. The set of common notes between 2 successive chords `Ch_i, Ch_i+1` is denoted by `SC(Ch_i, Ch_i+1) = S(Ch_i) ∩ S(Ch_i+1)`. We can then have constraints on the exact number of common notes or in a range:
+
+- `card (SC(Ch_i, Ch_i+1)) = A`, for all `Ch_i`, `i < n`
+- `min_A ≤ card (SC(Ch_i, Ch_i+1)) ≤ max_A`, for all `Ch_i`, `i < n`
 
 ### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
 
