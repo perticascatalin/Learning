@@ -20,8 +20,8 @@ Section 3: Background on previous Research & Experiments:
 
 Section 4: Model Musical Patterns using CSP
 
-- Related research examples: all interval series (4.1), constraining intervals to obtain themes (4.2), successive chords properties and constraints (4.3, 4.4, 4.5)
-- Own attempt at modelling the construction of a rock song as a CSP (4.6)
+- Related research examples: all interval series, notes and intervals representation (4.1), constraining intervals to obtain themes (4.2), chords representation, successive chords properties and constraints (4.3, 4.4, 4.5)
+- Own attempt at modelling the construction of a pop / rock song as a CSP (4.6)
 
 Section 5: Conclusions
 
