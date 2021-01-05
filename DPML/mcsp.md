@@ -162,6 +162,8 @@ Let `S_all = {A, A#, B, C, ..., G, G#}` be the set of all notes. Then `S(Ch_i) â
 
 ### 4.4 Georges Bloch: Minimizing Estrada Distance between 2 Successive Chords
 
+This problems looks at how to constrain successive chords (represented by variables) such that the sum of interval lengths between their notes is minimized. In this case, we might need to incorporate more information into declaring the constraints because we need to know for each chord which is the fundamental note, the second and so on, so we might need to use ordered sets to represent chords, instead of normal sets.
+
 ### 4.5 Travelling Salesman Problem on Chords
 
 This problem refers to sorting a sequence of chords such that the sum of common notes between successive chords is maximized. If we view the given chords as nodes in a graph and draw edges with weights equal to the number of common notes, then this is analogous to the traveling salesman problem.
