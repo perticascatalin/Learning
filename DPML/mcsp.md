@@ -39,6 +39,8 @@ The exact steps for using constraint programming to generate a canon are however
 - **Chord**: a group of musical notes which are played together.
 - **Arpeggio**: a succession of musical notes extracted from a chord (played successively instead of together).
 
+[All scales study](https://ianring.com/musictheory/scales/#modes)
+
 For our purpose to apply CSP to music, the most important parts to understand are intervals & scales. Thus, in the coming paragraphs I will focus on their representation. Chords are then built based on intervals (sets of notes situated at different distances between one another) and arpeggios are built on top of chords.
 
 **Table 1. Basic Concepts**:
