@@ -36,4 +36,14 @@ end
 %{Browse {Comb1 9 0}}
 
 % Step B
+declare
+fun {Comb2 N K R A}
+	if R > K then A
+	else {Comb2 N K R+1 (A * (N-R+1)) div R}
+	end
+end
 
+% Here we use 3rd var (R) to keep track of denominator (R) and nominator (N-R+1) and 4th var (A) to accumulate result
+{Browse {Comb2 6 2 1 1}}
+{Browse {Comb2 10 3 1 1}}
+{Browse {Comb2 9 0 1 1}}
