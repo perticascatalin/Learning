@@ -26,5 +26,10 @@ end
 
 {Browse {Step 3 6}}
 
-%declare
-%fun {Comb1 N K}
+declare
+fun {Comb1 N K}
+	{Step N-K+1 N} div {Step 1 K}
+end
+
+{Browse {Comb 6 2}}
+{Browse {Comb 10 3}}
