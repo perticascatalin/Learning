@@ -24,12 +24,16 @@ fun {Step A B}
 	end
 end
 
-{Browse {Step 3 6}}
+%{Browse {Step 3 6}}
 
 declare
 fun {Comb1 N K}
 	{Step N-K+1 N} div {Step 1 K}
 end
 
-{Browse {Comb 6 2}}
-{Browse {Comb 10 3}}
+%{Browse {Comb1 6 2}}
+%{Browse {Comb1 10 3}}
+%{Browse {Comb1 9 0}}
+
+% Step B
+
