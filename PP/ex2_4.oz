@@ -18,7 +18,7 @@ proc {Preorder X}
 	end
 end
 
-%{Preorder Root}
+{Preorder Root}
 
 fun {Smallest X}
 	if X.left \= nil then {Smallest X.left}
@@ -36,20 +36,26 @@ end
 % Not yet implemented
 %{Browse {IsSortedBST Root}}
 
-% Insert not working yet
-proc {Insert X N}
-	if N < X.value then
-		if X.left \= nil then {Insert X.left N}
-		else
-			X.left = node(left:nil right:nil value:N)
+% Additional insert function on sample binary tree
+proc {Insert X N ?Y}
+	case X
+	of nil then Y = node(left:nil right:nil value:N)
+	[] node(left:T1 right:T2 value:V) then
+		if N < V then T in
+			Y = node(left:T right:T2 value:V)
+			{Insert T1 N T}
+		else T in
+			Y = node(left:T1 right:T value:V)
+			{Insert T2 N T}
 		end
-	else
-		if X.right \= nil then {Insert X.right N}
-		else
-			X.right = node(left:nil right:nil value:N)
-		end	
 	end
 end
 
-%{Insert Root 1}
-%{Preorder Root}
+% To check how tree looks after insertion
+%{Preorder {Insert Root 1}}
+
+declare
+NewRoot = {Insert Root 1}
+
+{Browse NewRoot}
+{Preorder NewRoot}
