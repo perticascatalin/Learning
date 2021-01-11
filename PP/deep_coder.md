@@ -17,3 +17,10 @@ Head, Last, Take, Drop, ...
 ### Higher Order Functions
 
 Map, Filter, ...
+
+## Neural Networks
+
+- M input-output examples used as input for the network
+- network outputs predictions for program attributes (probability that a function from the DSL will appear in the program)
+
+## Search
