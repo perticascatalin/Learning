@@ -20,21 +20,18 @@ end
 
 {Preorder Root}
 
+% Smallest and biggest methods on a BST
 fun {Smallest X}
 	if X.left \= nil then {Smallest X.left}
 	else X.value end
 end
-
 fun {Biggest X}
 	if X.right \= nil then {Biggest X.right}
 	else X.value end
 end
 
-
 {Browse {Smallest Root}}
 {Browse {Biggest Root}}
-% Not yet implemented
-%{Browse {IsSortedBST Root}}
 
 % Additional insert function on sample binary tree
 proc {Insert X N ?Y}
@@ -55,7 +52,58 @@ end
 %{Preorder {Insert Root 1}}
 
 declare
-NewRoot = {Insert Root 1}
+NewTree = {Insert Root 1}
 
-{Browse NewRoot}
-{Preorder NewRoot}
+{Browse NewTree}
+{Preorder NewTree}
+
+% Reimplement Smallest (-Minimum) and Biggest (-Maximum) without assuming BST property (left < & right >=)
+
+fun {Min X Y}
+	if X < Y then X else Y end
+end
+fun {Max X Y}
+	if X > Y then X else Y end
+end
+
+fun {Minimum T}
+	case T
+	of nil then 1000000
+	[] node(left:T1 right:T2 value:V) then
+		{Min V {Min {Minimum T1} {Minimum T2}}}
+	end
+end
+fun {Maximum T}
+	case T
+	of nil then 0
+	[] node(left:T1 right:T2 value:V) then
+		{Max V {Max {Maximum T1} {Maximum T2}}}
+	end
+end
+fun {And X Y}
+	if X then
+		if Y then true else false end
+	else
+		false
+	end
+end
+
+%{Browse {Minimum Root}}
+%{Browse {Maximum Root}}
+
+% Check whether BST is sorted
+fun {IsSortedBST T}
+	case T
+	of nil then true
+	[] node(left:T1 right:T2 value:V) then
+		if {And (T1 \= nil) (V < {Maximum T1})} then false
+		else
+			if {And (T2 \= nil) (V > {Minimum T2})} then false
+			else
+				true
+			end
+		end
+	end
+end
+
+{Browse {IsSortedBST Root}}
