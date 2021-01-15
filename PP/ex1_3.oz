@@ -1,3 +1,4 @@
+% Max Recursively
 declare
 fun {MaxRec N M}
 	if N == 0 then M
