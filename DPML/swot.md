@@ -21,6 +21,10 @@ Versus other topics (eg. program synthesis - DC, reinforcement learning - Chess 
 
 ### 3.4 ! Constraint Satisfaction applied to Music
 
+### 3.5 Future work
+
+Neural guided search for music. Somehow use ML instead of hand encoding musical rules / patterns. Drive a search for musical patterns satisfying certain properties. Eg. in case of canon, given the chord progression and a theme, find all combinations of voices playing the theme either forwards or backwards such that overlapping notes from different voices fall within the chord played at the time a note occurs.
+
 ## 4. SWOT Analysis
 
 ### 4.1 Challenges
