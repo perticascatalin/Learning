@@ -47,11 +47,13 @@ Keywords:
 
 ### 4.4 Opportunities
 
-- for the report on genetic algorithms, I had to apply CSP to genetic algorithms, instead of using genetic algorithms to solve CSPs, which made me look at problems in a different way
+- For the report on genetic algorithms, I had to apply CSP to genetic algorithms, instead of using genetic algorithms to solve CSPs, which made me look at problems in a different way
 - I learned about variable domains, updating domains based on node, arc & path consistency
 - Also, how to organize search in different ways, either through domain heuristics or by general methods relying on branch and bound methods, but there is more to learn here since these were only applied in the lab report on chess backtracking problems
 - Finding the potential application of CSPs to the canon problem in music, which seems to be an interesting low hanging fruit of research area, although probably without any commercial use, I was not able to find existing research at the level at which it could be, so there could be some interesting discoveries yet to be made
 
 ### 4.5 Threats
+
+- The domain of music does not seem widely formalized for computer science, forcing the researcher to dedicate a considerable amount of time to understanding otherwise simple concepts
 
 ### 4.6 Impact
