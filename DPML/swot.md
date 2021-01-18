@@ -2,15 +2,26 @@
 
 ## 1. Abstract
 
-## 2. Research Topics
+## 2. Graded SWOT (metrics)
 
-### Queens and Knights
-### Constraint Programming in Genetic Algorithms
-### Constraint Satisfaction applied to Music
+### 2.1 Time Investment
 
-## 3. Graded SWOT
+### 2.2 Coding Effort
 
-## 4. Analysis
+## 3. Research Topics
+
+### 3.1 Overall Review (synthesis after you detail for each below)
+
+Then versus course objectives (revise lectures)
+Versus other topics (eg. program synthesis - DC, reinforcement learning - Chess & Go)
+
+### 3.2 ! Queens and Knights
+
+### 3.3 ! Constraint Programming in Genetic Algorithms
+
+### 3.4 ! Constraint Satisfaction applied to Music
+
+## 4. SWOT Analysis
 
 ### 4.1 Challenges
 
