@@ -15,7 +15,12 @@
 Then versus course objectives (revise lectures)
 Versus other topics (eg. program synthesis - DC, reinforcement learning - Chess & Go)
 
-### 3.2 ! Queens and Knights
+### 3.2 Queens and Knights
+
+- presents 2 classic backtracking problems
+- describes how the 2 problems can be represented as variables assignment with constraints
+- experiments are developed based on improvements which leverage problem reduction (arc and path consistency) and search strategies (2 x lookahead)
+- an analysis is performed by comparing computation time and feasible input sizes (board size)
 
 ### 3.3 ! Constraint Programming in Genetic Algorithms
 
