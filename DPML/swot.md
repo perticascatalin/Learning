@@ -6,9 +6,9 @@
 
 ### 2.1 Time Investment
 
-|Studying|Backtracking|Genetic|Music|Music Theory|Total|
+|Studying CSP|L: Backtracking|R1: Genetic|R2: Music|Music Theory|Final|Total|
 |:------:|:----------:|:-----:|:---:|:----------:|:---:|
-|32|6|12|36|8|**94**|
+|32|6|12|36|8|2|**96**|
 
 ### 2.2 Coding Effort
 
@@ -78,6 +78,9 @@ Keywords:
 
 ### 4.5 Threats
 
-- The domain of music does not seem widely formalized for computer science, forcing the researcher to dedicate a considerable amount of time to understanding otherwise simple concepts
+- The domain of music does not seem widely formalized for computer science, forcing the researcher to dedicate a considerable amount of time to understanding otherwise simple concepts.
 
 ### 4.6 Impact
+
+- As I previously mentioned, in order to have an impact, the research delivered must be useful to other researchers in the field, either through a very good synthesis of ideas or through the discovery of novel results. In order to make it so, the research content has to be valuable and situate itself above the exploratory phase (where one learns about the topic). But even this is not enough, because the research has to be made available either by publishing in science journals or by presenting it at conferences. However, in terms of personal impact, I think the most valuable were learning about CSP concepts and starting to apply them to several domains, which also made me learn about concepts in these other fields.
+
