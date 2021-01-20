@@ -7,7 +7,7 @@
 ### 2.1 Time Investment
 
 |Studying CSP|L: Backtracking|R1: Genetic|R2: Music|Music Theory|Final|Total|
-|:------:|:----------:|:-----:|:---:|:----------:|:---:|
+|:----------:|:-------------:|:---------:|:-------:|:----------:|:---:|:---:|
 |32|6|12|36|8|2|**96**|
 
 ### 2.2 Coding Effort
@@ -78,7 +78,7 @@ Keywords:
 
 ### 4.5 Threats
 
-- The domain of music does not seem widely formalized for computer science, forcing the researcher to dedicate a considerable amount of time to understanding otherwise simple concepts.
+- The domain of music does not seem widely formalized for computer science, forcing the researcher to dedicate a considerable amount of time to understanding otherwise simple concepts. For the genetic algorithms research topic, I focused on investigating how to model the selection and crossover steps as CSPs and paid less attention to the fitness function, which although was mentioned, it would have brought more value if it were analyzed in greater depth.
 
 ### 4.6 Impact
 
