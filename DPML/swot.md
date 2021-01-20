@@ -6,6 +6,10 @@
 
 ### 2.1 Time Investment
 
+|Studying|Backtracking|Genetic|Music|Music Theory|Total|
+|:------:|:----------:|:-----:|:---:|:----------:|:---:|
+|32|6|12|36|8|**94**|
+
 ### 2.2 Coding Effort
 
 ## 3. Research Topics
@@ -19,7 +23,7 @@ Versus other topics (eg. program synthesis - DC, reinforcement learning - Chess 
 
 - presents 2 classic backtracking problems
 - describes how the 2 problems can be represented as variables assignment with constraints
-- experiments are developed based on improvements which leverage problem reduction (arc and path consistency) and search strategies (2 x lookahead)
+- experiments are developed based on improvements which leverage problem reduction (arc & path consistency) and search strategies (2 x lookahead)
 - an analysis is performed by comparing computation time and feasible input sizes (board size)
 
 ### 3.3 ! Constraint Programming in Genetic Algorithms
