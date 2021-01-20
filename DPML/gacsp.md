@@ -129,7 +129,7 @@ Then the constraints for resemblance (genes transfer) are:
 - `F(c) ⋂ F(a) ≠ ∅`
 - `F(c) ⋂ F(b) ≠ ∅`
 
-Maybe, but not necessarily `F(a) ⋃ F(b) = F(c)` - no new genetic material. Then mutation can relax this constraint.
+Maybe, but not necessarily `F(c) ⊆ F(a) ⋃ F(b)` - no new genetic material. Then mutation can relax this constraint.
 
 Going further, we could enforce on the fitness function: `Fit(c) = some_funct_of(Fit(a), Fit(b))` Then maximizing the fitness function for an assignment can be seen as the maximum utility problem, slightly connected to gene similarity constraint at the selection step.
 
