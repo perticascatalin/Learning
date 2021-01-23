@@ -38,13 +38,9 @@ end
 
 {Browse {FactUsingGeneric 4}}
 
-fun {Minus X} ~X end
-fun {Square X} X*X end
-fun {AddF X} fun {$ Y} X + Y end end
-Add2 = {AddF 2}
-fun {MulF X} fun {$ Y} X * Y end end
-Mul2 = {MulF 2}
+% Map & Filter
 
+% Map
 fun {Map L Op}
 	case L
 	of nil then nil
@@ -52,8 +48,40 @@ fun {Map L Op}
 	end
 end
 
+fun {Minus X} ~X end
+fun {Square X} X*X end
+fun {AddF X} fun {$ Y} X + Y end end
+Add2 = {AddF 2}
+fun {MulF X} fun {$ Y} X * Y end end
+Mul2 = {MulF 2}
+
 {Browse 1 - ~3}
 {Browse {Map [1 2 3] Minus}}
 {Browse {Map [1 2 3] Square}}
 {Browse {Map [1 2 3] Add2}}
 {Browse {Map [1 2 3] Mul2}}
+
+% Filter
+fun {Filter L Op}
+	case L
+	of nil then nil
+	[] H|T then
+		if {Op H} then H | {Filter T Op}
+		else {Filter T Op}
+		end
+	end
+end
+
+fun {Positive X}
+	case {Value.type X}
+	of float then X > 0.0
+	[] int then X > 0
+	end
+end
+
+{Browse {Positive ~1}}
+{Browse {Positive 2}}
+{Browse {Positive 3.2}}
+{Browse {Positive ~1.5}}
+
+{Browse {Filter [~1 2 3.2 ~1.5 4 6.4] Positive}}
