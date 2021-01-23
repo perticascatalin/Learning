@@ -84,3 +84,5 @@ Use computational tools to monitor KPIs, analyze different levels of the model a
 [4] *Thinking: Fast and Slow, Choices*, Daniel Kahneman
 
 [5] *System 1 and System 2 cognition in the decision to adopt and use a new technology*, Vijay Khatri et al
+
+[6] [Decision Tree Tutorial, kdnuggets](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html#:~:text=Decision%20Tree%20algorithm%20belongs%20to%20the%20family%20of%20supervised%20learning%20algorithms.&text=The%20goal%20of%20using%20a,prior%20data(training%20data).)
