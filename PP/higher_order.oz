@@ -37,3 +37,23 @@ fun {FactUsingGeneric N}
 end
 
 {Browse {FactUsingGeneric 4}}
+
+fun {Minus X} ~X end
+fun {Square X} X*X end
+fun {AddF X} fun {$ Y} X + Y end end
+Add2 = {AddF 2}
+fun {MulF X} fun {$ Y} X * Y end end
+Mul2 = {MulF 2}
+
+fun {Map L Op}
+	case L
+	of nil then nil
+	[] H|T then {Op H} | {Map T Op}
+	end
+end
+
+{Browse 1 - ~3}
+{Browse {Map [1 2 3] Minus}}
+{Browse {Map [1 2 3] Square}}
+{Browse {Map [1 2 3] Add2}}
+{Browse {Map [1 2 3] Mul2}}
