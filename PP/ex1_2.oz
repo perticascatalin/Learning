@@ -1,3 +1,4 @@
+% Pow: N^M
 declare
 fun {Pow N M}
 	if M == 0 then

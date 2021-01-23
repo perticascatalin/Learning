@@ -1,3 +1,4 @@
+% Abs: Int, Float & Both
 declare
 fun {AbsInt N}
 	if N < 0 then ~N else N end
