@@ -12,3 +12,11 @@ A = {AddX 3}
 B = {MulX 2}
 C = {Compose B A}
 {Browse {C 1}}
+
+fun {Map L Op}
+	case L
+	of nil then nil
+	[] H|T then {Op H} | {Map T Op}
+	end
+end
+{Browse {Map [2 3 5 8] C}}
