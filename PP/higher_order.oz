@@ -85,3 +85,18 @@ end
 {Browse {Positive ~1.5}}
 
 {Browse {Filter [~1 2 3.2 ~1.5 4 6.4] Positive}}
+
+% Algebra
+declare Algebra
+local
+	proc {Add X Y ?Z} Z = X+Y end
+	proc {Mul X Y ?Z} Z = X*Y end
+in
+	Algebra = op(add:Add mul:Mul)
+end
+
+declare
+A=2
+B=3
+{Browse {Algebra.add A B}}
+{Browse {Algebra.mul A B}}
