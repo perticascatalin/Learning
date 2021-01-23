@@ -1,3 +1,4 @@
+// Solver for file e Hashcode 2019
 #include <iostream>
 #include <fstream>
 #include <map>
