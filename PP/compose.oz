@@ -20,3 +20,7 @@ fun {Map L Op}
 	end
 end
 {Browse {Map [2 3 5 8] C}}
+
+D = {AddX ~1}
+E = {Compose D C}
+{Browse {Map [2 3 5 8] E}}

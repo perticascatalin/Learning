@@ -32,7 +32,7 @@ We develop on more complex concepts: decision tree and attribute split impurity 
 
 **First example**
 
-Decision trees are also great models for machine learning - automated classification or regression. Such an example is the symptom to cause mapping problem. Given a large number of symptoms (chest pain, nausea, etc.) predict whether the patient has a heart disease [2]. Each symptom is looked at as an attibute and we would like to grow a decision tree with the lowermost splits being the most informative.
+Decision trees are also great models for machine learning - automated classification or regression. Such an example is the problem of mapping symptoms to cause. Given a large number of symptoms (M: chest pain, nausea, etc.) predict whether the patient has a heart disease [2]. The input data consists of a collection of datapoints from previous patients (N: patient A, patient B, etc.). A patient has M+1 datapoints: M symptom checks and 1 cause check, thus each datapoint is a series of bits (yes or no) to the available symptoms and the cause. Each symptom is looked at as an attribute. We would like to grow a decision tree with splits based on attributes (yes assigned to left branch, no assigned to right branch). The lowermost splits should be the most informative.
 
 **Gini Index**
 
