@@ -8,7 +8,7 @@
 
 |Studying CSP|L: Backtracking|R1: Genetic|R2: Music|Music Theory|Final|Total|
 |:----------:|:-------------:|:---------:|:-------:|:----------:|:---:|:---:|
-|32|6|12|36|8|2|**96**|
+|32|6|12|36|8|4|**98**|
 
 ### 2.2 Coding Effort
 
