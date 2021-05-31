@@ -11,8 +11,8 @@ IMG_SZ = 28
 L_SZ = 2 # Labels size: Shape and Color
 C_SZ = 3 # Classes size: (Circle, Square, Triangle) and (Red, Green, Blue)
 
-INPUT_DIR = '../figures/'
-VAL_DIR = '../val_figures/'
+INPUT_DIR = './figures/'
+VAL_DIR = './val_figures/'
 BATCH_SZ = 64
 IMG_HEIGHT = IMG_SZ
 IMG_WIDTH = IMG_SZ

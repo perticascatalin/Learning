@@ -4,7 +4,7 @@ from random import randint, uniform
 import matplotlib.pyplot as plt
 
 IMG_SZ = 28
-OUT_DIR = '../figures/'
+OUT_DIR = './figures/'
 UP_LIM = 8
 
 # Sample principle color component

@@ -26,8 +26,8 @@ def blank_image():
 				img[row, col] = [secondary_component(), secondary_component(), secondary_component()]
 	return img
 
-INPUT_DIR = '../figures/'
-OUTPUT_DIR = '../relational_figures/'
+INPUT_DIR = './figures/'
+OUTPUT_DIR = './relational_figures/'
 
 filenames = [filename for filename in os.listdir(INPUT_DIR) if filename.endswith('.png')]
 
