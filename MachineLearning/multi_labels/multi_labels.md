@@ -28,7 +28,7 @@ In the problem described here we look at the advantages of using the same learni
 
 ## Results
 
-![Results](https://raw.githubusercontent.com/perticascatalin/Learning/master/multi_labels/imgs/multi_label_vs_combo.png)|
+![Results](https://raw.githubusercontent.com/perticascatalin/Learning/master/MachineLearning/multi_labels/imgs/multi_label_vs_combo.png)|
 
 ## Code Documentation
 
