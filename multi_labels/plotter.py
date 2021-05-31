@@ -5,13 +5,13 @@ X = []
 for step in range(100, 4001, 100):
 	X.append(step)
 
-ml_losses = pickle.load(open('ml_losses.p', 'rb'))
-ml_train_accs = pickle.load(open('ml_train_accs.p', 'rb'))
-ml_val_accs = pickle.load(open('ml_val_accs.p', 'rb'))
+ml_losses = pickle.load(open('./pickles/ml_losses.p', 'rb'))
+ml_train_accs = pickle.load(open('./pickles/ml_train_accs.p', 'rb'))
+ml_val_accs = pickle.load(open('./pickles/ml_val_accs.p', 'rb'))
 
-co_losses = pickle.load(open('co_losses.p', 'rb'))
-co_train_accs = pickle.load(open('co_train_accs.p', 'rb'))
-co_val_accs = pickle.load(open('co_val_accs.p', 'rb'))
+co_losses = pickle.load(open('./pickles/co_losses.p', 'rb'))
+co_train_accs = pickle.load(open('./pickles/co_train_accs.p', 'rb'))
+co_val_accs = pickle.load(open('./pickles/co_val_accs.p', 'rb'))
 
 plt.xlabel('step')
 plt.plot(X, ml_losses, X, ml_train_accs, X, ml_val_accs,

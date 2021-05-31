@@ -144,9 +144,9 @@ with tf.Session() as sess:
 
     print("Optimization Finished!")
 
-    pickle.dump(losses, open('co_losses.p', 'wb'))
-    pickle.dump(train_accs, open('co_train_accs.p', 'wb'))
-    pickle.dump(val_accs, open('co_val_accs.p', 'wb'))
+    pickle.dump(losses, open('./pickles/co_losses.p', 'wb'))
+    pickle.dump(train_accs, open('./pickles/co_train_accs.p', 'wb'))
+    pickle.dump(val_accs, open('./pickles/co_val_accs.p', 'wb'))
 
     # Save your model
     saver.save(sess, './checkpts/combo_multi_class')
