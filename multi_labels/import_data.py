@@ -58,5 +58,3 @@ def read_images(input_directory, batch_size, img_height, img_width, mode = 'mult
 
 	X, Y = tf.train.batch([image, label], batch_size = batch_size, capacity = batch_size * 8, num_threads = 4)
 	return X, Y
-
-

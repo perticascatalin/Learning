@@ -99,7 +99,6 @@ with tf.Session() as sess:
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(sess = sess, coord = coord)
 
-
     # Training cycle
     for step in range(1, num_steps+1):
 

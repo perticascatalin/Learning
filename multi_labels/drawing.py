@@ -171,4 +171,4 @@ def run():
 		#plt.imshow(image)
 		#plt.show()
 
-#run()
+run()

@@ -25,3 +25,20 @@ In the problem described here we look at the advantages of using the same learni
 	- multi-label (multiple logit sets)
 	- combination of labels (one logit set, each logit is a combo)
 	- one neural-network for each label
+
+## Results
+
+![Results](https://raw.githubusercontent.com/perticascatalin/Learning/master/multi_labels/imgs/multi_label_vs_combo.png)|
+
+## Code Documentation
+
+|File                          |Purpose|
+|:----------------------------:|:------|
+|`drawing.py`                  |Generate figures of different shapes and colors|
+|`spatial_relations_drawing.py`|Generate 2 figures in a spatial relation to one another|
+|`import_data.py`              |Helper file for reading images|
+|`plotter.py`                  |Plots classification results|
+|`color_multi_class.py`        |Color classifier|
+|`shape_multi_class.py`        |Shape classifier|
+|`combo_multi_class.py`        |Color & shape combination classifier|
+|`multi_label_multi_class.py`  |Color & shape multi label multi class classifier|

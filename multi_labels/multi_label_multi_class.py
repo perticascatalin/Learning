@@ -162,4 +162,3 @@ with tf.Session() as sess:
     # Stop threads
     coord.request_stop()
     coord.join(threads)
-
