@@ -1,5 +1,7 @@
 ## Blood Spectroscopy Classification Challenge: Project Report
 
+[link](https://github.com/perticascatalin/Learning/tree/master/MDA)
+
 ### 1. Blood Spectroscopy Flux
 
 - The challenge and the dataset
@@ -9,11 +11,13 @@
 
 #### 1.1 Introduction
 
+![sample](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/sample.png)
+
 *Fig 1.1.1: spectroscopy sample*
 
 #### 1.2 Team discussion
 
-Although we are aware of how unbalanced the training data is (See Fig. 1), we decide on training 3 individual task neural networks (LDL, HDL, HGB) using the Flux package in Julia.
+Although we are aware of how unbalanced the training data is (See Fig. 1.2.1), we decide on training 3 individual task neural networks (LDL, HDL, HGB) using the Flux package in Julia.
 
 To begin with, we only use the absorption features in the range 1-170 and we train each of the 3 models to classify a spectroscopy sample as indicating "low" (1), "ok" (2) or "high" (3). The temperature and the humidity are disregarded for now because they are measured in different units (also based on x_train in the starter notebook).
 
