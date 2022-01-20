@@ -11,9 +11,10 @@
 
 #### 1.1 Introduction
 
-![sample](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/sample.png)
-
-*Fig 1.1.1: spectroscopy sample*
+|Sample|Description|
+|:----:|:---:|
+|![sample](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/sample.png)|170 values + temp & humidity|
+|*Fig 1.1.1: spectroscopy sample*||
 
 #### 1.2 Team discussion
 
