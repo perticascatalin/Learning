@@ -17,6 +17,8 @@ Although we are aware of how unbalanced the training data is (See Fig. 1), we de
 
 To begin with, we only use the absorption features in the range 1-170 and we train each of the 3 models to classify a spectroscopy sample as indicating "low" (1), "ok" (2) or "high" (3). The temperature and the humidity are disregarded for now because they are measured in different units (also based on x_train in the starter notebook).
 
+![unbalanced](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/unbalanced.png)
+
 *Fig 1.2.1: unbalanced*
 
 #### 1.3 Neural Network implementation using Flux
@@ -40,6 +42,7 @@ ps_ldl = Flux.params(m_ldl)
 loss(x, y) = Flux.crossentropy(m_ldl(x), y)
 Flux.train!(loss, ps_ldl, datasetx_ldl, opt, cb = throttle(evalcb_ldl, 15))
 ```
+![basic network](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/basic_network.png)
 
 *Fig 1.3.1: basic network - parameters*
 
@@ -71,6 +74,7 @@ To note that on the contrary, by training the neural network with labels which d
 
 Balancing the dataset: although we introduce a large bias towards the few data samples which we duplicate, the advantage gained is that we will correctly penalize the model at training time when attempting to classify as "ok" a measure which is either "low", or "high".
 
+![balanced](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/balanced.png)
 *Fig 2.1: balanced*
 
 |Measure     |LDL |HDL |HGB |
