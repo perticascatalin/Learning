@@ -70,7 +70,7 @@ To note that on the contrary, by training the neural network with labels which d
 	- shuffle
 	- ~30 min of training overall
 - *Updated_Test.csv*
-- Aggregation of predictions
+- Aggregation of predictions (similar to averaging over patient)
 	- low: -1, ok: 0, high: +1
 	- sum up by donation id
 	- 60 datapoints per patient
@@ -93,7 +93,7 @@ Balancing the dataset: although we introduce a large bias towards the few data s
 |HDL    |21.360    |
 |HGB    |31.500    |
 
-These models no longer overfit on "ok" and we get ~30% correct predictions on 20% of the competition's test data for our trial submission.
+These models no longer overfit on "ok" and we get ~30% correct predictions on 20% of the competition's test data for our trial submission (aggregating by patient). On the training dataset, the individual task predictions have an accuracy of 46%, while considering all the 3 measures correct as a hit, we get 8% accuracy (without aggregating by patient).
 
 ### 3. Further considerations
 
