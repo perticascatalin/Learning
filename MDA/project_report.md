@@ -82,10 +82,14 @@ Balancing the dataset: although we introduce a large bias towards the few data s
 ![balanced](https://raw.githubusercontent.com/perticascatalin/Learning/master/MDA/imgs/balanced.png)
 *Fig 2.1: balanced*
 
-|Measure     |LDL |HDL |HGB |
-|:----------:|:--:|:--:|:--:|
-|Accuracy    |54% |47% |51% |
-|Loss (final)|0.95|1.05|0.93|
+|Measure       |LDL |HDL |HGB |
+|:------------:|:--:|:--:|:--:|
+|Accuracy (bal)|54% |47% |51% |
+|Accuracy (ini)|43% |47% |48% |
+|Loss (final)  |0.95|1.05|0.93|
+
+- *bal: individually balanced datasets*
+- *ini: initial dataset*
 
 |Measure|No Samples|
 |:-----:|:--------:|
