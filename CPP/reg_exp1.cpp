@@ -54,9 +54,9 @@ class DateCorrector2023 {
 // MM/DD/YYYY
 
 int main(){
-	DateCorrector2023 test;
-	cout << test.fix("2022-12-24") << endl;
+  DateCorrector2023 test;
+  cout << test.fix("2022-12-24") << endl;
   cout << test.fix("24.12.2022") << endl;
   cout << test.fix("12/24/2022") << endl;
-	return 0;
+  return 0;
 }
